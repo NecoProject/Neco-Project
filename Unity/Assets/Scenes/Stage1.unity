@@ -527,6 +527,7 @@ GameObject:
   - 212: {fileID: 2071710984}
   - 61: {fileID: 2071710985}
   - 50: {fileID: 2071710986}
+  - 114: {fileID: 2071710987}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -597,3 +598,15 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!114 &2071710987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2071710982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5734186a11c553a42ae6b1f2ffea6850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHP: 5

@@ -6,6 +6,8 @@ public class SpellScript : MonoBehaviour
 
 		public float duration;
 
+		public float damage;
+
 		// Use this for initialization
 		void Start ()
 		{
