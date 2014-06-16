@@ -2,23 +2,23 @@
 
 public class PlayerScript : MonoBehaviour
 {
-	public Vector2 speed = new Vector2(50, 50);
+		public Transform spell1Sprite;
 
-	private Vector2 movement;
-	
-	void Update()
-	{
-		float inputX = Input.GetAxis("Horizontal");
-		float inputY = Input.GetAxis("Vertical");
+		void Update ()
+		{
+				shootAtMousePosition ();
+		}
 
-		movement = new Vector2(
-			speed.x * inputX,
-			speed.y * inputY);
-		
-	}
-	
-	void FixedUpdate()
-	{
-		rigidbody2D.velocity = movement;
-	}
-}
+		void shootAtMousePosition ()
+		{
+				if (Input.GetButtonDown ("Fire1")) {
+						Vector3 screenTarget = Input.mousePosition;
+						// Get the correct Z, because the current one is the Camera, circa -10
+						var correctZ = transform.position.z;
+						screenTarget.z = correctZ;
+						Vector3 spaceTarget = Camera.main.ScreenToWorldPoint (screenTarget);
+						// KABOOM
+						Instantiate (spell1Sprite, spaceTarget, Quaternion.identity);
+				}
+		}
+} 

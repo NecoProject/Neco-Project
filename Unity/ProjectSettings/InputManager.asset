@@ -38,10 +38,10 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Fire1
-    descriptiveName: 
+    descriptiveName: Use skill 1
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: left ctrl
+    positiveButton: 1
     altNegativeButton: 
     altPositiveButton: mouse 0
     gravity: 1000
