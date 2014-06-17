@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21200000}
   - 61: {fileID: 6100000}
   - 50: {fileID: 5000000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.61651754, y: -1.66279101, z: 0}
+  m_LocalPosition: {x: -3.89441657, y: -.707854629, z: 0}
   m_LocalScale: {x: .15170303, y: .151703268, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,6 +57,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 8, y: 8.17000008}
   m_Center: {x: 0, y: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5734186a11c553a42ae6b1f2ffea6850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHP: 6
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

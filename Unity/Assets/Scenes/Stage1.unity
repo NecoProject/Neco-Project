@@ -1024,6 +1024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyModel: {fileID: 400000, guid: c5b290737a99eca4081f459a68508be1, type: 2}
+  foreground: {fileID: 990709506}
   levelDurationInSeconds: 120
   numberOfWaves: 4
   levelDifficulty: 1

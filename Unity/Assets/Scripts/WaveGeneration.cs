@@ -4,6 +4,7 @@ using System.Collections;
 public class WaveGeneration : MonoBehaviour
 {
 		public Transform enemyModel;
+		public Transform foreground;
 
 		public float levelDurationInSeconds = 120;
 		public int numberOfWaves = 4;
@@ -29,10 +30,19 @@ public class WaveGeneration : MonoBehaviour
 		void GenerateEnemy ()
 		{
 				float width = Screen.width, height = Screen.height;
-				float enemyX = Random.Range (-width / 2, width / 2);
-				float enemyY = Random.Range (-height / 2, height / 2);
-				Debug.Log ("Generating enemy at position (" + enemyX + ", " + enemyY + ")");
+				float enemyX = Random.Range (0, width);
+				float enemyY = Random.Range (0, height);
+				Vector3 position = new Vector3 (enemyX, enemyY);
 
-				Instantiate (enemyModel, new Vector3 (enemyX, enemyY), Quaternion.identity);
+				// Get the correct Z, because the current one is the Camera, circa -10
+				Vector3 spaceTarget = Camera.main.ScreenToWorldPoint (position);
+				spaceTarget.z = 0;
+
+				Debug.Log ("Generating enemy at position " + spaceTarget);
+
+
+				Transform monster = (Transform)Instantiate (enemyModel, spaceTarget, Quaternion.identity);
+				Debug.Log (monster.GetType ());
+				monster.parent = foreground;
 		}
 }
