@@ -50,6 +50,8 @@
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
      <Compile Include="Assets\Scripts\SkillBarItem.cs" />
      <Compile Include="Assets\Scripts\SpellScript.cs" />
+     <Compile Include="Assets\Scripts\TheDirector.cs" />
+     <Compile Include="Assets\Scripts\WaveGeneration.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
