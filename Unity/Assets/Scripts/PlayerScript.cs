@@ -25,12 +25,16 @@ public class PlayerScript : MonoBehaviour
 		{
 				if (Input.GetButtonDown ("Fire1")) {
 						Vector3 screenTarget = Input.mousePosition;
+						Debug.Log ("Firing at mouse position " + screenTarget);
 						// Get the correct Z, because the current one is the Camera, circa -10
 						var correctZ = transform.position.z;
 						screenTarget.z = correctZ;
 						Vector3 spaceTarget = Camera.main.ScreenToWorldPoint (screenTarget);
 						// KABOOM
-						Instantiate (activeSkills [0], spaceTarget, Quaternion.identity);
+						SpellScript spell = activeSkills [0];
+						SpellScript spellObject = (SpellScript)Instantiate (spell, spaceTarget, Quaternion.identity);
+			
+						Destroy (spellObject.gameObject, spell.duration);
 				}
 		}
 } 

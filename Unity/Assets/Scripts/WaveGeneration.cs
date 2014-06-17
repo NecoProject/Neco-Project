@@ -3,6 +3,8 @@ using System.Collections;
 
 public class WaveGeneration : MonoBehaviour
 {
+		public Transform enemyModel;
+
 		public float levelDurationInSeconds = 120;
 		public int numberOfWaves = 4;
 		public int levelDifficulty = 1;
@@ -11,6 +13,7 @@ public class WaveGeneration : MonoBehaviour
 
 		public void GenerateLevel (int difficulty)
 		{
+				Debug.Log ("Generating level " + difficulty);
 				this.levelDifficulty = difficulty;
 				GenerateWave (_currentWave);
 		}
@@ -25,6 +28,11 @@ public class WaveGeneration : MonoBehaviour
 
 		void GenerateEnemy ()
 		{
+				float width = Screen.width, height = Screen.height;
+				float enemyX = Random.Range (-width / 2, width / 2);
+				float enemyY = Random.Range (-height / 2, height / 2);
+				Debug.Log ("Generating enemy at position (" + enemyX + ", " + enemyY + ")");
 
+				Instantiate (enemyModel, new Vector3 (enemyX, enemyY), Quaternion.identity);
 		}
 }

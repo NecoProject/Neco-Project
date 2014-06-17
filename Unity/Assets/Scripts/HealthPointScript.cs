@@ -22,7 +22,6 @@ public class HealthPointScript : MonoBehaviour
 						if (!survives) {
 								Destroy (gameObject);
 						}
-						Destroy (otherCollider.gameObject, spell.duration);
 				}
 		}
 }
