@@ -15,13 +15,19 @@ public class HealthPointScript : MonoBehaviour
 
 		void OnTriggerEnter2D (Collider2D otherCollider)
 		{
-				Debug.Log ("Entering collision");
 				SpellScript spell = otherCollider.gameObject.GetComponent<SpellScript> ();
 				if (spell != null) {
 						bool survives = undergoHpModification (-spell.damage);
 						if (!survives) {
-								Destroy (gameObject);
+								Die (); 
 						}
 				}
+		}
+
+		void Die ()
+		{
+				Destroy (gameObject);
+				// Notify listeners
+				Messenger<HealthPointScript>.Broadcast (EventNames.MONSTER_KILLED, this);
 		}
 }
