@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -9,9 +10,12 @@ public class PlayerScript : MonoBehaviour
 		void Start ()
 		{
 				SkillBarItem[] skillBarItems = FindObjectsOfType<SkillBarItem> ();
+				Array.Sort (skillBarItems, delegate(SkillBarItem first, SkillBarItem second) {
+						return first.name.CompareTo (second.name);
+				});
 				for (int i = 0; i < skillBarItems.Length; i++) {
 						if (activeSkills.Count > i) {
-								skillBarItems [skillBarItems.Length - i - 1].SetSkill (activeSkills [i]);
+								skillBarItems [i].SetSkill (activeSkills [i]);
 						}
 				}
 		}

@@ -288,6 +288,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeSkills:
   - {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9, type: 2}
+  - {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9, type: 2}
 --- !u!1 &850360400
 GameObject:
   m_ObjectHideFlags: 0
