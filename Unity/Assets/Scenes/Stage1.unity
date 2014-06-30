@@ -288,9 +288,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeSkills:
   - {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9, type: 2}
-  - {fileID: 0}
-  - {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9, type: 2}
-  - {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9, type: 2}
+  - {fileID: 11400000, guid: ad134601dd9aa924bb4a9f817f368d12, type: 2}
+  - {fileID: 11400000, guid: 89c4b935cf19dd748b7c495f162b0e9d, type: 2}
+  - {fileID: 11400000, guid: c015355a44915354f9b713f09fbf696f, type: 2}
 --- !u!1 &850360400
 GameObject:
   m_ObjectHideFlags: 0
