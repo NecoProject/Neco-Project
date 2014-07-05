@@ -8,7 +8,9 @@ public class SkillBarItem : MonoBehaviour
 		public void SetSkill (SpellScript skill)
 		{
 				this.skill = skill;
-				GetComponent<SpriteRenderer> ().sprite = skill.GetComponent<SpriteRenderer> ().sprite;
+				if (skill != null) {
+						GetComponent<SpriteRenderer> ().sprite = skill.GetComponent<SpriteRenderer> ().sprite;
+				}
 		}
 
 }
