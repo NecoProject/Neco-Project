@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c43e3d0c9005a4a9a447241f44d7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentLevel: 1
+  SavedData: {fileID: 412633220}
 --- !u!1 &412633219
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ff29667380f9041982e2f21cfa84cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentLevel: 0
+  activeSkills: []
 --- !u!4 &412633221
 Transform:
   m_ObjectHideFlags: 0

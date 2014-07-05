@@ -56,19 +56,9 @@ public class WaveGeneration : MonoBehaviour
 				}
 				else
 				{
-						EndLevel();
+						Messenger.Broadcast(EventNames.LEVEL_COMPLETE);
 				}
 		}
-
-		void EndLevel()
-		{
-				// Save the data we want to propagate to the next end screen and the level
-				
-
-				// Load the end screen
-				Application.LoadLevel("LevelClear");
-		}
-
 
 		Transform GenerateEnemy()
 		{
