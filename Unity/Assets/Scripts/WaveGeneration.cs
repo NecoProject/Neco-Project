@@ -6,8 +6,7 @@ public class WaveGeneration : MonoBehaviour
 {
 		public Transform enemyModel;
 		public Transform foreground;
-	
-		public float levelDurationInSeconds = 120;
+
 		public int numberOfWaves = 4;
 		public int levelDifficulty = 1;
 	
@@ -62,10 +61,7 @@ public class WaveGeneration : MonoBehaviour
 				// Get the correct Z, because the current one is the Camera, circa -10
 				Vector3 spaceTarget = Camera.main.ScreenToWorldPoint (position);
 				spaceTarget.z = 0;
-		
-				Debug.Log ("Generating enemy at position " + spaceTarget);
-		
-		
+				
 				Transform monster = (Transform)Instantiate (enemyModel, spaceTarget, Quaternion.identity);
 				Debug.Log (monster.GetType ());
 				monster.parent = foreground;
