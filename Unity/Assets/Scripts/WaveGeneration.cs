@@ -6,76 +6,96 @@ public class WaveGeneration : MonoBehaviour
 {
 		public Transform enemyModel;
 		public Transform foreground;
+		public Save Save;
 
-		public int numberOfWaves = 4;
-		public int levelDifficulty = 1;
-	
-		private int _currentWave = 0;
+		public int NumberOfWaves = 2;
+		public int LevelDifficulty = 1;
+		public int MinimumEnemiesPerWave = 4;
+		public int WaveEnemyModifier = 2;
 
-		private List<Transform> _waveMonsters = new List<Transform> ();
+		private int _currentWave = 1;
 
-	
-		void OnEnable ()
+
+		private List<Transform> _waveMonsters = new List<Transform>();
+
+
+		void OnEnable()
 		{
-				Messenger<HealthPointScript>.AddListener (EventNames.MONSTER_KILLED, OnMonsterKilled);
+				Messenger<HealthPointScript>.AddListener(EventNames.MONSTER_KILLED, OnMonsterKilled);
 		}
-	
-		void OnDisable ()
+
+		void OnDisable()
 		{
-				Messenger<HealthPointScript>.RemoveListener (EventNames.MONSTER_KILLED, OnMonsterKilled);
+				Messenger<HealthPointScript>.RemoveListener(EventNames.MONSTER_KILLED, OnMonsterKilled);
 		}
-	
-		public void GenerateLevel (int difficulty)
+
+		public void GenerateLevel(int difficulty)
 		{
-				Debug.Log ("Generating level " + difficulty);
-				this.levelDifficulty = difficulty;
-				GenerateWave (_currentWave);
+				Debug.Log("Generating level " + difficulty);
+				this.LevelDifficulty = difficulty;
+				GenerateWave(_currentWave);
 		}
-	
-		void GenerateWave (int waveNumber)
+
+		void GenerateWave(int waveNumber)
 		{
-				Debug.Log ("Generating wave " + waveNumber);
-				int numberOfEnemiesInWave = 4 + (2 * waveNumber);
-				for (int i = 0; i < numberOfEnemiesInWave; i++) {
-						Transform monster = GenerateEnemy ();
-						_waveMonsters.Add (monster);
+				Debug.Log("Generating wave " + waveNumber);
+				int numberOfEnemiesInWave = MinimumEnemiesPerWave + (WaveEnemyModifier * waveNumber);
+				for (int i = 0; i < numberOfEnemiesInWave; i++)
+				{
+						Transform monster = GenerateEnemy();
+						_waveMonsters.Add(monster);
 				}
 		}
 
-		void GenerateNewWave ()
+		void GenerateNewWave()
 		{
-				if (_currentWave < numberOfWaves) {
+				if (_currentWave < NumberOfWaves)
+				{
 						_currentWave++;
-						GenerateWave (_currentWave);
+						GenerateWave(_currentWave);
+				}
+				else
+				{
+						EndLevel();
 				}
 		}
 
-	
-		Transform GenerateEnemy ()
+		void EndLevel()
+		{
+				// Save the data we want to propagate to the next end screen and the level
+				
+
+				// Load the end screen
+				Application.LoadLevel("LevelClear");
+		}
+
+
+		Transform GenerateEnemy()
 		{
 				float width = Screen.width, height = Screen.height;
-				float enemyX = Random.Range (0, width);
-				float enemyY = Random.Range (0, height);
-				Vector3 position = new Vector3 (enemyX, enemyY);
-		
+				float enemyX = Random.Range(0, width);
+				float enemyY = Random.Range(0, height);
+				Vector3 position = new Vector3(enemyX, enemyY);
+
 				// Get the correct Z, because the current one is the Camera, circa -10
-				Vector3 spaceTarget = Camera.main.ScreenToWorldPoint (position);
+				Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(position);
 				spaceTarget.z = 0;
-				
-				Transform monster = (Transform)Instantiate (enemyModel, spaceTarget, Quaternion.identity);
-				Debug.Log (monster.GetType ());
+
+				Transform monster = (Transform)Instantiate(enemyModel, spaceTarget, Quaternion.identity);
+				Debug.Log(monster.GetType());
 				monster.parent = foreground;
 
 				return monster;
 		}
 
-		void OnMonsterKilled (HealthPointScript monster)
+		void OnMonsterKilled(HealthPointScript monster)
 		{
-				_waveMonsters.Remove (monster.transform);
+				_waveMonsters.Remove(monster.transform);
 
-				if (_waveMonsters.Count == 0) {
-						Debug.Log ("Generating new wave");
-						GenerateNewWave ();
+				if (_waveMonsters.Count == 0)
+				{
+						Debug.Log("Generating new wave");
+						GenerateNewWave();
 				}
 		}
 }

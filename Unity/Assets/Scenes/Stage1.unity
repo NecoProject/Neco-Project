@@ -144,6 +144,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c43e3d0c9005a4a9a447241f44d7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentLevel: 1
+--- !u!1 &412633219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 412633221}
+  - 114: {fileID: 412633220}
+  m_Layer: 0
+  m_Name: Save
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &412633220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 412633219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ff29667380f9041982e2f21cfa84cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &412633221
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 412633219}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .316548109, y: .860482216, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
 --- !u!1001 &528494355
 Prefab:
   m_ObjectHideFlags: 0
@@ -1001,5 +1041,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyModel: {fileID: 400000, guid: c5b290737a99eca4081f459a68508be1, type: 2}
   foreground: {fileID: 990709506}
-  numberOfWaves: 4
-  levelDifficulty: 1
+  Save: {fileID: 412633220}
+  NumberOfWaves: 1
+  LevelDifficulty: 1
+  MinimumEnemiesPerWave: 1
+  WaveEnemyModifier: 0

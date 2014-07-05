@@ -46,11 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\End Screen\EndScript.cs" />
      <Compile Include="Assets\Scripts\EventNames.cs" />
      <Compile Include="Assets\Scripts\Framework\Callback.cs" />
      <Compile Include="Assets\Scripts\Framework\Messenger.cs" />
      <Compile Include="Assets\Scripts\HealthPointScript.cs" />
+     <Compile Include="Assets\Scripts\LevelClear.cs" />
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
+     <Compile Include="Assets\Scripts\Save.cs" />
      <Compile Include="Assets\Scripts\ShootingButton.cs" />
      <Compile Include="Assets\Scripts\SkillBarItem.cs" />
      <Compile Include="Assets\Scripts\SpellScript.cs" />

@@ -3,9 +3,12 @@ using System.Collections;
 
 public class TheDirector : MonoBehaviour
 {
-		void Start ()
+
+		public int CurrentLevel = 1;
+
+		void Start()
 		{
-				GetComponentInChildren<WaveGeneration> ().GenerateLevel (1);
+				GetComponentInChildren<WaveGeneration>().GenerateLevel(CurrentLevel);
 		}
 
 }
