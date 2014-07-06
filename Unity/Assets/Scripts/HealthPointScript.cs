@@ -30,7 +30,7 @@ public class HealthPointScript : MonoBehaviour
 		{
 				SpellScript spell = otherCollider.gameObject.GetComponent<SpellScript> ();
 				if (spell != null) {
-						bool survives = undergoHpModification (-spell.Stats.damage);
+						bool survives = undergoHpModification (-spell.Stats.Damage);
 						if (!survives) {
 								Die (); 
 						}

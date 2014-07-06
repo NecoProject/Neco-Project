@@ -5,7 +5,9 @@ using System;
 
 public class GeneticAlgorithm
 {
-		private const float BASE_BONUS_MAX = 1.5f;
+		// TODO: pass the script as a MonoBehaviour, so that it can be tweaked in the editor directly? 
+		// Not sure we can easily experiment, since it requires an "end level" screen anyway
+		private const float BASE_BONUS_MAX = .5f;
 
 		public List<SkillStats> Evolve(SkillStats father, SkillStats mother, int difficultLevel)
 		{
@@ -34,9 +36,15 @@ public class GeneticAlgorithm
 		{
 				SkillStats child = new SkillStats();
 
-				child.damage = UnityEngine.Random.Range(Mathf.Min(father.damage, mother.damage), Mathf.Max(father.damage, mother.damage));
+				child.Damage = ComputeValue(father.Damage, mother.Damage);
+				child.Cost = ComputeValue(father.Cost, mother.Cost);
 
 				return child;
+		}
+
+		private float ComputeValue(float fatherValue, float motherValue)
+		{
+				return UnityEngine.Random.Range(Mathf.Min(fatherValue, motherValue), Mathf.Max(fatherValue, motherValue));
 		}
 
 		/// Again, very basic implementation
@@ -50,9 +58,7 @@ public class GeneticAlgorithm
 
 		private void Mutate(SkillStats child, int difficultLevel)
 		{
-				float bonus = UnityEngine.Random.Range(-BASE_BONUS_MAX, BASE_BONUS_MAX) * difficultLevel;
-				//Debug.Log("Bonus: " + bonus);
-				child.damage = child.damage + bonus;
-				//Debug.Log("Mutated: " + child);
+				child.Damage = child.Damage + child.Damage * UnityEngine.Random.Range(-BASE_BONUS_MAX, BASE_BONUS_MAX) * difficultLevel;
+				child.Cost = child.Cost + child.Cost * UnityEngine.Random.Range(-BASE_BONUS_MAX, BASE_BONUS_MAX) * difficultLevel;
 		}
 }

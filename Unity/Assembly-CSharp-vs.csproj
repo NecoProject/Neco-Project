@@ -53,13 +53,15 @@
      <Compile Include="Assets\Scripts\Framework\Callback.cs" />
      <Compile Include="Assets\Scripts\Framework\Messenger.cs" />
      <Compile Include="Assets\Scripts\Framework\Tuple.cs" />
+     <Compile Include="Assets\Scripts\HUD\Mana.cs" />
+     <Compile Include="Assets\Scripts\HUD\SkillBarItem.cs" />
      <Compile Include="Assets\Scripts\HealthPointScript.cs" />
      <Compile Include="Assets\Scripts\LevelClear.cs" />
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
+     <Compile Include="Assets\Scripts\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\Save.cs" />
      <Compile Include="Assets\Scripts\ShootingButton.cs" />
      <Compile Include="Assets\Scripts\Skill\SkillStats.cs" />
-     <Compile Include="Assets\Scripts\SkillBarItem.cs" />
      <Compile Include="Assets\Scripts\SpellScript.cs" />
      <Compile Include="Assets\Scripts\TheDirector.cs" />
      <Compile Include="Assets\Scripts\WaveGeneration.cs" />

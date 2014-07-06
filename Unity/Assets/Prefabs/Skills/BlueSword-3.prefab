@@ -53,8 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stats:
-    duration: 1
-    damage: 1
+    Damage: .5
+    Cost: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
