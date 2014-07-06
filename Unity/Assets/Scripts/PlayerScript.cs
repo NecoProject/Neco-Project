@@ -44,7 +44,7 @@ public class PlayerScript : MonoBehaviour
 								if (spell != null)
 								{
 										SpellScript spellObject = (SpellScript)Instantiate(spell, spaceTarget, Quaternion.identity);
-										Destroy(spellObject.gameObject, spell.duration);
+										Destroy(spellObject.gameObject, 1);
 								}
 						}
 				}

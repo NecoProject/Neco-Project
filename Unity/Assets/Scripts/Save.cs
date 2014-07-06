@@ -23,5 +23,10 @@ public class Save : MonoBehaviour
 						// this must be a duplicate from a scene reload - DESTROY!
 						Destroy(this.gameObject);
 				}
+
+				if (CurrentLevel == 0)
+				{
+						Debug.LogWarning("CurrentLevel is 0, probably forgot to set it in the editor");
+				}
 		}
 }

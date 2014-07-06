@@ -72,7 +72,6 @@ public class WaveGeneration : MonoBehaviour
 				spaceTarget.z = 0;
 
 				Transform monster = (Transform)Instantiate(enemyModel, spaceTarget, Quaternion.identity);
-				Debug.Log(monster.GetType());
 				monster.parent = foreground;
 
 				return monster;

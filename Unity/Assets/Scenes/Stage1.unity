@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ff29667380f9041982e2f21cfa84cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentLevel: 0
+  CurrentLevel: 1
   activeSkills: []
 --- !u!4 &412633221
 Transform:
