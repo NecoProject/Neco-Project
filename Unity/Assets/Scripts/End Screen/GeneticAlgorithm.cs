@@ -57,6 +57,8 @@ public class GeneticAlgorithm
 				}
 		}
 
+		/// Mutate the provided child's statistics taking into account the difficulty. The higher the difficulty, the higher the mutation effects. 
+		/// TODO: Do we want to center the mutation around 0? Statistically we may result in pure better or pure worse stats afterwards.
 		private void Mutate (SkillStats child, int difficultLevel)
 		{
 				child.Damage = child.Damage + child.Damage * UnityEngine.Random.Range (-BASE_BONUS_MAX, BASE_BONUS_MAX) * difficultLevel;
