@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+/// <summary>
+/// Singleton save object.
+/// </summary>
 public class Save : MonoBehaviour
 {
 		private static bool __created = false;
@@ -10,23 +13,19 @@ public class Save : MonoBehaviour
 		public int CurrentLevel;
 		//public List<SpellScript> activeSkills;
 
-		void Awake()
+		void Awake ()
 		{
-				if (!__created)
-				{
+				if (!__created) {
 						// this is the first instance - make it persist
-						DontDestroyOnLoad(this.gameObject);
+						DontDestroyOnLoad (this.gameObject);
 						__created = true;
-				}
-				else
-				{
+				} else {
 						// this must be a duplicate from a scene reload - DESTROY!
-						Destroy(this.gameObject);
+						Destroy (this.gameObject);
 				}
 
-				if (CurrentLevel == 0)
-				{
-						Debug.LogWarning("CurrentLevel is 0, probably forgot to set it in the editor");
+				if (CurrentLevel == 0) {
+						Debug.LogWarning ("CurrentLevel is 0, probably forgot to set it in the editor");
 				}
 		}
 }

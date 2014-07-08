@@ -15,8 +15,10 @@ public class HealthPointScript : MonoBehaviour
 				_lifeComponent.text = currentHP + " / " + _maxHp;
 		}
 
-		// Modifies the currentHP value by the input value. Returns true if the resulting currentHP is > 0, false otherwise.
-		// value should be negative to decrease currentHP, positive otherwise. A value of 0 does nothing.
+		/// <summary>
+		/// Modifies the currentHP value by the input value. Returns true if the resulting currentHP is > 0, false otherwise.
+		/// value should be negative to decrease currentHP, positive otherwise. A value of 0 does nothing.
+		/// </summary>
 		bool undergoHpModification(float value)
 		{
 				currentHP += value;
