@@ -1,3 +1,4 @@
+*Genome of a skill*
 Each skill is backed by its genome content.
 Each letter is a genome element (let's call it an Azy since it varies from A to Z) and is assigned a value.
 Each value varies between 0 and 10.
