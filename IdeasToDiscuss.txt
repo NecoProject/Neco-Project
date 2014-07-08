@@ -1,0 +1,12 @@
+Each skill is backed by its genome content.
+Each letter is a genome element (let's call it an Azy since it varies from A to Z) and is assigned a value.
+Each value varies between 0 and 10.
+Each statistic of a skill (damage type, slow %, AoE radius, you name it) is deterministically defined by a combination of (a subset of) the genome elements.
+
+[A B C D E F G H I J K L M N O P Q R S T U V W X Y Z]
+ 4 0 1 8 8 7 2 9 9 9 9 3 5 7 6 1 0 0 8 6 4 5 6 2 1 3
+ 
+Ex.:
+Statistic: Slow %
+Conditions to unlock it: A > 3 & K > 9   -> Skill available in theory
+Genome factor (to be multiplied by other factors taken into account, typically like the level difficulty): 0.5 I + 0.3 R + 0.2 X = 4.9
