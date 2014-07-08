@@ -11,3 +11,12 @@ Ex.:
 Statistic: Slow %
 Conditions to unlock it: A > 3 & K > 9   -> Skill available in theory
 Genome factor (to be multiplied by other factors taken into account, typically like the level difficulty): 0.5 I + 0.3 R + 0.2 X = 4.9
+
+
+
+*Determination of the parents during level up*
+Possible rules:
+- Random. Currently used.
+- Most used in terms of number of uses. Limits are that a high CD skill will be counted as poorly used even if always used when available.
+- Inverse of the sum of time when it could have been used but wasn't. Thus the value of a high CD and always used skill would be very high, while the one with low CD would be high if not used drastically.
+
