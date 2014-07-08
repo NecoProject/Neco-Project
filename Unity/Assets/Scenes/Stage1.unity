@@ -534,12 +534,13 @@ SpriteRenderer:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
-  m_PrefabInternal: {fileID: 1733954238}
+  m_PrefabInternal: {fileID: 1416617895}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1269911724}
   - 212: {fileID: 1269911725}
   - 114: {fileID: 1269911726}
+  - 61: {fileID: 1269911727}
   m_Layer: 0
   m_Name: SkillContainer1
   m_TagString: Untagged
@@ -551,7 +552,7 @@ GameObject:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
-  m_PrefabInternal: {fileID: 1733954238}
+  m_PrefabInternal: {fileID: 1416617895}
   m_GameObject: {fileID: 1269911723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.01029992, y: 4.09856272, z: -5}
@@ -564,7 +565,7 @@ SpriteRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 21200000, guid: 385fc0f1790a66d48a5d08ade35cf88d,
     type: 2}
-  m_PrefabInternal: {fileID: 1733954238}
+  m_PrefabInternal: {fileID: 1416617895}
   m_GameObject: {fileID: 1269911723}
   m_Enabled: 1
   m_CastShadows: 0
@@ -587,7 +588,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: 385fc0f1790a66d48a5d08ade35cf88d,
     type: 2}
-  m_PrefabInternal: {fileID: 1733954238}
+  m_PrefabInternal: {fileID: 1416617895}
   m_GameObject: {fileID: 1269911723}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -595,6 +596,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
+  handleClicks: 0
+--- !u!61 &1269911727
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6100000, guid: 385fc0f1790a66d48a5d08ade35cf88d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1416617895}
+  m_GameObject: {fileID: 1269911723}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 3, y: 3}
+  m_Center: {x: 0, y: 0}
 --- !u!1001 &1286526831
 Prefab:
   m_ObjectHideFlags: 0
@@ -741,6 +755,7 @@ GameObject:
   - 4: {fileID: 1332660297}
   - 212: {fileID: 1332660299}
   - 114: {fileID: 1332660298}
+  - 61: {fileID: 1332660300}
   m_Layer: 0
   m_Name: SkillContainer4
   m_TagString: Untagged
@@ -773,6 +788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
+  handleClicks: 0
 --- !u!212 &1332660299
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -796,6 +812,18 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b83e5ad4bacfb1a408b37483296664d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!61 &1332660300
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6100000, guid: 385fc0f1790a66d48a5d08ade35cf88d,
+    type: 2}
+  m_PrefabInternal: {fileID: 858437770}
+  m_GameObject: {fileID: 1332660296}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 3, y: 3}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &1395893880
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,6 +852,58 @@ Transform:
   - {fileID: 1295920810}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1001 &1416617895
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 990709506}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2.01029992
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.09856272
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: m_RootMapOrder
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: m_Name
+      value: SkillContainer1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+  m_RootGameObject: {fileID: 1269911723}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1639839690
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,62 +984,6 @@ Prefab:
   m_RootGameObject: {fileID: 1967225888}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1001 &1733954238
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 990709506}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -2.01029992
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 4.09856272
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
-      propertyPath: m_RootMapOrder
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
-      propertyPath: skill
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
-      propertyPath: m_Name
-      value: SkillContainer1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
-  m_RootGameObject: {fileID: 1269911723}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1 &1806122736
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,6 +994,7 @@ GameObject:
   - 4: {fileID: 1806122737}
   - 212: {fileID: 1806122739}
   - 114: {fileID: 1806122738}
+  - 61: {fileID: 1806122740}
   m_Layer: 0
   m_Name: SkillContainer3
   m_TagString: Untagged
@@ -1002,6 +1027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
+  handleClicks: 0
 --- !u!212 &1806122739
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1025,6 +1051,18 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b83e5ad4bacfb1a408b37483296664d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!61 &1806122740
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6100000, guid: 385fc0f1790a66d48a5d08ade35cf88d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1286526831}
+  m_GameObject: {fileID: 1806122736}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 3, y: 3}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &1883748831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,6 +1172,7 @@ GameObject:
   - 4: {fileID: 1967225889}
   - 212: {fileID: 1967225891}
   - 114: {fileID: 1967225890}
+  - 61: {fileID: 1967225892}
   m_Layer: 0
   m_Name: SkillContainer2
   m_TagString: Untagged
@@ -1166,6 +1205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
+  handleClicks: 0
 --- !u!212 &1967225891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1189,6 +1229,18 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b83e5ad4bacfb1a408b37483296664d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!61 &1967225892
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6100000, guid: 385fc0f1790a66d48a5d08ade35cf88d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1717425242}
+  m_GameObject: {fileID: 1967225888}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 3, y: 3}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &2063035693
 GameObject:
   m_ObjectHideFlags: 0

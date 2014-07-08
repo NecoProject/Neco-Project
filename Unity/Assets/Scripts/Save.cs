@@ -8,7 +8,7 @@ public class Save : MonoBehaviour
 		private static bool __created = false;
 
 		public int CurrentLevel;
-		public List<SpellScript> activeSkills;
+		//public List<SpellScript> activeSkills;
 
 		void Awake()
 		{

@@ -60,5 +60,6 @@ public class GeneticAlgorithm
 		{
 				child.Damage = child.Damage + child.Damage * UnityEngine.Random.Range(-BASE_BONUS_MAX, BASE_BONUS_MAX) * difficultLevel;
 				child.Cost = child.Cost + child.Cost * UnityEngine.Random.Range(-BASE_BONUS_MAX, BASE_BONUS_MAX) * difficultLevel;
+				//Debug.Log("Mutated: " + child);
 		}
 }

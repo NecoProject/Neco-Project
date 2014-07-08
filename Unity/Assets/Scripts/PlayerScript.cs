@@ -11,8 +11,27 @@ public class PlayerScript : MonoBehaviour
 		// TODO: move this to the PlayerStats scripts?
 		public List<SpellScript> activeSkills = new List<SpellScript>();
 
+		private Save _savedData;
+
 		void Start()
 		{
+				_savedData = FindObjectOfType<Save>();
+
+				SkillBarItem[] skillItems = _savedData.GetComponents<SkillBarItem>();
+				if (skillItems != null && skillItems.Length > 0)
+				{
+						foreach (SkillBarItem skillItem in skillItems)
+						{
+								activeSkills.Add(skillItem.skill);
+						}
+				}
+				//Debug.Log(_savedData.activeSkills.Count);
+
+				//if (_savedData.activeSkills != null && _savedData.activeSkills.Count > 0)
+				//{
+						//activeSkills = _savedData.activeSkills;
+				//}
+
 				SkillBarItem[] skillBarItems = FindObjectsOfType<SkillBarItem>();
 				Array.Sort(skillBarItems, delegate(SkillBarItem first, SkillBarItem second)
 				{

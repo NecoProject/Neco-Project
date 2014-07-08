@@ -256,6 +256,11 @@ Prefab:
       propertyPath: m_SortingLayerID
       value: 3163317883
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
   m_RootGameObject: {fileID: 1916930116}
@@ -271,6 +276,7 @@ GameObject:
   - 4: {fileID: 476815636}
   - 212: {fileID: 476815635}
   - 114: {fileID: 476815634}
+  - 61: {fileID: 476815637}
   m_Layer: 0
   m_Name: SkillContainer
   m_TagString: Untagged
@@ -287,10 +293,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 476815633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18fc246ae1d740b4bb3ead61e955e1da, type: 3}
+  m_Script: {fileID: 11500000, guid: 18db01f1839dcc449b7bb5f1aa5dd16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 0}
+  skill: {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9, type: 2}
+  handleClicks: 1
 --- !u!212 &476815635
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -326,6 +333,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1237426485}
   m_RootOrder: 1
+--- !u!61 &476815637
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6100000, guid: 385fc0f1790a66d48a5d08ade35cf88d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1441606140}
+  m_GameObject: {fileID: 476815633}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 3, y: 3}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &552982953
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +355,7 @@ GameObject:
   - 4: {fileID: 552982956}
   - 212: {fileID: 552982955}
   - 114: {fileID: 552982954}
+  - 61: {fileID: 552982957}
   m_Layer: 0
   m_Name: SkillContainer
   m_TagString: Untagged
@@ -352,10 +372,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 552982953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18fc246ae1d740b4bb3ead61e955e1da, type: 3}
+  m_Script: {fileID: 11500000, guid: 18db01f1839dcc449b7bb5f1aa5dd16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 0}
+  skill: {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9, type: 2}
+  handleClicks: 1
 --- !u!212 &552982955
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -391,6 +412,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1237426485}
   m_RootOrder: 2
+--- !u!61 &552982957
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6100000, guid: 385fc0f1790a66d48a5d08ade35cf88d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1880411656}
+  m_GameObject: {fileID: 552982953}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 3, y: 3}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &774796304
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +453,7 @@ Transform:
   - {fileID: 1405767200}
   - {fileID: 1916930117}
   m_Father: {fileID: 843342160}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &843342158
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +506,7 @@ Transform:
   m_Children:
   - {fileID: 1984145888}
   - {fileID: 1237426485}
+  - {fileID: 1578073656}
   - {fileID: 774796305}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -536,6 +570,15 @@ Prefab:
       propertyPath: m_SortingLayerID
       value: 3163317883
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9,
+        type: 2}
+    - target: {fileID: 11400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: handleClicks
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
   m_RootGameObject: {fileID: 1148298727}
@@ -551,6 +594,7 @@ GameObject:
   - 4: {fileID: 1148298730}
   - 212: {fileID: 1148298729}
   - 114: {fileID: 1148298728}
+  - 61: {fileID: 1148298731}
   m_Layer: 0
   m_Name: SkillContainer
   m_TagString: Untagged
@@ -567,10 +611,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1148298727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18fc246ae1d740b4bb3ead61e955e1da, type: 3}
+  m_Script: {fileID: 11500000, guid: 18db01f1839dcc449b7bb5f1aa5dd16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 0}
+  skill: {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9, type: 2}
+  handleClicks: 1
 --- !u!212 &1148298729
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -606,6 +651,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1237426485}
   m_RootOrder: 0
+--- !u!61 &1148298731
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6100000, guid: 385fc0f1790a66d48a5d08ade35cf88d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1127444006}
+  m_GameObject: {fileID: 1148298727}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 3, y: 3}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &1237426484
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +703,7 @@ GameObject:
   - 4: {fileID: 1405767200}
   - 212: {fileID: 1405767202}
   - 114: {fileID: 1405767201}
+  - 61: {fileID: 1405767203}
   m_Layer: 0
   m_Name: SkillContainer
   m_TagString: Untagged
@@ -674,10 +732,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1405767199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18fc246ae1d740b4bb3ead61e955e1da, type: 3}
+  m_Script: {fileID: 11500000, guid: 18db01f1839dcc449b7bb5f1aa5dd16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 0}
+  skill: {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9, type: 2}
+  handleClicks: 0
 --- !u!212 &1405767202
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -701,6 +760,18 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b83e5ad4bacfb1a408b37483296664d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!61 &1405767203
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6100000, guid: 385fc0f1790a66d48a5d08ade35cf88d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1811548224}
+  m_GameObject: {fileID: 1405767199}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 3, y: 3}
+  m_Center: {x: 0, y: 0}
 --- !u!1001 &1441606140
 Prefab:
   m_ObjectHideFlags: 0
@@ -748,11 +819,90 @@ Prefab:
       propertyPath: m_SortingLayerID
       value: 3163317883
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9,
+        type: 2}
+    - target: {fileID: 11400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: handleClicks
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
   m_RootGameObject: {fileID: 476815633}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1578073655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1578073656}
+  - 23: {fileID: 1578073658}
+  - 102: {fileID: 1578073657}
+  m_Layer: 0
+  m_Name: Selected
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1578073656
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1578073655}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.90777016, y: -1.20580387, z: 0}
+  m_LocalScale: {x: .25, y: .25, z: 1}
+  m_Children: []
+  m_Father: {fileID: 843342160}
+  m_RootOrder: 2
+--- !u!102 &1578073657
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1578073655}
+  m_Text: 
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 0
+  m_Alignment: 0
+  m_TabSize: 4
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+--- !u!23 &1578073658
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1578073655}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!1001 &1811548224
 Prefab:
   m_ObjectHideFlags: 0
@@ -796,6 +946,11 @@ Prefab:
       propertyPath: m_SortingLayerID
       value: 3163317883
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
   m_RootGameObject: {fileID: 1405767199}
@@ -848,6 +1003,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: skill
+      value: 
+      objectReference: {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9,
+        type: 2}
+    - target: {fileID: 11400000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
+      propertyPath: handleClicks
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385fc0f1790a66d48a5d08ade35cf88d, type: 2}
   m_RootGameObject: {fileID: 552982953}
@@ -863,6 +1027,7 @@ GameObject:
   - 4: {fileID: 1916930117}
   - 212: {fileID: 1916930119}
   - 114: {fileID: 1916930118}
+  - 61: {fileID: 1916930120}
   m_Layer: 0
   m_Name: SkillContainer
   m_TagString: Untagged
@@ -891,10 +1056,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1916930116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18fc246ae1d740b4bb3ead61e955e1da, type: 3}
+  m_Script: {fileID: 11500000, guid: 18db01f1839dcc449b7bb5f1aa5dd16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 0}
+  skill: {fileID: 11400000, guid: b9a4cf82ae7bb9842bf66dcfb74a39f9, type: 2}
+  handleClicks: 0
 --- !u!212 &1916930119
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -918,6 +1084,18 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b83e5ad4bacfb1a408b37483296664d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!61 &1916930120
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6100000, guid: 385fc0f1790a66d48a5d08ade35cf88d,
+    type: 2}
+  m_PrefabInternal: {fileID: 414204966}
+  m_GameObject: {fileID: 1916930116}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 3, y: 3}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &1984145886
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,7 +1130,7 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 3163317883
+  m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a4714c7a04bef5e4fab59ac2c1488d14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
