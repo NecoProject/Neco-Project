@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 
 public class TheDirector : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class TheDirector : MonoBehaviour
 		void Start()
 		{
 				GetComponentInChildren<WaveGeneration>().GenerateLevel(SavedData.CurrentLevel);
+				SavedData = FindObjectOfType<Save>();
 		}
 
 
@@ -31,6 +33,12 @@ public class TheDirector : MonoBehaviour
 				//SavedData.activeSkills = player.activeSkills;
 
 				SkillBarItem[] skillItems = SavedData.GetComponents<SkillBarItem>();
+				/*Debug.Log("On level complete  before destroy");
+				foreach (SkillBarItem sk in SavedData.GetComponents<SkillBarItem>())
+				{
+						Debug.Log(sk.skill);
+				};*/
+
 				List<SpellScript> activeSkills = new List<SpellScript>();
 				foreach (SkillBarItem skillItem in skillItems)
 				{
@@ -38,13 +46,21 @@ public class TheDirector : MonoBehaviour
 				}
 
 				// Put them back 
+				//EditorApplication.isPaused = true;
+
+				/*Debug.Log("Logging player skills");*/
 				foreach (SpellScript skill in player.activeSkills)
 				{
-						SavedData.gameObject.AddComponent<SkillBarItem>();
-						SavedData.gameObject.GetComponent<SkillBarItem>().skill = skill;
-
+						/*Debug.Log("skill is " + skill);*/
+						SkillBarItem skillItem = SavedData.gameObject.AddComponent<SkillBarItem>();
+						skillItem.skill = skill;
 				}
 
+				/*Debug.Log("On level complete");
+				foreach (SkillBarItem sk in SavedData.GetComponents<SkillBarItem>())
+				{
+						Debug.Log(sk.skill);
+				};*/
 				// Load the end screen
 				Application.LoadLevel("LevelClear");
 		}

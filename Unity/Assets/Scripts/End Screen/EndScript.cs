@@ -29,6 +29,13 @@ public class EndScript : MonoBehaviour
 				_fittestSkillSelection = new SurvivalOfTheFittest();
 				_geneticAlgorithm = new GeneticAlgorithm();
 
+
+				/*Debug.Log("On end script");
+				foreach (SkillBarItem sk in _savedData.GetComponents<SkillBarItem>())
+				{
+						Debug.Log(sk.skill);
+				};*/
+
 				// Get the skills that will be used to create a new offspring
 				SkillBarItem[] skillItems = _savedData.GetComponents<SkillBarItem>();
 				List<SpellScript> activeSkills = new List<SpellScript>();
@@ -59,29 +66,8 @@ public class EndScript : MonoBehaviour
 				else if (Input.GetKeyDown(KeyCode.Return))
 				{
 						Debug.Log("Selected script " + _selectedSkill);
-						// Backup existing skills
 						SkillBarItem[] skillItems = _savedData.GetComponents<SkillBarItem>();
-						List<SpellScript> activeSkills = new List<SpellScript>();
-						foreach (SkillBarItem skillItem in skillItems)
-						{
-								activeSkills.Add(skillItem.skill);
-								Destroy(skillItem);
-						}
-						// Add the new one
-						activeSkills[3] = _selectedSkill;
-
-						// Put them back 
-						foreach (SpellScript skill in activeSkills)
-						{
-								_savedData.gameObject.AddComponent<SkillBarItem>();
-								_savedData.gameObject.GetComponent<SkillBarItem>().skill = skill;
-
-						}
-
-						// TODO: For now, replace always the last script
-						//_savedData.activeSkills[3] = _selectedSkill;
-						//_savedData.gameObject.AddComponent<SkillBarItem>();
-						//_savedData.gameObject.GetComponent<SkillBarItem>().skill = _selectedSkill;
+						skillItems[3].skill = _selectedSkill;
 
 						ProceedToNextLevel();
 				}
@@ -117,8 +103,10 @@ public class EndScript : MonoBehaviour
 						SkillStats stat = newSkills[i];
 						//Debug.Log("SkillStats: " + stat);
 
+						// TODO: dirty, the prefabs keep accumulating
 						SpellScript skill = (SpellScript)Instantiate(DefaultPrefab, new Vector3(0, 0, -50), Quaternion.identity);
 						skill.Stats = stat;
+						skill.name = "Random ";
 
 						skillBar.SetSkill(skill);
 						Debug.Log("Skill: " + skill);
@@ -137,5 +125,5 @@ public class EndScript : MonoBehaviour
 				_selectedSkill = skill.skill;
 		}
 
-		
+
 }

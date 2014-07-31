@@ -15,35 +15,30 @@ public class PlayerScript : MonoBehaviour
 
 		void Start()
 		{
+				Debug.Log("player start " + FindObjectsOfType<Save>().Length);
 				_savedData = FindObjectOfType<Save>();
 
 				SkillBarItem[] skillItems = _savedData.GetComponents<SkillBarItem>();
 				if (skillItems != null && skillItems.Length > 0)
 				{
+						activeSkills = new List<SpellScript>();
 						foreach (SkillBarItem skillItem in skillItems)
 						{
 								activeSkills.Add(skillItem.skill);
 						}
 				}
-				//Debug.Log(_savedData.activeSkills.Count);
 
-				//if (_savedData.activeSkills != null && _savedData.activeSkills.Count > 0)
-				//{
-						//activeSkills = _savedData.activeSkills;
-				//}
-
-				SkillBarItem[] skillBarItems = FindObjectsOfType<SkillBarItem>();
-				Array.Sort(skillBarItems, delegate(SkillBarItem first, SkillBarItem second)
+				GameObject[] skillBarItems = GameObject.FindGameObjectsWithTag("HUDSkill");
+				Debug.Log(skillBarItems.Length);
+				Array.Sort(skillBarItems, delegate(GameObject first, GameObject second)
 				{
 						return first.name.CompareTo(second.name);
 				});
 				for (int i = 0; i < skillBarItems.Length; i++)
 				{
-						if (activeSkills.Count > i)
-						{
-								skillBarItems[i].SetSkill(activeSkills[i]);
-						}
+						skillBarItems[i].GetComponent<SkillBarItem>().SetSkill(activeSkills[i]);
 				}
+				Debug.Log("player start " + FindObjectsOfType<Save>().Length);
 		}
 
 		void Update()

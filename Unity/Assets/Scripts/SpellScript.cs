@@ -4,6 +4,11 @@ using System.Collections;
 public class SpellScript : MonoBehaviour
 {
 		public SkillStats Stats;
+
+		void Awake()
+		{
+				DontDestroyOnLoad(this.gameObject);
+		}
 		
 		public override string ToString()
 		{

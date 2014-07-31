@@ -13,19 +13,25 @@ public class Save : MonoBehaviour
 		public int CurrentLevel;
 		//public List<SpellScript> activeSkills;
 
-		void Awake ()
+		void Awake()
 		{
-				if (!__created) {
+				Debug.Log("Instance " + this.GetInstanceID());
+				if (!__created)
+				{
 						// this is the first instance - make it persist
-						DontDestroyOnLoad (this.gameObject);
+						DontDestroyOnLoad(this.gameObject);
 						__created = true;
-				} else {
+				}
+				else
+				{
 						// this must be a duplicate from a scene reload - DESTROY!
-						Destroy (this.gameObject);
+						Debug.Log("Destroying me");
+						DestroyImmediate(this.gameObject);
 				}
 
-				if (CurrentLevel == 0) {
-						Debug.LogWarning ("CurrentLevel is 0, probably forgot to set it in the editor");
+				if (CurrentLevel == 0)
+				{
+						Debug.LogWarning("CurrentLevel is 0, probably forgot to set it in the editor");
 				}
 		}
 }
