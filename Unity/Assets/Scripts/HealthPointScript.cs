@@ -3,7 +3,9 @@ using System.Collections;
 
 public class HealthPointScript : MonoBehaviour
 {
-		public float currentHP = 1;
+		public const float INITIAL_HP = 6;
+
+		public float currentHP;
 
 		private TextMesh _lifeComponent;
 		private float _maxHp;

@@ -33,16 +33,16 @@ public class WaveGeneration : MonoBehaviour
 		{
 				Debug.Log("Generating level " + difficulty);
 				this.LevelDifficulty = difficulty;
-				GenerateWave(_currentWave);
+				GenerateWave(_currentWave, difficulty);
 		}
 
-		void GenerateWave(int waveNumber)
+		void GenerateWave(int waveNumber, int difficulty)
 		{
 				Debug.Log("Generating wave " + waveNumber);
 				int numberOfEnemiesInWave = MinimumEnemiesPerWave + (WaveEnemyModifier * waveNumber);
 				for (int i = 0; i < numberOfEnemiesInWave; i++)
 				{
-						Transform monster = GenerateEnemy();
+						Transform monster = GenerateEnemy(difficulty);
 						_waveMonsters.Add(monster);
 				}
 		}
@@ -52,7 +52,7 @@ public class WaveGeneration : MonoBehaviour
 				if (_currentWave < NumberOfWaves)
 				{
 						_currentWave++;
-						GenerateWave(_currentWave);
+						GenerateWave(_currentWave, this.LevelDifficulty);
 				}
 				else
 				{
@@ -60,7 +60,7 @@ public class WaveGeneration : MonoBehaviour
 				}
 		}
 
-		Transform GenerateEnemy()
+		Transform GenerateEnemy(int difficulty)
 		{
 				float width = Screen.width, height = Screen.height;
 				float enemyX = Random.Range(0, width);
@@ -73,6 +73,9 @@ public class WaveGeneration : MonoBehaviour
 
 				Transform monster = (Transform)Instantiate(enemyModel, spaceTarget, Quaternion.identity);
 				monster.parent = foreground;
+
+				monster.GetComponent<HealthPointScript>().currentHP = HealthPointScript.INITIAL_HP * difficulty; 
+
 
 				return monster;
 		}

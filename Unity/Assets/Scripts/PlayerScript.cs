@@ -77,9 +77,6 @@ public class PlayerScript : MonoBehaviour
 		/// too crowded
 		private void PayManaCost(float cost)
 		{
-				Debug.Log("Paying " + cost);
-				// This is how I like to broadcast this kind of info, not sure it's the best way. To be discussed
 				Stats.CurrentMana = Mathf.Min(Stats.MaxMana, Stats.CurrentMana - cost);
-				//Messenger<float>.Broadcast(EventNames.MANA_SPENT, cost);
 		}
 }
