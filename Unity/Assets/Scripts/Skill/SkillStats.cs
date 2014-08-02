@@ -8,6 +8,8 @@ public class SkillStats
 
 		public float Damage;
 		public float Cost;
+		public string SpriteName;
+		public string Name;
 
 		public override string ToString()
 		{

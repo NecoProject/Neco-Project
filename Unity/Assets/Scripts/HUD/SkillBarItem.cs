@@ -3,15 +3,15 @@ using System.Collections;
 
 public class SkillBarItem : MonoBehaviour
 {
-		public SpellScript skill;
+		public SkillStats skill;
 		public bool handleClicks = false;
 
-		public void SetSkill(SpellScript skill) 
+		public void SetSkill(SkillStats skill) 
 		{
 				this.skill = skill;
 				if (skill != null)
 				{
-						GetComponent<SpriteRenderer>().sprite = skill.GetComponent<SpriteRenderer>().sprite;
+						GetComponent<SpriteRenderer>().sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(skill.SpriteName);
 				}
 		}
 

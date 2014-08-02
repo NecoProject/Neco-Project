@@ -5,13 +5,14 @@ using System;
 
 public class EndScript : MonoBehaviour
 {
-		public SpellScript DefaultPrefab;
+		public Transform DefaultPrefab;
 		public GameObject ChildrenContainer;
 
 		private Save _savedData;
 		private SurvivalOfTheFittest _fittestSkillSelection;
 		private GeneticAlgorithm _geneticAlgorithm;
-		private SpellScript _selectedSkill;
+		private SkillStats _selectedSkill;
+
 
 		void OnEnable()
 		{
@@ -30,25 +31,14 @@ public class EndScript : MonoBehaviour
 				_geneticAlgorithm = new GeneticAlgorithm();
 
 
-				/*Debug.Log("On end script");
-				foreach (SkillBarItem sk in _savedData.GetComponents<SkillBarItem>())
-				{
-						Debug.Log(sk.skill);
-				};*/
-
 				// Get the skills that will be used to create a new offspring
-				SkillBarItem[] skillItems = _savedData.GetComponents<SkillBarItem>();
-				List<SpellScript> activeSkills = new List<SpellScript>();
-				foreach (SkillBarItem skillItem in skillItems)
-				{
-						activeSkills.Add(skillItem.skill);
-				}
+				List<SkillStats> activeSkills = _savedData.activeSkills;
 
-				Tuple<SpellScript, SpellScript> parentSkills = _fittestSkillSelection.GetParentSkills(activeSkills);
+				Tuple<SkillStats, SkillStats> parentSkills = _fittestSkillSelection.GetParentSkills(activeSkills);
 				DisplayParentSkills(parentSkills.First, parentSkills.Second);
 
 				// Generate the new skills
-				List<SkillStats> newSkills = _geneticAlgorithm.Evolve(parentSkills.First.Stats, parentSkills.Second.Stats, _savedData.CurrentLevel);
+				List<SkillStats> newSkills = _geneticAlgorithm.Evolve(parentSkills.First, parentSkills.Second, _savedData.CurrentLevel);
 				//Debug.Log(newSkills.Count);
 
 				// Offer the player the ability to choose one to replace an existing skill
@@ -63,11 +53,11 @@ public class EndScript : MonoBehaviour
 						ProceedToNextLevel();
 				}
 				// Save the new skill and proceed to next level
+				// TODO: for now, always replace the last skill
 				else if (Input.GetKeyDown(KeyCode.Return))
 				{
 						Debug.Log("Selected script " + _selectedSkill);
-						SkillBarItem[] skillItems = _savedData.GetComponents<SkillBarItem>();
-						skillItems[3].skill = _selectedSkill;
+						_savedData.activeSkills[3] = _selectedSkill;
 
 						ProceedToNextLevel();
 				}
@@ -82,7 +72,7 @@ public class EndScript : MonoBehaviour
 				Application.LoadLevel("Stage1");
 		}
 
-		private void DisplayParentSkills(SpellScript father, SpellScript mother)
+		private void DisplayParentSkills(SkillStats father, SkillStats mother)
 		{
 				GameObject parentContainer = GameObject.Find("Parent Skills");
 				SkillBarItem[] skillContainers = parentContainer.GetComponentsInChildren<SkillBarItem>();
@@ -104,20 +94,24 @@ public class EndScript : MonoBehaviour
 						//Debug.Log("SkillStats: " + stat);
 
 						// TODO: dirty, the prefabs keep accumulating
-						SpellScript skill = (SpellScript)Instantiate(DefaultPrefab, new Vector3(0, 0, -50), Quaternion.identity);
-						skill.Stats = stat;
-						skill.name = "Random ";
+						/*Sprite sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(stat.SpriteName);
+						GameObject spellObject = (GameObject)Instantiate(DefaultPrefab, new Vector3(0, 0, -50), Quaternion.identity);
+						spellObject.GetComponent<SpriteRenderer>().sprite = sprite;
+						spellObject.GetComponent<SpellObject>().Skill = stat;*/
 
-						skillBar.SetSkill(skill);
-						Debug.Log("Skill: " + skill);
+						stat.Name = "New Skill";
+						stat.SpriteName = "fireball-red-3";
+
+						//skillBar.skill.Stats = stat;
+						skillBar.SetSkill(stat);
+						//Debug.Log("Skill: " + skill);
 				}
 		}
 
 		private void OnSkillClicked(SkillBarItem skill)
 		{
 				TextMesh selectedValues = GameObject.Find("Selected").GetComponent<TextMesh>();
-				selectedValues.text = "Cost: " + skill.skill.Stats.Cost + "\n" +
-						"Damage: " + skill.skill.Stats.Damage;
+				selectedValues.text = "Cost: " + skill.skill.Cost + "\n" + "Damage: " + skill.skill.Damage;
 				if (_selectedSkill == null)
 				{
 						GetComponent<GUIText>().text += "\n(Enter to validate)";

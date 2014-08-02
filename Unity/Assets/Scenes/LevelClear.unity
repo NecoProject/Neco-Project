@@ -279,7 +279,7 @@ GameObject:
   - 61: {fileID: 476815637}
   m_Layer: 0
   m_Name: SkillContainer
-  m_TagString: Untagged
+  m_TagString: HUDSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -358,7 +358,7 @@ GameObject:
   - 61: {fileID: 552982957}
   m_Layer: 0
   m_Name: SkillContainer
-  m_TagString: Untagged
+  m_TagString: HUDSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -597,7 +597,7 @@ GameObject:
   - 61: {fileID: 1148298731}
   m_Layer: 0
   m_Name: SkillContainer
-  m_TagString: Untagged
+  m_TagString: HUDSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -706,7 +706,7 @@ GameObject:
   - 61: {fileID: 1405767203}
   m_Layer: 0
   m_Name: SkillContainer
-  m_TagString: Untagged
+  m_TagString: HUDSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1030,7 +1030,7 @@ GameObject:
   - 61: {fileID: 1916930120}
   m_Layer: 0
   m_Name: SkillContainer
-  m_TagString: Untagged
+  m_TagString: HUDSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

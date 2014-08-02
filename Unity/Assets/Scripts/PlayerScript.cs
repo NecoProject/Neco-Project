@@ -7,38 +7,26 @@ public class PlayerScript : MonoBehaviour
 {
 		// Storing the state of the player in a serializable script will make it easier to save / load data, and pass data between levels
 		public PlayerStats Stats;
-
-		// TODO: move this to the PlayerStats scripts?
-		public List<SpellScript> activeSkills = new List<SpellScript>();
+		public List<SkillStats> activeSkills;
+		public Transform DefaultSkill;
 
 		private Save _savedData;
 
 		void Start()
 		{
-				Debug.Log("player start " + FindObjectsOfType<Save>().Length);
 				_savedData = FindObjectOfType<Save>();
-
-				SkillBarItem[] skillItems = _savedData.GetComponents<SkillBarItem>();
-				if (skillItems != null && skillItems.Length > 0)
-				{
-						activeSkills = new List<SpellScript>();
-						foreach (SkillBarItem skillItem in skillItems)
-						{
-								activeSkills.Add(skillItem.skill);
-						}
-				}
+				activeSkills = _savedData.activeSkills;
 
 				GameObject[] skillBarItems = GameObject.FindGameObjectsWithTag("HUDSkill");
-				Debug.Log(skillBarItems.Length);
 				Array.Sort(skillBarItems, delegate(GameObject first, GameObject second)
 				{
 						return first.name.CompareTo(second.name);
 				});
+
 				for (int i = 0; i < skillBarItems.Length; i++)
 				{
 						skillBarItems[i].GetComponent<SkillBarItem>().SetSkill(activeSkills[i]);
 				}
-				Debug.Log("player start " + FindObjectsOfType<Save>().Length);
 		}
 
 		void Update()
@@ -58,7 +46,7 @@ public class PlayerScript : MonoBehaviour
 								screenTarget.z = correctZ;
 								Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(screenTarget);
 								// KABOOM
-								SpellScript spell = activeSkills[button.GetSkillReference()];
+								SkillStats spell = activeSkills[button.GetSkillReference()];
 								if (spell != null)
 								{
 										Fire(spell, spaceTarget);
@@ -67,17 +55,20 @@ public class PlayerScript : MonoBehaviour
 				}
 		}
 
-		private void Fire(SpellScript spell, Vector3 spaceTarget)
+		private void Fire(SkillStats skill, Vector3 spaceTarget)
 		{
 				// Pay the cost
-				bool canPay = spell.Stats.Cost <= Stats.CurrentMana;
+				bool canPay = skill.Cost <= Stats.CurrentMana;
 
 				// If enough mana to pay the cost, fire the spell
 				if (canPay)
 				{
-						PayManaCost(spell.Stats.Cost);
-						SpellScript spellObject = (SpellScript)Instantiate(spell, spaceTarget, Quaternion.identity);
-						Destroy(spellObject.gameObject, 1);
+						PayManaCost(skill.Cost);
+
+						Sprite sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(skill.SpriteName);
+						Transform spellObject = (Transform)Instantiate(DefaultSkill, spaceTarget, Quaternion.identity);
+						spellObject.GetComponent<SpriteRenderer>().sprite = sprite;
+						spellObject.GetComponent<SpellObject>().Skill = skill;
 				}
 		}
 
@@ -86,8 +77,9 @@ public class PlayerScript : MonoBehaviour
 		/// too crowded
 		private void PayManaCost(float cost)
 		{
+				Debug.Log("Paying " + cost);
 				// This is how I like to broadcast this kind of info, not sure it's the best way. To be discussed
-				// Messenger<float>.Broadcast(EventNames.MANA_SPENT, cost);
-				Stats.CurrentMana = Stats.CurrentMana - cost;
+				Stats.CurrentMana = Mathf.Min(Stats.MaxMana, Stats.CurrentMana - cost);
+				//Messenger<float>.Broadcast(EventNames.MANA_SPENT, cost);
 		}
 }

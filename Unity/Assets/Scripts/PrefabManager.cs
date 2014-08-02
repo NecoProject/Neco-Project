@@ -6,12 +6,11 @@ using System;
 /// <summary>
 /// Singleton save object.
 /// </summary>
-public class Save : MonoBehaviour
+public class PrefabManager : MonoBehaviour
 {
 		private static bool __created = false;
 
-		public int CurrentLevel;
-		public List<SkillStats> activeSkills;
+		public List<PrefabDico> prefabs;
 
 		void Awake()
 		{
@@ -28,10 +27,23 @@ public class Save : MonoBehaviour
 						Debug.Log("Destroying me");
 						DestroyImmediate(this.gameObject);
 				}
+		}
 
-				if (CurrentLevel == 0)
+		public Sprite GetSprite(string name)
+		{
+				foreach (PrefabDico dico in prefabs)
 				{
-						Debug.LogWarning("CurrentLevel is 0, probably forgot to set it in the editor");
+						if (dico.Name == name) return dico.Sprite;
 				}
+				return null;
+		}
+
+		public Transform GetTransform(string name)
+		{
+				foreach (PrefabDico dico in prefabs)
+				{
+						if (dico.Name == name) return dico.Prefab;
+				}
+				return null;
 		}
 }

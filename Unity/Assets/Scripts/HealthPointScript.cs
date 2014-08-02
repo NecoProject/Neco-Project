@@ -30,10 +30,10 @@ public class HealthPointScript : MonoBehaviour
 
 		void OnTriggerEnter2D(Collider2D otherCollider)
 		{
-				SpellScript spell = otherCollider.gameObject.GetComponent<SpellScript>();
+				SpellObject spell = otherCollider.gameObject.GetComponent<SpellObject>();
 				if (spell != null)
 				{
-						bool survives = undergoHpModification(-spell.Stats.Damage);
+						bool survives = undergoHpModification(-spell.Skill.Damage);
 						if (!survives)
 						{
 								Die();
