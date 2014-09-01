@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
 
 public class EndScript : MonoBehaviour
 {
-		public Transform DefaultPrefab;
-		public GameObject ChildrenContainer;
-
 		private Save _savedData;
 		private SurvivalOfTheFittest _fittestSkillSelection;
 		private GeneticAlgorithm _geneticAlgorithm;
@@ -74,47 +72,29 @@ public class EndScript : MonoBehaviour
 
 		private void DisplayParentSkills(SkillStats father, SkillStats mother)
 		{
-				GameObject parentContainer = GameObject.Find("Parent Skills");
-				SkillBarItem[] skillContainers = parentContainer.GetComponentsInChildren<SkillBarItem>();
-				skillContainers[0].SetSkill(father);
-				skillContainers[1].SetSkill(mother);
+				GameObject.Find("Father").GetComponent<SkillBarItem>().SetSkill(father);
+				GameObject.Find("Mother").GetComponent<SkillBarItem>().SetSkill(father);
 		}
 
 		private void DisplayNewSkills(List<SkillStats> newSkills)
 		{
-				SkillBarItem[] skillBars = ChildrenContainer.GetComponentsInChildren<SkillBarItem>();
-				// Debug.Log(skillBars.Length);
 				// For now, use the default prefab
 				// TODO: validate that there are as many possible children as skill bar items
-				for (int i = 0; i < skillBars.Length; i++)
+				for (int i = 0; i < newSkills.Count; i++)
 				{
-						SkillBarItem skillBar = skillBars[i];
-						//Debug.Log("SkillBarItem: " + skillBar);
 						SkillStats stat = newSkills[i];
-						//Debug.Log("SkillStats: " + stat);
-
-						// TODO: dirty, the prefabs keep accumulating
-						/*Sprite sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(stat.SpriteName);
-						GameObject spellObject = (GameObject)Instantiate(DefaultPrefab, new Vector3(0, 0, -50), Quaternion.identity);
-						spellObject.GetComponent<SpriteRenderer>().sprite = sprite;
-						spellObject.GetComponent<SpellObject>().Skill = stat;*/
-
 						stat.Name = "New Skill";
 						stat.SpriteName = "fireball-red-3";
-
-						//skillBar.skill.Stats = stat;
-						skillBar.SetSkill(stat);
-						//Debug.Log("Skill: " + skill);
+						GameObject.Find("Child" + i).GetComponent<SkillBarItem>().SetSkill(stat);
 				}
 		}
 
 		private void OnSkillClicked(SkillBarItem skill)
 		{
-				TextMesh selectedValues = GameObject.Find("Selected").GetComponent<TextMesh>();
-				selectedValues.text = "Cost: " + skill.skill.Cost + "\n" + "Damage: " + skill.skill.Damage;
+				GameObject.Find("Selected").GetComponent<Text>().text = "Cost: " + skill.skill.Cost + "\n" + "Damage: " + skill.skill.Damage;
 				if (_selectedSkill == null)
 				{
-						GetComponent<GUIText>().text += "\n(Enter to validate)";
+						GameObject.Find("Children Text").GetComponent<Text>().text += "\n(Enter to validate)";
 				}
 				_selectedSkill = skill.skill;
 		}

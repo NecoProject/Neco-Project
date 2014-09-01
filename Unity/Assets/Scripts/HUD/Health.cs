@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -6,17 +7,20 @@ using System;
 public class Health : MonoBehaviour
 {
 		private PlayerScript _player;
-		private TextMesh _display;
+		private Text _text;
+		private Slider _slider;
 
 		void Start()
 		{
 				_player = FindObjectOfType<PlayerScript>();
-				_display = GetComponent<TextMesh>();
+				_text = GameObject.Find("HealthText").GetComponent<Text>();
+				_slider = GetComponent<Slider>();
 		}
 
 		// TODO: maybe better to not redraw every frame, but rather only when the health changes
 		void Update()
 		{
-				_display.text = _player.Stats.CurrentHealth + " / " + _player.Stats.MaxHealth;
+				_text.text = _player.Stats.CurrentHealth + " / " + _player.Stats.MaxHealth;
+				_slider.normalizedValue = _player.Stats.CurrentHealth * 1.0f / _player.Stats.MaxHealth;
 		}
 }
