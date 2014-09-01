@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class PlayerScript : MonoBehaviour
 		public PlayerStats Stats;
 		public List<SkillStats> activeSkills;
 		public Transform DefaultSkill;
+		public Button[] buttons;
 
 		private Save _savedData;
 
@@ -17,15 +20,14 @@ public class PlayerScript : MonoBehaviour
 				_savedData = FindObjectOfType<Save>();
 				activeSkills = _savedData.activeSkills;
 
-				GameObject[] skillBarItems = GameObject.FindGameObjectsWithTag("HUDSkill");
-				Array.Sort(skillBarItems, delegate(GameObject first, GameObject second)
+				buttons = Button.FindObjectsOfType<Button>();
+				Array.Sort(buttons, delegate(Button first, Button second)
 				{
 						return first.name.CompareTo(second.name);
 				});
-
-				for (int i = 0; i < skillBarItems.Length; i++)
+				for (int i = 0; i < buttons.Length; i++)
 				{
-						skillBarItems[i].GetComponent<SkillBarItem>().SetSkill(activeSkills[i]);
+						buttons[i].GetComponent<SkillBarItem>().SetSkill(activeSkills[i]);
 				}
 		}
 
@@ -47,6 +49,9 @@ public class PlayerScript : MonoBehaviour
 								Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(screenTarget);
 								// KABOOM
 								SkillStats spell = activeSkills[button.GetSkillReference()];
+								Button skillButton = buttons[button.GetSkillReference()];
+								EventSystemManager.currentSystem.SetSelectedGameObject(skillButton.gameObject, null);
+								skillButton.OnSubmit(null);
 								if (spell != null)
 								{
 										Fire(spell, spaceTarget);
