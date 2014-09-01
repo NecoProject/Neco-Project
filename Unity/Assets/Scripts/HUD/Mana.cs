@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -6,16 +7,19 @@ using System;
 public class Mana : MonoBehaviour
 {
 		private PlayerScript _player;
-		private TextMesh _display;
+		private Text _text;
+		private Slider _slider;
 
 		void Start()
 		{
 				_player = FindObjectOfType<PlayerScript>();
-				_display = GetComponent<TextMesh>();
+				_text = GameObject.Find("ManaText").GetComponent<Text>();
+				_slider = GetComponent<Slider>();
 		}
 
 		void Update()
 		{
-				_display.text = _player.Stats.CurrentMana + " / " + _player.Stats.MaxMana;
+				_text.text = _player.Stats.CurrentMana + " / " + _player.Stats.MaxMana;
+				_slider.normalizedValue = _player.Stats.CurrentMana * 1.0f / _player.Stats.MaxMana;
 		}
 }
