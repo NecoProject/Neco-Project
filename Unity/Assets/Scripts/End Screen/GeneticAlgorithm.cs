@@ -38,13 +38,24 @@ public class GeneticAlgorithm
 		{
 				SkillStats child = new SkillStats ();
 
-				child.Damage = ComputeValue (father.Damage, mother.Damage);
-				child.Cost = ComputeValue (father.Cost, mother.Cost);
+				child.Damage = GenerateValueFromParentsAndLuck (father.Damage, mother.Damage);
+				child.Cost = GenerateValueFromParentsAndLuck (father.Cost, mother.Cost);
+				child.SpriteName = PickOne (father.SpriteName, mother.SpriteName);
+				/*child.Name = */
 
 				return child;
 		}
 
-		private float ComputeValue (float fatherValue, float motherValue)
+		private string PickOne (string fatherValue, string motherValue)
+		{
+				float discriminant = UnityEngine.Random.value;
+				if (discriminant < 0.5) {
+						return fatherValue;
+				}
+				return motherValue;
+		}
+
+		private float GenerateValueFromParentsAndLuck (float fatherValue, float motherValue)
 		{
 				return UnityEngine.Random.Range (Mathf.Min (fatherValue, motherValue), Mathf.Max (fatherValue, motherValue));
 		}
