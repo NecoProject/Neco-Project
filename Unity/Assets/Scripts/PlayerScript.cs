@@ -15,73 +15,69 @@ public class PlayerScript : MonoBehaviour
 
 		private Save _savedData;
 
-		void Start()
+		void Start ()
 		{
-				_savedData = FindObjectOfType<Save>();
+				_savedData = FindObjectOfType<Save> ();
 				activeSkills = _savedData.activeSkills;
 
-				buttons = Button.FindObjectsOfType<Button>();
-				Array.Sort(buttons, delegate(Button first, Button second)
-				{
-						return first.name.CompareTo(second.name);
+				buttons = Button.FindObjectsOfType<Button> ();
+				Array.Sort (buttons, delegate(Button first, Button second) {
+						return first.name.CompareTo (second.name);
 				});
-				for (int i = 0; i < buttons.Length; i++)
-				{
-						buttons[i].GetComponent<SkillBarItem>().SetSkill(activeSkills[i]);
+				for (int i = 0; i < buttons.Length; i++) {
+						buttons [i].GetComponent<SkillBarItem> ().SetSkill (activeSkills [i]);
 				}
 		}
 
-		void Update()
+		void Update ()
 		{
-				shootAtMousePosition();
+				shootAtMousePosition ();
 		}
 
-		void shootAtMousePosition()
+		void shootAtMousePosition ()
 		{
-				foreach (ShootingButton button in ShootingButton.GetEnumeration())
-				{
-						if (Input.GetButtonDown(button.GetButtonName()))
-						{
+				foreach (ShootingButton button in ShootingButton.GetEnumeration()) {
+						if (Input.GetButtonDown (button.GetButtonName ())) {
 								Vector3 screenTarget = Input.mousePosition;
 								// Get the correct Z, because the current one is the Camera, circa -10
 								var correctZ = transform.position.z;
 								screenTarget.z = correctZ;
-								Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(screenTarget);
+								Vector3 spaceTarget = Camera.main.ScreenToWorldPoint (screenTarget);
 								// KABOOM
-								SkillStats spell = activeSkills[button.GetSkillReference()];
-								Button skillButton = buttons[button.GetSkillReference()];
-								EventSystemManager.currentSystem.SetSelectedGameObject(skillButton.gameObject, null);
-								skillButton.OnSubmit(null);
-								if (spell != null)
-								{
-										Fire(spell, spaceTarget);
+								SkillStats spell = activeSkills [button.GetSkillReference ()];
+								Button skillButton = buttons [button.GetSkillReference ()];
+								EventSystemManager.currentSystem.SetSelectedGameObject (skillButton.gameObject, null);
+								skillButton.OnSubmit (null);
+								if (spell != null) {
+										Fire (spell, spaceTarget);
 								}
 						}
 				}
 		}
 
-		private void Fire(SkillStats skill, Vector3 spaceTarget)
+		private void Fire (SkillStats skill, Vector3 spaceTarget)
 		{
-				// Pay the cost
-				bool canPay = skill.Cost <= Stats.CurrentMana;
+				bool canPayManaCost = skill.Cost <= Stats.CurrentMana;
 
 				// If enough mana to pay the cost, fire the spell
-				if (canPay)
-				{
-						PayManaCost(skill.Cost);
+				if (canPayManaCost) {
+						PayManaCost (skill.Cost);
 
-						Sprite sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(skill.SpriteName);
-						Transform spellObject = (Transform)Instantiate(DefaultSkill, spaceTarget, Quaternion.identity);
-						spellObject.GetComponent<SpriteRenderer>().sprite = sprite;
-						spellObject.GetComponent<SpellObject>().Skill = skill;
+						Sprite sprite = GameObject.Find ("PrefabManager").GetComponent<PrefabManager> ().GetSprite (skill.SpriteName);
+						Transform spellObject = (Transform)Instantiate (DefaultSkill, spaceTarget, Quaternion.identity);
+						spellObject.GetComponent<SpriteRenderer> ().sprite = sprite;
+						spellObject.GetComponent<SpellObject> ().Skill = skill;
+
+						// Increment number of uses of this skill
+						skill.NumberOfUses++;
 				}
 		}
 
 		/// TODO: have a dedicated script handle life / mana, as you will have to 
 		/// take care of regeneration and other stuff that would make the player script 
 		/// too crowded
-		private void PayManaCost(float cost)
+		private void PayManaCost (float cost)
 		{
-				Stats.CurrentMana = Mathf.Min(Stats.MaxMana, Stats.CurrentMana - cost);
+				Stats.CurrentMana = Mathf.Min (Stats.MaxMana, Stats.CurrentMana - cost);
 		}
 }
