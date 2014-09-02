@@ -81,6 +81,7 @@ public class EndScript : MonoBehaviour
 				for (int i = 0; i < newSkills.Count; i++) {
 						SkillStats stat = newSkills [i];
 						stat.Name = "New Skill";
+						stat.SpriteName = "fireball-red-3";
 						GameObject.Find ("Child" + i).GetComponent<SkillBarItem> ().SetSkill (stat);
 				}
 		}
