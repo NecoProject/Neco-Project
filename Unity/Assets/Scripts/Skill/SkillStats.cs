@@ -2,7 +2,7 @@
 using System.Collections;
 
 [System.Serializable]
-public class SkillStats 
+public class SkillStats
 {
 		public float Damage;
 		public float Cost;
@@ -10,8 +10,9 @@ public class SkillStats
 
 		public string SpriteName;
 		public string Name;
+		public int NumberOfUses;
 
-		public override string ToString()
+		public override string ToString ()
 		{
 				return "SkillStats[damage=" + Damage + ", cost=" + Cost + ", coolDown=" + CoolDown + "]";
 		}

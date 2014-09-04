@@ -17,9 +17,9 @@ public class PlayerScript : MonoBehaviour
 		private float _timeOfLastAttack;
 
 
-		void Start()
+		void Start ()
 		{
-				_savedData = FindObjectOfType<Save>();
+				_savedData = FindObjectOfType<Save> ();
 				activeSkills = _savedData.activeSkills;
 
 				_buttons = Button.FindObjectsOfType<Button>();
@@ -33,22 +33,20 @@ public class PlayerScript : MonoBehaviour
 				}
 		}
 
-		void Update()
+		void Update ()
 		{
-				shootAtMousePosition();
+				shootAtMousePosition ();
 		}
 
-		void shootAtMousePosition()
+		void shootAtMousePosition ()
 		{
-				foreach (ShootingButton button in ShootingButton.GetEnumeration())
-				{
-						if (Input.GetButtonDown(button.GetButtonName()))
-						{
+				foreach (ShootingButton button in ShootingButton.GetEnumeration()) {
+						if (Input.GetButtonDown (button.GetButtonName ())) {
 								Vector3 screenTarget = Input.mousePosition;
 								// Get the correct Z, because the current one is the Camera, circa -10
 								var correctZ = transform.position.z;
 								screenTarget.z = correctZ;
-								Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(screenTarget);
+								Vector3 spaceTarget = Camera.main.ScreenToWorldPoint (screenTarget);
 								// KABOOM
 								SkillStats spell = activeSkills[button.GetSkillReference()];
 								if (spell != null)
