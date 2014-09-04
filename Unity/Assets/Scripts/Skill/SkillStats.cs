@@ -4,15 +4,15 @@ using System.Collections;
 [System.Serializable]
 public class SkillStats 
 {
-		// NOTE: I removed the "duration" attribute, since it had no real gameplay effect for now
-
 		public float Damage;
 		public float Cost;
+		public float CoolDown;
+
 		public string SpriteName;
 		public string Name;
 
 		public override string ToString()
 		{
-				return "SkillStats[damage=" + Damage + ", cost=" + Cost + "]";
+				return "SkillStats[damage=" + Damage + ", cost=" + Cost + ", coolDown=" + CoolDown + "]";
 		}
 }

@@ -41,6 +41,7 @@ public class GeneticAlgorithm
 
 				child.Damage = ComputeValue(father.Damage, mother.Damage);
 				child.Cost = ComputeValue(father.Cost, mother.Cost);
+				child.CoolDown = ComputeValue(father.CoolDown, mother.CoolDown);
 
 				return child;
 		}
@@ -61,10 +62,16 @@ public class GeneticAlgorithm
 
 		/// Mutate the provided child's statistics taking into account the difficulty. The higher the difficulty, the higher the mutation effects. 
 		/// TODO: Do we want to center the mutation around 0? Statistically we may result in pure better or pure worse stats afterwards.
-		private void Mutate(SkillStats child, int difficultLevel)
+		private void Mutate(SkillStats child, int difficultyLevel)
 		{
-				child.Damage = child.Damage + child.Damage * UnityEngine.Random.Range(-BASE_BONUS_MAX, BASE_BONUS_MAX) * difficultLevel;
-				child.Cost = child.Cost + child.Cost * UnityEngine.Random.Range(-BASE_BONUS_MAX, BASE_BONUS_MAX) * difficultLevel;
+				child.Damage = Mutate(child.Damage, difficultyLevel);
+				child.Cost = Mutate(child.Cost, difficultyLevel);
+				child.CoolDown = Mutate(child.CoolDown, difficultyLevel);
 				//Debug.Log("Mutated: " + child);
+		}
+
+		private float Mutate(float original, int difficultyLevel)
+		{
+				return original + original * UnityEngine.Random.Range(-BASE_BONUS_MAX, BASE_BONUS_MAX) * difficultyLevel / 10;
 		}
 }

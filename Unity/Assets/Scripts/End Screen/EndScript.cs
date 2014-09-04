@@ -91,12 +91,15 @@ public class EndScript : MonoBehaviour
 
 		private void OnSkillClicked(SkillBarItem skill)
 		{
-				GameObject.Find("Selected").GetComponent<Text>().text = "Cost: " + skill.skill.Cost + "\n" + "Damage: " + skill.skill.Damage;
+				GameObject.Find("Selected").GetComponent<Text>().text = 
+						"Cost: " + skill.GetSkill().Cost + "\n" + 
+						"Damage: " + skill.GetSkill().Damage + "\n" + 
+						"Cooldown: " + skill.GetSkill().CoolDown;
 				if (_selectedSkill == null)
 				{
 						GameObject.Find("Children Text").GetComponent<Text>().text += "\n(Enter to validate)";
 				}
-				_selectedSkill = skill.skill;
+				_selectedSkill = skill.GetSkill();
 		}
 
 
