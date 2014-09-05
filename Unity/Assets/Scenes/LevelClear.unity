@@ -168,6 +168,7 @@ GameObject:
   - 224: {fileID: 135084916}
   - 223: {fileID: 135084918}
   - 114: {fileID: 135084917}
+  - 114: {fileID: 135084919}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -232,6 +233,19 @@ Canvas:
   m_ReceivesEvents: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &135084919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 135084915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -990768443, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: {x: 1024, y: 768}
+  m_MatchWidthOrHeight: 0
 --- !u!1 &228805560
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +369,6 @@ MonoBehaviour:
     Cost: 0
     SpriteName: 
     Name: 
-  handleClicks: 0
 --- !u!114 &608285142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,7 +620,6 @@ MonoBehaviour:
     Cost: 0
     SpriteName: 
     Name: 
-  handleClicks: 1
 --- !u!114 &1227305522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,7 +820,6 @@ MonoBehaviour:
     Cost: 0
     SpriteName: 
     Name: 
-  handleClicks: 0
 --- !u!114 &1550366057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -929,7 +940,6 @@ MonoBehaviour:
     Cost: 0
     SpriteName: 
     Name: 
-  handleClicks: 1
 --- !u!114 &1578901360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1128,7 +1138,6 @@ MonoBehaviour:
     Cost: 0
     SpriteName: 
     Name: 
-  handleClicks: 1
 --- !u!114 &1901570451
 MonoBehaviour:
   m_ObjectHideFlags: 0
