@@ -52,6 +52,7 @@ public class SkillBarItem : MonoBehaviour
 						// Show the animation, that will then interact with the enemy to actually damage them
 						Sprite sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(_skill.SpriteName);
 						Transform spellObject = (Transform)Instantiate(DefaultSkill, spaceTarget, Quaternion.identity);
+						spellObject.localScale = new Vector3(_skill.Radius, _skill.Radius);
 						spellObject.GetComponent<SpriteRenderer>().sprite = sprite;
 						spellObject.GetComponent<SpellObject>().Skill = _skill;
 

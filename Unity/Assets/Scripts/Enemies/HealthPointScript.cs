@@ -35,7 +35,7 @@ public class HealthPointScript : MonoBehaviour
 
 		void UpdateDisplayText()
 		{
-				_lifeComponent.text = CurrentHp + " / " + MaxHp;
+				_lifeComponent.text = CurrentHp.ToString("f0") + " / " + MaxHp.ToString("f0");
 		}
 
 

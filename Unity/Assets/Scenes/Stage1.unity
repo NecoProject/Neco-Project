@@ -390,24 +390,28 @@ MonoBehaviour:
   - Damage: .5
     Cost: 0
     CoolDown: 0
+    Radius: .5
     SpriteName: sword-blue-3
     Name: Ice
     NumberOfUses: 0
   - Damage: 2
-    Cost: 2
+    Cost: 20
     CoolDown: 3
+    Radius: .5
     SpriteName: fireball-red-3
     Name: Fire
     NumberOfUses: 0
   - Damage: 1
-    Cost: 1
-    CoolDown: 0
+    Cost: 10
+    CoolDown: 1
+    Radius: 1.20000005
     SpriteName: sword-green-3
     Name: Poison
     NumberOfUses: 0
   - Damage: .5
-    Cost: 1
+    Cost: 10
     CoolDown: 2
+    Radius: 0
     SpriteName: fireball-white-3
     Name: Holy
     NumberOfUses: 0
@@ -704,10 +708,11 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 255
   Stats:
-    MaxHealth: 50
-    CurrentHealth: 50
-    MaxMana: 50
-    CurrentMana: 50
+    MaxHealth: 300
+    CurrentHealth: 300
+    MaxMana: 100
+    CurrentMana: 100
+    ManaRegenerationSpeed: 2
   activeSkills: []
   timeBetweenAttacks: .300000012
 --- !u!1 &711197661
@@ -2342,10 +2347,10 @@ MonoBehaviour:
   enemyModel: {fileID: 400000, guid: c5b290737a99eca4081f459a68508be1, type: 2}
   foreground: {fileID: 1639839691}
   Save: {fileID: 412633220}
-  NumberOfWaves: 1
+  NumberOfWaves: 2
   LevelDifficulty: 1
   MinimumEnemiesPerWave: 1
-  WaveEnemyModifier: 0
+  WaveEnemyModifier: 2
 --- !u!1 &2082940262
 GameObject:
   m_ObjectHideFlags: 0

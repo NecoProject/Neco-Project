@@ -7,21 +7,21 @@ using UnityEngine.EventSystems;
 
 public class PlayerScript : MonoBehaviour
 {
-		public Color32 DamageColour; 
+		public Color32 DamageColour;
 
 		// Storing the state of the player in a serializable script will make it easier to save / load data, and pass data between levels
 		public PlayerStats Stats;
 		public List<SkillStats> activeSkills;
 		public float timeBetweenAttacks;
-		
+
 		private Button[] _buttons;
 		private Save _savedData;
 		private float _timeOfLastAttack;
 
 
-		void Start ()
+		void Start()
 		{
-				_savedData = FindObjectOfType<Save> ();
+				_savedData = FindObjectOfType<Save>();
 				activeSkills = _savedData.activeSkills;
 
 				_buttons = Button.FindObjectsOfType<Button>();
@@ -35,20 +35,23 @@ public class PlayerScript : MonoBehaviour
 				}
 		}
 
-		void Update ()
+		void Update()
 		{
-				shootAtMousePosition ();
+				ShootAtMousePosition();
+				RegenerateMana();
 		}
 
-		void shootAtMousePosition ()
+		void ShootAtMousePosition()
 		{
-				foreach (ShootingButton button in ShootingButton.GetEnumeration()) {
-						if (Input.GetButtonDown (button.GetButtonName ())) {
+				foreach (ShootingButton button in ShootingButton.GetEnumeration())
+				{
+						if (Input.GetButtonDown(button.GetButtonName()))
+						{
 								Vector3 screenTarget = Input.mousePosition;
 								// Get the correct Z, because the current one is the Camera, circa -10
 								var correctZ = transform.position.z;
 								screenTarget.z = correctZ;
-								Vector3 spaceTarget = Camera.main.ScreenToWorldPoint (screenTarget);
+								Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(screenTarget);
 								// KABOOM
 								SkillStats spell = activeSkills[button.GetSkillReference()];
 								if (spell != null)
@@ -72,6 +75,11 @@ public class PlayerScript : MonoBehaviour
 								}
 						}
 				}
+		}
+
+		void RegenerateMana()
+		{
+				Stats.CurrentMana = Mathf.Min(Stats.MaxMana, Stats.CurrentMana + Stats.ManaRegenerationSpeed * Time.deltaTime);
 		}
 
 		public void TakeDamage(float amount)
