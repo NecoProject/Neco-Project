@@ -392,21 +392,25 @@ MonoBehaviour:
     CoolDown: 0
     SpriteName: sword-blue-3
     Name: Ice
+    NumberOfUses: 0
   - Damage: 2
     Cost: 2
     CoolDown: 3
     SpriteName: fireball-red-3
     Name: Fire
+    NumberOfUses: 0
   - Damage: 1
     Cost: 1
     CoolDown: 0
     SpriteName: sword-green-3
     Name: Poison
+    NumberOfUses: 0
   - Damage: .5
     Cost: 1
     CoolDown: 2
     SpriteName: fireball-white-3
     Name: Holy
+    NumberOfUses: 0
 --- !u!4 &412633221
 Transform:
   m_ObjectHideFlags: 0

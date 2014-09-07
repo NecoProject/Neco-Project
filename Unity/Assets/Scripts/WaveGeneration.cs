@@ -4,6 +4,12 @@ using System.Collections.Generic;
 
 public class WaveGeneration : MonoBehaviour
 {
+		// TODO: this should either come from a template / monster 
+		// sheet, or be generated
+		public const float MONSTER_INITIAL_HP = 6;
+		public const float MONSTER_INITIAL_ATTACK_SPEED = 5;
+		public const float MONSTER_INITIAL_DAMAGE = 1;
+
 		public Transform enemyModel;
 		public Transform foreground;
 		public Save Save;
@@ -74,8 +80,10 @@ public class WaveGeneration : MonoBehaviour
 				Transform monster = (Transform)Instantiate(enemyModel, spaceTarget, Quaternion.identity);
 				monster.parent = foreground;
 
-				monster.GetComponent<HealthPointScript>().currentHP = HealthPointScript.INITIAL_HP * difficulty; 
-
+				EnemyStats stats = monster.GetComponent<EnemyStats>();
+				stats.MaxHp = MONSTER_INITIAL_HP * difficulty;
+				stats.AttackSpeed = MONSTER_INITIAL_ATTACK_SPEED;
+				stats.Damage = MONSTER_INITIAL_DAMAGE * (1 + difficulty * 0.2f);
 
 				return monster;
 		}

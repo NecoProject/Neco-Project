@@ -71,4 +71,9 @@ public class PlayerScript : MonoBehaviour
 						}
 				}
 		}
+
+		public void TakeDamage(float amount)
+		{
+				Stats.CurrentHealth -= amount;
+		}
 }
