@@ -30,9 +30,7 @@ public class EndScript : MonoBehaviour
 
 
 				// Get the skills that will be used to create a new offspring
-				List<SkillStats> activeSkills = _savedData.activeSkills;
-
-				Tuple<SkillStats, SkillStats> parentSkills = _fittestSkillSelection.GetParentSkills(activeSkills);
+				Tuple<SkillStats, SkillStats> parentSkills = _fittestSkillSelection.GetParentSkills(_savedData.NumberOfUses);
 				DisplayParentSkills(parentSkills.First, parentSkills.Second);
 
 				// Generate the new skills
@@ -55,19 +53,10 @@ public class EndScript : MonoBehaviour
 				else if (Input.GetKeyDown(KeyCode.Return))
 				{
 						Debug.Log("Selected script " + _selectedSkill);
-						_savedData.activeSkills[3] = _selectedSkill;
+						_savedData.SetSkillAt(_selectedSkill, 3);
 
 						ProceedToNextLevel();
 				}
-		}
-
-		private void ProceedToNextLevel()
-		{
-				// But first, build the data we want to propagate (and that we will persist and will use as a save game)
-				_savedData.CurrentLevel = _savedData.CurrentLevel + 1;
-
-				// And finally reload the level, with a new difficulty setting
-				Application.LoadLevel("Stage1");
 		}
 
 		private void DisplayParentSkills(SkillStats father, SkillStats mother)
@@ -83,7 +72,7 @@ public class EndScript : MonoBehaviour
 				for (int i = 0; i < newSkills.Count; i++)
 				{
 						SkillStats stat = newSkills[i];
-						stat.Name = "New Skill";
+						stat.SkillName = "New Skill";
 						GameObject.Find("Child" + i).GetComponent<SkillBarItem>().SetSkill(stat);
 				}
 		}
@@ -94,7 +83,7 @@ public class EndScript : MonoBehaviour
 						"Cost: " + skill.GetSkill().Cost.ToString("f1") + "\n" +
 						"Damage: " + skill.GetSkill().Damage.ToString("f1") + "\n" +
 						"Cooldown: " + skill.GetSkill().CoolDown.ToString("f1") + "\n" +
-						"Cooldown: " + skill.GetSkill().Radius.ToString("f1")
+						"Radius: " + skill.GetSkill().Radius.ToString("f1")
 						;
 				if (_selectedSkill == null)
 				{
@@ -103,5 +92,13 @@ public class EndScript : MonoBehaviour
 				_selectedSkill = skill.GetSkill();
 		}
 
+		private void ProceedToNextLevel()
+		{
+				// But first, build the data we want to propagate (and that we will persist and will use as a save game)
+				_savedData.CurrentLevel = _savedData.CurrentLevel + 1;
+
+				// And finally reload the level, with a new difficulty setting
+				Application.LoadLevel("Stage1");
+		}
 
 }

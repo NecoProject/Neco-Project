@@ -22,7 +22,7 @@ public class PlayerScript : MonoBehaviour
 		void Start()
 		{
 				_savedData = FindObjectOfType<Save>();
-				activeSkills = _savedData.activeSkills;
+				activeSkills = _savedData.ActiveSkills;
 
 				_buttons = Button.FindObjectsOfType<Button>();
 				Array.Sort(_buttons, delegate(Button first, Button second)

@@ -6,6 +6,7 @@ using System.Collections;
 public class SkillBarItem : MonoBehaviour
 {
 		public Transform DefaultSkill;
+		public int NumberOfUses;
 
 		private SkillStats _skill;
 		private Image _coolDownImage;
@@ -38,6 +39,8 @@ public class SkillBarItem : MonoBehaviour
 
 		public void Fire(Vector3 spaceTarget, PlayerStats playerStats)
 		{
+				if (_skill.SkillName == null || _skill.SpriteName.Length == 0) return;
+						
 				bool canPay = _skill.Cost <= playerStats.CurrentMana;
 
 				if (!_isCoolingDown && canPay)
@@ -48,6 +51,9 @@ public class SkillBarItem : MonoBehaviour
 
 						// Pay the cost
 						PayManaCost(playerStats, _skill.Cost);
+
+						// Increase number of uses
+						NumberOfUses++;
 
 						// Show the animation, that will then interact with the enemy to actually damage them
 						Sprite sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(_skill.SpriteName);

@@ -10,6 +10,7 @@ public class SkillStats
 		public float Radius;
 
 		public string SpriteName;
-		public string Name;
-		public int NumberOfUses;
+		public string SkillName;
+
+		//public int NumberOfUses;
 }
