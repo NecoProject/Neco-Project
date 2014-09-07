@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 
 public class PlayerScript : MonoBehaviour
 {
+		public Color32 DamageColour; 
+
 		// Storing the state of the player in a serializable script will make it easier to save / load data, and pass data between levels
 		public PlayerStats Stats;
 		public List<SkillStats> activeSkills;
@@ -75,5 +77,20 @@ public class PlayerScript : MonoBehaviour
 		public void TakeDamage(float amount)
 		{
 				Stats.CurrentHealth -= amount;
+				StartCoroutine(AnimateTakeDamage());
+		}
+
+		IEnumerator AnimateTakeDamage()
+		{
+				var previousColor = GetComponent<SpriteRenderer>().material.GetColor("_FlashColor");
+
+				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", DamageColour);
+				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 1);
+
+				yield return new WaitForSeconds(0.5f);
+
+				// Set everything back to normal
+				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 0);
+				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", previousColor);
 		}
 }

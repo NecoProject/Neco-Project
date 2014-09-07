@@ -9,6 +9,8 @@ using System.Collections;
 /// </summary>
 public class EnemyBehaviour : MonoBehaviour
 {
+		public Color32 AttackFlashColor; 
+
 		private Transform _target;
 
 		private float _attackSpeed;
@@ -38,9 +40,16 @@ public class EnemyBehaviour : MonoBehaviour
 
 		IEnumerator AnimateAttack()
 		{
+				var previousColor = GetComponent<SpriteRenderer>().material.GetColor("_FlashColor");
+
+				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", AttackFlashColor);
 				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 1);
+
 				yield return new WaitForSeconds(0.5f);
+
+				// Set everything back to normal
 				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 0);
+				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", previousColor);
 		}
 
 }

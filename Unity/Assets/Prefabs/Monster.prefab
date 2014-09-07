@@ -141,6 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5734186a11c553a42ae6b1f2ffea6850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageColour:
+    serializedVersion: 2
+    rgba: 255
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,6 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 858e12b7855cd1d4597b7d0595dc9df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackFlashColor:
+    serializedVersion: 2
+    rgba: 16777215
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
