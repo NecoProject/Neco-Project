@@ -4,20 +4,11 @@ using System.Collections.Generic;
 
 public class WaveGeneration : MonoBehaviour
 {
-		// TODO: this should either come from a template / monster 
-		// sheet, or be generated
-		public const float MONSTER_INITIAL_HP = 6;
-		public const float MONSTER_INITIAL_ATTACK_SPEED = 5;
-		public const float MONSTER_INITIAL_DAMAGE = 1;
+		public WaveGenerationSettings Settings;
 
 		public Transform enemyModel;
 		public Transform foreground;
 		public Save Save;
-
-		public int NumberOfWaves = 2;
-		public int LevelDifficulty = 1;
-		public int MinimumEnemiesPerWave = 4;
-		public int WaveEnemyModifier = 2;
 
 		private int _currentWave = 1;
 
@@ -38,14 +29,14 @@ public class WaveGeneration : MonoBehaviour
 		public void GenerateLevel(int difficulty)
 		{
 				Debug.Log("Generating level " + difficulty);
-				this.LevelDifficulty = difficulty;
+				this.Settings.LevelDifficulty = difficulty;
 				GenerateWave(_currentWave, difficulty);
 		}
 
 		void GenerateWave(int waveNumber, int difficulty)
 		{
 				Debug.Log("Generating wave " + waveNumber);
-				int numberOfEnemiesInWave = MinimumEnemiesPerWave + (WaveEnemyModifier * waveNumber);
+				int numberOfEnemiesInWave = Settings.MinimumEnemiesPerWave + (Settings.WaveEnemyModifier * waveNumber);
 				for (int i = 0; i < numberOfEnemiesInWave; i++)
 				{
 						Transform monster = GenerateEnemy(difficulty);
@@ -55,15 +46,27 @@ public class WaveGeneration : MonoBehaviour
 
 		void GenerateNewWave()
 		{
-				if (_currentWave < NumberOfWaves)
+				if (_currentWave < Settings.NumberOfWaves)
 				{
 						_currentWave++;
-						GenerateWave(_currentWave, this.LevelDifficulty);
+						GenerateWave(_currentWave, this.Settings.LevelDifficulty);
+				}
+				else if (_currentWave == Settings.NumberOfWaves)
+				{
+						_currentWave++;
+						SpawnBoss(Settings.LevelDifficulty);
 				}
 				else
 				{
 						Messenger.Broadcast(EventNames.LEVEL_COMPLETE);
 				}
+		}
+
+		void SpawnBoss(int levelDifficulty)
+		{
+				Debug.Log("Spawning boss for difficulty " + levelDifficulty);
+				Transform boss = GenerateBoss(levelDifficulty);
+				_waveMonsters.Add(boss);
 		}
 
 		Transform GenerateEnemy(int difficulty)
@@ -81,9 +84,32 @@ public class WaveGeneration : MonoBehaviour
 				monster.parent = foreground;
 
 				EnemyStats stats = monster.GetComponent<EnemyStats>();
-				stats.MaxHp = MONSTER_INITIAL_HP * difficulty;
-				stats.AttackSpeed = MONSTER_INITIAL_ATTACK_SPEED;
-				stats.Damage = MONSTER_INITIAL_DAMAGE * (1 + difficulty * 0.2f);
+				stats.MaxHp = Settings.MonsterInitialHp * difficulty;
+				stats.AttackSpeed = Settings.MonsterInitialAttackSpeed;
+				stats.Damage = Settings.MonsterInitialDamage * (1 + difficulty * 0.2f);
+
+				return monster;
+		}
+
+		Transform GenerateBoss(int difficulty)
+		{
+				float width = Screen.width, height = Screen.height;
+				float enemyX = Random.Range(0, width);
+				float enemyY = Random.Range(0, height);
+				Vector3 position = new Vector3(enemyX, enemyY);
+
+				// Get the correct Z, because the current one is the Camera, circa -10
+				Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(position);
+				spaceTarget.z = 0;
+
+				Transform monster = (Transform)Instantiate(enemyModel, spaceTarget, Quaternion.identity);
+				monster.localScale = new Vector3(2 * monster.localScale.x, 2 * monster.localScale.y);
+				monster.parent = foreground;
+
+				EnemyStats stats = monster.GetComponent<EnemyStats>();
+				stats.MaxHp = Settings.MonsterInitialHp * Settings.BossFactor * difficulty;
+				stats.AttackSpeed = Settings.MonsterInitialAttackSpeed * Settings.BossFactor;
+				stats.Damage = Settings.MonsterInitialDamage * Settings.BossFactor * (1 + difficulty * 0.2f);
 
 				return monster;
 		}

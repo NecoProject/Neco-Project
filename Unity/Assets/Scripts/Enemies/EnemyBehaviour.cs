@@ -16,6 +16,7 @@ public class EnemyBehaviour : MonoBehaviour
 		private float _attackSpeed;
 		private float _damage;
 		private float _timeOfLastAttack;
+		private float _timeOfNextAttack;
 
 		void Start()
 		{
@@ -28,11 +29,13 @@ public class EnemyBehaviour : MonoBehaviour
 		{
 				// The lesser the attack speed, the most frequent the attacks
 				// (not that intuitive, but used in many games)
-				if (Time.time < _timeOfLastAttack + _attackSpeed) return;
+				if (Time.time < _timeOfNextAttack) return;
 
 				// Perform the attack
 				_target.SendMessage("TakeDamage", _damage);
 				_timeOfLastAttack = Time.time;
+				// Avoid being too uniform. Possibly could be based on distance to player instead
+				_timeOfNextAttack = _timeOfLastAttack + _attackSpeed + Random.Range(-1f, 1f);
 
 				// Visual cue to show the monster has attacked
 				StartCoroutine(AnimateAttack()); 

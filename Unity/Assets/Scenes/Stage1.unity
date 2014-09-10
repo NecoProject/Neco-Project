@@ -355,6 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 400000, guid: 71d963829eb9dae46811e0a21f72bf41, type: 2}
+  NumberOfUses: 0
   _timeOfLastUse: 0
   _timeOfNextPossibleUse: 0
   _isCoolingDown: 0
@@ -393,28 +394,24 @@ MonoBehaviour:
     Radius: .5
     SpriteName: blue
     SkillName: Blue
-    NumberOfUses: 0
   - Damage: 2
     Cost: 20
     CoolDown: 2
     Radius: .5
     SpriteName: red
     SkillName: Red
-    NumberOfUses: 0
   - Damage: 1
     Cost: 10
     CoolDown: 1
     Radius: 1.20000005
     SpriteName: green
     SkillName: Green
-    NumberOfUses: 0
   - Damage: 0
     Cost: 0
     CoolDown: 0
     Radius: 0
     SpriteName: 
     SkillName: 
-    NumberOfUses: 0
 --- !u!4 &412633221
 Transform:
   m_ObjectHideFlags: 0
@@ -766,6 +763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 400000, guid: 71d963829eb9dae46811e0a21f72bf41, type: 2}
+  NumberOfUses: 0
   _timeOfLastUse: 0
   _timeOfNextPossibleUse: 0
   _isCoolingDown: 0
@@ -1014,6 +1012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 400000, guid: 71d963829eb9dae46811e0a21f72bf41, type: 2}
+  NumberOfUses: 0
   _timeOfLastUse: 0
   _timeOfNextPossibleUse: 0
   _isCoolingDown: 0
@@ -2341,16 +2340,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2063035693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8284c9282b5d7644b5102b3b2d30f8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d62659ae9dbec94ebb022b47b192504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: d1ca853c97866bd4b87277937bc4b052, type: 2}
   enemyModel: {fileID: 400000, guid: c5b290737a99eca4081f459a68508be1, type: 2}
   foreground: {fileID: 1639839691}
   Save: {fileID: 412633220}
-  NumberOfWaves: 1
-  LevelDifficulty: 1
-  MinimumEnemiesPerWave: 1
-  WaveEnemyModifier: 0
 --- !u!1 &2082940262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2383,6 +2379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 400000, guid: 71d963829eb9dae46811e0a21f72bf41, type: 2}
+  NumberOfUses: 0
   _timeOfLastUse: 0
   _timeOfNextPossibleUse: 0
   _isCoolingDown: 0
