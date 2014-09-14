@@ -11,11 +11,10 @@ public class SkillDetails : MonoBehaviour
 		private Text _skillDescription;
 		private Image _skillImage;
 
+		private SkillStats _currentSkill;
+
 		void Start()
 		{
-				Debug.Log("Starting debug");
-				Debug.Log(GetComponentsInChildren<Text>().Length);
-				Debug.Log(GetComponentsInChildren<Text>().Where(x => x.gameObject.name == "SkillName").ToList<Text>().Count);
 				_skillName = GetComponentsInChildren<Text>().Where(x => x.gameObject.name == "SkillName").First<Text>();
 				_skillDescription = GetComponentsInChildren<Text>().Where(x => x.gameObject.name == "SkillDescription").First<Text>();
 				_skillImage = GetComponentsInChildren<Image>().Where(x => x.gameObject.name == "SkillImage").First<Image>();
@@ -24,14 +23,19 @@ public class SkillDetails : MonoBehaviour
 
 		public void ToggleDetails(SkillBarItem stats)
 		{
-				Debug.Log("Toggling details");
 				SkillStats skill = stats.GetSkill();
+				bool shouldBeActive = (_currentSkill != skill);
 
-				_skillName.text = skill.SkillName;
-				_skillImage.sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(skill.SpriteName);
-				_skillDescription.text = BuildDescription(skill);
+				if (shouldBeActive)
+				{
+						_currentSkill = skill;
 
-				gameObject.SetActive(!gameObject.activeSelf);
+						_skillName.text = skill.SkillName;
+						_skillImage.sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(skill.SpriteName);
+						_skillDescription.text = BuildDescription(skill);
+				}
+
+				gameObject.SetActive(shouldBeActive);
 		}
 
 		String BuildDescription(SkillStats skill)

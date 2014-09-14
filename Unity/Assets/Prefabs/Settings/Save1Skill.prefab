@@ -43,28 +43,28 @@ MonoBehaviour:
   InitialSkills:
   - Damage: .5
     Cost: 0
-    CoolDown: 0
-    Radius: .5
     SpriteName: blue
     SkillName: Blue
-  - Damage: 2
-    Cost: 20
-    CoolDown: 2
-    Radius: .5
-    SpriteName: red
-    SkillName: Red
-  - Damage: 1
-    Cost: 10
-    CoolDown: 1
-    Radius: 1.20000005
-    SpriteName: green
-    SkillName: Green
+    _coolDown: 0
+    _radius: .5
   - Damage: 0
     Cost: 0
-    CoolDown: 0
-    Radius: 0
     SpriteName: 
     SkillName: 
+    _coolDown: 0
+    _radius: 0
+  - Damage: 0
+    Cost: 0
+    SpriteName: 
+    SkillName: 
+    _coolDown: 0
+    _radius: 0
+  - Damage: 0
+    Cost: 0
+    SpriteName: 
+    SkillName: 
+    _coolDown: 0
+    _radius: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

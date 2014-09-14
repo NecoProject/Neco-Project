@@ -7,7 +7,7 @@ public class GeneticAlgorithm
 {
 		// TODO: pass the script as a MonoBehaviour, so that it can be tweaked in the editor directly? 
 		// Not sure we can easily experiment, since it requires an "end level" screen anyway
-		private const float BASE_BONUS_MAX = .5f;
+		private const float BASE_BONUS_MAX = 1f;
 
 		private const int MAX_CHILDREN_NUMBER = 3;
 
@@ -84,8 +84,9 @@ public class GeneticAlgorithm
 				child.Radius = Mutate(child.Radius, difficultyLevel);
 		}
 
+		// TODO: will need something more evolved than that in the future
 		private float Mutate(float original, int difficultyLevel)
 		{
-				return original + original * UnityEngine.Random.Range(-BASE_BONUS_MAX, BASE_BONUS_MAX) * difficultyLevel / 10;
+				return original + UnityEngine.Random.Range(-BASE_BONUS_MAX, BASE_BONUS_MAX) * difficultyLevel;
 		}
 }

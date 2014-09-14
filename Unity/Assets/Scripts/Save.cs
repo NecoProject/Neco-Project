@@ -28,10 +28,10 @@ public class Save : MonoBehaviour
 				set
 				{
 						_activeSkills = value;
-						foreach (SkillStats skill in _activeSkills)
+						/*foreach (SkillStats skill in _activeSkills)
 						{
-								//Debug.Log(skill.SkillName.ToString());
-						}
+								Debug.Log(skill.SkillName.ToString());
+						}*/
 				}
 		}
 		public Dictionary<SkillStats, int> NumberOfUses;

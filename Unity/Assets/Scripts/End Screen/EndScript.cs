@@ -11,23 +11,11 @@ public class EndScript : MonoBehaviour
 		private GeneticAlgorithm _geneticAlgorithm;
 		private SkillStats _selectedSkill;
 
-
-		void OnEnable()
-		{
-				Messenger<SkillBarItem>.AddListener(EventNames.SKILL_CLICKED, OnSkillClicked);
-		}
-
-		void OnDisable()
-		{
-				Messenger<SkillBarItem>.RemoveListener(EventNames.SKILL_CLICKED, OnSkillClicked);
-		}
-
 		void Start()
 		{
 				_savedData = FindObjectOfType<Save>();
 				_fittestSkillSelection = new SurvivalOfTheFittest();
 				_geneticAlgorithm = new GeneticAlgorithm();
-
 
 				// Get the skills that will be used to create a new offspring
 				Tuple<SkillStats, SkillStats> parentSkills = _fittestSkillSelection.GetParentSkills(_savedData.NumberOfUses);
@@ -41,24 +29,6 @@ public class EndScript : MonoBehaviour
 				DisplayNewSkills(newSkills);
 		}
 
-		void Update()
-		{
-				// Leave the end game screen and load the next level
-				if (Input.GetKeyDown(KeyCode.Escape))
-				{
-						ProceedToNextLevel();
-				}
-				// Save the new skill and proceed to next level
-				// TODO: for now, always replace the last skill
-				else if (Input.GetKeyDown(KeyCode.Return))
-				{
-						Debug.Log("Selected script " + _selectedSkill);
-						_savedData.SetSkillAt(_selectedSkill, 3);
-
-						ProceedToNextLevel();
-				}
-		}
-
 		private void DisplayParentSkills(SkillStats father, SkillStats mother)
 		{
 				GameObject.Find("Father").GetComponent<SkillBarItem>().SetSkill(father);
@@ -68,7 +38,6 @@ public class EndScript : MonoBehaviour
 		private void DisplayNewSkills(List<SkillStats> newSkills)
 		{
 				// For now, use the default prefab
-				// TODO: validate that there are as many possible children as skill bar items
 				for (int i = 0; i < newSkills.Count; i++)
 				{
 						SkillStats stat = newSkills[i];
@@ -77,7 +46,7 @@ public class EndScript : MonoBehaviour
 				}
 		}
 
-		private void OnSkillClicked(SkillBarItem skill)
+		/*private void OnSkillClicked(SkillBarItem skill)
 		{
 				GameObject.Find("Selected").GetComponent<Text>().text =
 						"Cost: " + skill.GetSkill().Cost.ToString("f1") + "\n" +
@@ -90,9 +59,15 @@ public class EndScript : MonoBehaviour
 						GameObject.Find("Children Text").GetComponent<Text>().text += "\n(Enter to validate)";
 				}
 				_selectedSkill = skill.GetSkill();
+		}*/
+
+		public void ChooseSkill(SkillBarItem skill)
+		{
+				_selectedSkill = skill.GetSkill();
+				GameObject.Find("Select skill").GetComponent<Button>().interactable = true;
 		}
 
-		private void ProceedToNextLevel()
+		public void ProceedToNextLevel()
 		{
 				// But first, build the data we want to propagate (and that we will persist and will use as a save game)
 				_savedData.CurrentLevel = _savedData.CurrentLevel + 1;
@@ -101,4 +76,11 @@ public class EndScript : MonoBehaviour
 				Application.LoadLevel("Stage1");
 		}
 
+		public void ValidateSkillChoice()
+		{
+				Debug.Log("Selected script " + _selectedSkill);
+				_savedData.SetSkillAt(_selectedSkill, 3);
+
+				ProceedToNextLevel();
+		}
 }
