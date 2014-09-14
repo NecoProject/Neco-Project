@@ -10,7 +10,6 @@ public class SkillBarItem : MonoBehaviour
 
 		private SkillStats _skill;
 		private Image _coolDownImage;
-		private Button _button;
 
 		public float _timeOfLastUse;
 		public float _timeOfNextPossibleUse;
@@ -23,7 +22,6 @@ public class SkillBarItem : MonoBehaviour
 				{
 						_coolDownImage = cd.GetComponent<Image>();
 				}
-				_button = GetComponent<Button>();
 		}
 
 		public void SetSkill(SkillStats skill)
@@ -46,8 +44,9 @@ public class SkillBarItem : MonoBehaviour
 				if (!_isCoolingDown && canPay)
 				{
 						// Simulate a click on the button to trigger the nice effects
-						EventSystemManager.currentSystem.SetSelectedGameObject(gameObject, null);
-						_button.OnSubmit(null);
+						EventSystemManager.currentSystem.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject, null);
+						GetComponentInChildren<Button>().OnSubmit(null);
+						//_button.OnSubmit(null);
 
 						// Pay the cost
 						PayManaCost(playerStats, _skill.Cost);
@@ -99,10 +98,4 @@ public class SkillBarItem : MonoBehaviour
 		{
 				stats.CurrentMana = Mathf.Min(stats.MaxMana, stats.CurrentMana - cost);
 		}
-
-		public void OnMouseDown()
-		{
-				Messenger<SkillBarItem>.Broadcast(EventNames.SKILL_CLICKED, this);
-		}
-
 }

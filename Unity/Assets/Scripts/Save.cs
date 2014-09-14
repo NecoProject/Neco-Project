@@ -30,7 +30,7 @@ public class Save : MonoBehaviour
 						_activeSkills = value;
 						foreach (SkillStats skill in _activeSkills)
 						{
-								Debug.Log(skill.SkillName.ToString());
+								//Debug.Log(skill.SkillName.ToString());
 						}
 				}
 		}
@@ -39,7 +39,7 @@ public class Save : MonoBehaviour
 
 		void Awake()
 		{
-				Debug.Log("Instance " + this.GetInstanceID());
+				//Debug.Log("Instance " + this.GetInstanceID());
 				if (!__created)
 				{
 						// this is the first instance - make it persist
@@ -51,7 +51,7 @@ public class Save : MonoBehaviour
 				else
 				{
 						// this must be a duplicate from a scene reload - DESTROY!
-						Debug.Log("Destroying me");
+						//Debug.Log("Destroying me");
 						DestroyImmediate(this.gameObject);
 				}
 

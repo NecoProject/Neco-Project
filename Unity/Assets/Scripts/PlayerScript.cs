@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -24,7 +25,11 @@ public class PlayerScript : MonoBehaviour
 				_savedData = FindObjectOfType<Save>();
 				activeSkills = _savedData.ActiveSkills;
 
-				_buttons = Button.FindObjectsOfType<Button>();
+				// We want to select only the Button component of GameObject that are tagged with HUDSkillUI
+				// To do so, we first get all the tagged objects - this return an array of GameObject
+				// Then we want to build a new Array containing only the Button component of these GameObjects, 
+				// and we do so using System.Linq.Select, that returns a list that we finally convert to an Array
+				_buttons =GameObject.FindGameObjectsWithTag("HUDSkillUI").Select(x => x.GetComponent<Button>()).ToArray<Button>();
 				Array.Sort(_buttons, delegate(Button first, Button second)
 				{
 						return first.name.CompareTo(second.name);
@@ -45,7 +50,7 @@ public class PlayerScript : MonoBehaviour
 		{
 				foreach (ShootingButton button in ShootingButton.GetEnumeration())
 				{
-						if (Input.GetButtonDown(button.GetButtonName()))
+						if (Input.GetButtonDown(button.GetButtonName()) && !EventSystemManager.currentSystem.IsPointerOverEventSystemObject())
 						{
 								Vector3 screenTarget = Input.mousePosition;
 								// Get the correct Z, because the current one is the Camera, circa -10

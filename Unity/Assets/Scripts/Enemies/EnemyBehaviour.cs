@@ -23,6 +23,8 @@ public class EnemyBehaviour : MonoBehaviour
 				_target = GameObject.Find("Player").transform;
 				_attackSpeed = GetComponent<EnemyStats>().AttackSpeed;
 				_damage = GetComponent<EnemyStats>().Damage;
+				_timeOfLastAttack = Time.time;
+				_timeOfNextAttack = _timeOfLastAttack + _attackSpeed + Random.Range(-1f, 1f);
 		}
 
 		void Update()

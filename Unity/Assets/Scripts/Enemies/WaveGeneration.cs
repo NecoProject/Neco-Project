@@ -28,14 +28,14 @@ public class WaveGeneration : MonoBehaviour
 
 		public void GenerateLevel(int difficulty)
 		{
-				Debug.Log("Generating level " + difficulty);
+				//Debug.Log("Generating level " + difficulty);
 				this.Settings.LevelDifficulty = difficulty;
 				GenerateWave(_currentWave, difficulty);
 		}
 
 		void GenerateWave(int waveNumber, int difficulty)
 		{
-				Debug.Log("Generating wave " + waveNumber);
+				//Debug.Log("Generating wave " + waveNumber);
 				int numberOfEnemiesInWave = Settings.MinimumEnemiesPerWave + (Settings.WaveEnemyModifier * waveNumber);
 				for (int i = 0; i < numberOfEnemiesInWave; i++)
 				{
@@ -64,7 +64,7 @@ public class WaveGeneration : MonoBehaviour
 
 		void SpawnBoss(int levelDifficulty)
 		{
-				Debug.Log("Spawning boss for difficulty " + levelDifficulty);
+				//Debug.Log("Spawning boss for difficulty " + levelDifficulty);
 				Transform boss = GenerateBoss(levelDifficulty);
 				_waveMonsters.Add(boss);
 		}
@@ -120,7 +120,7 @@ public class WaveGeneration : MonoBehaviour
 
 				if (_waveMonsters.Count == 0)
 				{
-						Debug.Log("Generating new wave");
+						//Debug.Log("Generating new wave");
 						GenerateNewWave();
 				}
 		}
