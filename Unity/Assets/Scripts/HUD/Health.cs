@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
 		// TODO: maybe better to not redraw every frame, but rather only when the health changes
 		void Update()
 		{
-				_text.text = _player.Stats.CurrentHealth + " / " + _player.Stats.MaxHealth;
+				_text.text = _player.Stats.CurrentHealth.ToString("f0") + " / " + _player.Stats.MaxHealth.ToString("f0");
 				_slider.normalizedValue = _player.Stats.CurrentHealth * 1.0f / _player.Stats.MaxHealth;
 		}
 }

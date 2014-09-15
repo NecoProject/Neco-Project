@@ -28,7 +28,14 @@ public class TheDirector : MonoBehaviour
 		{
 				// Save the data we want to propagate to the next end screen and the level
 				PlayerScript player = FindObjectOfType<PlayerScript>();
-				SavedData.activeSkills = player.activeSkills;
+				SavedData.ActiveSkills = player.activeSkills;
+
+				SkillBarItem[] skills = FindObjectsOfType<SkillBarItem>();
+				SavedData.NumberOfUses.Clear();
+				foreach (SkillBarItem skill in skills)
+				{
+						SavedData.NumberOfUses.Add(skill.GetSkill(), skill.NumberOfUses);
+				}
 
 				// Load the end screen
 				Application.LoadLevel("LevelClear");

@@ -4,25 +4,32 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 public class PlayerScript : MonoBehaviour
 {
+		public Color32 DamageColour;
+
 		// Storing the state of the player in a serializable script will make it easier to save / load data, and pass data between levels
 		public PlayerStats Stats;
 		public List<SkillStats> activeSkills;
 		public float timeBetweenAttacks;
-		
+
 		private Button[] _buttons;
 		private Save _savedData;
 		private float _timeOfLastAttack;
 
 
-		void Start ()
+		void Start()
 		{
-				_savedData = FindObjectOfType<Save> ();
-				activeSkills = _savedData.activeSkills;
+				_savedData = FindObjectOfType<Save>();
+				activeSkills = _savedData.ActiveSkills;
 
-				_buttons = Button.FindObjectsOfType<Button>();
+				// We want to select only the Button component of GameObject that are tagged with HUDSkillUI
+				// To do so, we first get all the tagged objects - this return an array of GameObject
+				// Then we want to build a new Array containing only the Button component of these GameObjects, 
+				// and we do so using System.Linq.Select, that returns a list that we finally convert to an Array
+				_buttons =GameObject.FindGameObjectsWithTag("HUDSkillUI").Select(x => x.GetComponent<Button>()).ToArray<Button>();
 				Array.Sort(_buttons, delegate(Button first, Button second)
 				{
 						return first.name.CompareTo(second.name);
@@ -33,20 +40,23 @@ public class PlayerScript : MonoBehaviour
 				}
 		}
 
-		void Update ()
+		void Update()
 		{
-				shootAtMousePosition ();
+				ShootAtMousePosition();
+				RegenerateMana();
 		}
 
-		void shootAtMousePosition ()
+		void ShootAtMousePosition()
 		{
-				foreach (ShootingButton button in ShootingButton.GetEnumeration()) {
-						if (Input.GetButtonDown (button.GetButtonName ())) {
+				foreach (ShootingButton button in ShootingButton.GetEnumeration())
+				{
+						if (Input.GetButtonDown(button.GetButtonName()) && !EventSystemManager.currentSystem.IsPointerOverEventSystemObject())
+						{
 								Vector3 screenTarget = Input.mousePosition;
 								// Get the correct Z, because the current one is the Camera, circa -10
 								var correctZ = transform.position.z;
 								screenTarget.z = correctZ;
-								Vector3 spaceTarget = Camera.main.ScreenToWorldPoint (screenTarget);
+								Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(screenTarget);
 								// KABOOM
 								SkillStats spell = activeSkills[button.GetSkillReference()];
 								if (spell != null)
@@ -70,5 +80,30 @@ public class PlayerScript : MonoBehaviour
 								}
 						}
 				}
+		}
+
+		void RegenerateMana()
+		{
+				Stats.CurrentMana = Mathf.Min(Stats.MaxMana, Stats.CurrentMana + Stats.ManaRegenerationSpeed * Time.deltaTime);
+		}
+
+		public void TakeDamage(float amount)
+		{
+				Stats.CurrentHealth -= amount;
+				StartCoroutine(AnimateTakeDamage());
+		}
+
+		IEnumerator AnimateTakeDamage()
+		{
+				var previousColor = GetComponent<SpriteRenderer>().material.GetColor("_FlashColor");
+
+				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", DamageColour);
+				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 1);
+
+				yield return new WaitForSeconds(0.5f);
+
+				// Set everything back to normal
+				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 0);
+				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", previousColor);
 		}
 }

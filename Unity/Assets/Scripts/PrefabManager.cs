@@ -14,7 +14,7 @@ public class PrefabManager : MonoBehaviour
 
 		void Awake()
 		{
-				Debug.Log("Instance " + this.GetInstanceID());
+				//Debug.Log("Instance " + this.GetInstanceID());
 				if (!__created)
 				{
 						// this is the first instance - make it persist
@@ -24,7 +24,7 @@ public class PrefabManager : MonoBehaviour
 				else
 				{
 						// this must be a duplicate from a scene reload - DESTROY!
-						Debug.Log("Destroying me");
+						//Debug.Log("Destroying me");
 						DestroyImmediate(this.gameObject);
 				}
 		}

@@ -19,7 +19,7 @@ public class Mana : MonoBehaviour
 
 		void Update()
 		{
-				_text.text = _player.Stats.CurrentMana + " / " + _player.Stats.MaxMana;
+				_text.text = _player.Stats.CurrentMana.ToString("f0") + " / " + _player.Stats.MaxMana.ToString("f0");
 				_slider.normalizedValue = _player.Stats.CurrentMana * 1.0f / _player.Stats.MaxMana;
 		}
 }
