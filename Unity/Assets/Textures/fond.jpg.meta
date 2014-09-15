@@ -1,6 +1,8 @@
 fileFormatVersion: 2
-guid: a4714c7a04bef5e4fab59ac2c1488d14
+guid: 30dbe9059864dc84d9b7253b1a60e8f0
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: fond
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -24,16 +26,16 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: 1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 6
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
@@ -41,16 +43,6 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites:
-    - name: gray_
-      rect:
-        serializedVersion: 2
-        x: 22
-        y: 33
-        width: 1855
-        height: 1379
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+    sprites: []
   spritePackingTag: 
   userData: 
