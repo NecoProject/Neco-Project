@@ -7,14 +7,24 @@ public class WaveGeneration : MonoBehaviour
 		public WaveGenerationSettings Settings;
 
 		public Transform enemyModel;
+		public Transform enemySpawnArena;
 		public Transform foreground;
 		public Save Save;
 
 		private int _currentWave = 1;
 
+		public float _minX, _maxX;
+		public float _minY, _maxY;
 
 		private List<Transform> _waveMonsters = new List<Transform>();
 
+		void Awake()
+		{
+				_minX = enemySpawnArena.renderer.bounds.min.x;
+				_maxX = enemySpawnArena.renderer.bounds.max.x;
+				_minY = enemySpawnArena.renderer.bounds.min.y;
+				_maxY = enemySpawnArena.renderer.bounds.max.y;
+		}
 
 		void OnEnable()
 		{
@@ -71,16 +81,10 @@ public class WaveGeneration : MonoBehaviour
 
 		Transform GenerateEnemy(int difficulty)
 		{
-				float width = Screen.width, height = Screen.height;
-				float enemyX = Random.Range(0, width);
-				float enemyY = Random.Range(0, height);
+				float enemyX = Random.Range(_minX, _maxX);
+				float enemyY = Random.Range(_minY, _maxY);
 				Vector3 position = new Vector3(enemyX, enemyY);
-
-				// Get the correct Z, because the current one is the Camera, circa -10
-				Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(position);
-				spaceTarget.z = 0;
-
-				Transform monster = (Transform)Instantiate(enemyModel, spaceTarget, Quaternion.identity);
+				Transform monster = (Transform)Instantiate(enemyModel, position, Quaternion.identity);
 				monster.parent = foreground;
 
 				EnemyStats stats = monster.GetComponent<EnemyStats>();
