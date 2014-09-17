@@ -9,13 +9,15 @@ public class EndScript : MonoBehaviour
 		private Save _savedData;
 		private SurvivalOfTheFittest _fittestSkillSelection;
 		private GeneticAlgorithm _geneticAlgorithm;
-		private SkillStats _selectedSkill;
+		private SkillBarItem _selectedSkill, _skillToReplace;
 
 		void Start()
 		{
 				_savedData = FindObjectOfType<Save>();
 				_fittestSkillSelection = new SurvivalOfTheFittest();
 				_geneticAlgorithm = new GeneticAlgorithm();
+
+				DisplayCurrentSkills(_savedData.ActiveSkills);
 
 				// Get the skills that will be used to create a new offspring
 				Tuple<SkillStats, SkillStats> parentSkills = _fittestSkillSelection.GetParentSkills(_savedData.NumberOfUses);
@@ -46,6 +48,15 @@ public class EndScript : MonoBehaviour
 				}
 		}
 
+		private void DisplayCurrentSkills(List<SkillStats> currentSkills)
+		{
+				for (int i = 0; i < currentSkills.Count; i++)
+				{
+						SkillStats stat = currentSkills[i];
+						GameObject.Find("Current" + i).GetComponent<SkillBarItem>().SetSkill(stat);
+				}
+		}
+
 		/*private void OnSkillClicked(SkillBarItem skill)
 		{
 				GameObject.Find("Selected").GetComponent<Text>().text =
@@ -61,10 +72,45 @@ public class EndScript : MonoBehaviour
 				_selectedSkill = skill.GetSkill();
 		}*/
 
-		public void ChooseSkill(SkillBarItem skill)
+		public void ChooseNewSkill(SkillBarItem skill)
 		{
-				_selectedSkill = skill.GetSkill();
-				GameObject.Find("Select skill").GetComponent<Button>().interactable = true;
+				if (_selectedSkill == skill)
+				{
+						_selectedSkill.GetComponent<Outline>().enabled = false;
+						_selectedSkill = null;
+				}
+				else
+				{
+						if (_selectedSkill != null)
+						{
+								_selectedSkill.GetComponent<Outline>().enabled = false;
+						}
+						_selectedSkill = skill;
+						_selectedSkill.GetComponent<Outline>().enabled = true;
+				}
+		}
+
+		public void ChooseSkillToReplace(SkillBarItem skill)
+		{
+				if (_skillToReplace == skill)
+				{
+						_skillToReplace.GetComponent<Outline>().enabled = false;
+						_skillToReplace = null;
+				}
+				else
+				{
+						if (_skillToReplace != null)
+						{
+								_skillToReplace.GetComponent<Outline>().enabled = false;
+						}
+						_skillToReplace = skill;
+						_skillToReplace.GetComponent<Outline>().enabled = true;
+				}
+		}
+
+		public void ShouldEnableConfirmation()
+		{
+				GameObject.Find("Select skill").GetComponent<Button>().interactable = (_selectedSkill != null && _skillToReplace != null);
 		}
 
 		public void ProceedToNextLevel()
@@ -79,7 +125,8 @@ public class EndScript : MonoBehaviour
 		public void ValidateSkillChoice()
 		{
 				Debug.Log("Selected script " + _selectedSkill);
-				_savedData.SetSkillAt(_selectedSkill, 3);
+				int newIndex = _savedData.ActiveSkills.IndexOf(_skillToReplace.GetSkill());
+				_savedData.SetSkillAt(_selectedSkill.GetSkill(), newIndex);
 
 				ProceedToNextLevel();
 		}

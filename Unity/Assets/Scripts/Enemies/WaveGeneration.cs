@@ -97,16 +97,11 @@ public class WaveGeneration : MonoBehaviour
 
 		Transform GenerateBoss(int difficulty)
 		{
-				float width = Screen.width, height = Screen.height;
-				float enemyX = Random.Range(0, width);
-				float enemyY = Random.Range(0, height);
+				float enemyX = Random.Range(_minX, _maxX);
+				float enemyY = Random.Range(_minY, _maxY);
 				Vector3 position = new Vector3(enemyX, enemyY);
 
-				// Get the correct Z, because the current one is the Camera, circa -10
-				Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(position);
-				spaceTarget.z = 0;
-
-				Transform monster = (Transform)Instantiate(enemyModel, spaceTarget, Quaternion.identity);
+				Transform monster = (Transform)Instantiate(enemyModel, position, Quaternion.identity);
 				monster.localScale = new Vector3(2 * monster.localScale.x, 2 * monster.localScale.y);
 				monster.parent = foreground;
 
