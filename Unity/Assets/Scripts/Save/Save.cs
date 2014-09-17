@@ -10,32 +10,9 @@ public class Save : MonoBehaviour
 {
 		private static bool __created = false;
 
-		public int CurrentLevel;
+		public SaveData SaveData;
 		public List<SkillStats> InitialSkills;
-
-		private List<SkillStats> _activeSkills;
-		public List<SkillStats> ActiveSkills
-		{
-				get
-				{
-						// Making sure that our own representation won't be 
-						// affected by whatever is done to the list (e.g. sorting it 
-						// differently)
-						SkillStats[] copy = new SkillStats[4];
-						_activeSkills.CopyTo(copy);
-						return new List<SkillStats>(copy);
-				}
-				set
-				{
-						_activeSkills = value;
-						/*foreach (SkillStats skill in _activeSkills)
-						{
-								Debug.Log(skill.SkillName.ToString());
-						}*/
-				}
-		}
 		public Dictionary<SkillStats, int> NumberOfUses;
-
 
 		void Awake()
 		{
@@ -45,7 +22,8 @@ public class Save : MonoBehaviour
 						// this is the first instance - make it persist
 						DontDestroyOnLoad(this.gameObject);
 						__created = true;
-						ActiveSkills = InitialSkills;
+						SaveData = new SaveData();
+						SaveData.ActiveSkills = InitialSkills;
 						NumberOfUses = new Dictionary<SkillStats, int>();
 				}
 				else
@@ -55,14 +33,10 @@ public class Save : MonoBehaviour
 						DestroyImmediate(this.gameObject);
 				}
 
-				if (CurrentLevel == 0)
+				if (SaveData.CurrentLevel == 0)
 				{
 						Debug.LogWarning("CurrentLevel is 0, probably forgot to set it in the editor");
+						SaveData.CurrentLevel = 1;
 				}
-		}
-
-		public void SetSkillAt(SkillStats value, int index)
-		{
-				_activeSkills[index] = value;
 		}
 }

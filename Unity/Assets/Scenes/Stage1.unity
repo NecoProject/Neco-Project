@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c43e3d0c9005a4a9a447241f44d7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SavedData: {fileID: 412633220}
+  Save: {fileID: 412633220}
 --- !u!1 &73763623
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,10 +567,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 412633219}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1ff29667380f9041982e2f21cfa84cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 6581d1d6a3af7534aa7fabb4ea318b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentLevel: 1
+  SaveData:
+    CurrentLevel: 1
   InitialSkills:
   - Damage: .5
     Cost: 0

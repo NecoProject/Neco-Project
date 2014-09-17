@@ -8,6 +8,6 @@ public class LevelNumber : MonoBehaviour
 {
 		void Start()
 		{
-				GetComponent<Text>().text = "Level " + FindObjectOfType<Save>().CurrentLevel;
+				GetComponent<Text>().text = "Level " + FindObjectOfType<Save>().SaveData.CurrentLevel;
 		}
 }

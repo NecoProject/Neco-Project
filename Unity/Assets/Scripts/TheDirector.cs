@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 public class TheDirector : MonoBehaviour
 {
-
-		public Save SavedData;
+		public Save Save;
 
 		void OnEnable()
 		{
@@ -19,21 +18,25 @@ public class TheDirector : MonoBehaviour
 
 		void Start()
 		{
-				SavedData = FindObjectOfType<Save>();
-				GetComponentInChildren<WaveGeneration>().GenerateLevel(SavedData.CurrentLevel);
+				Save = FindObjectOfType<Save>();
+				GetComponentInChildren<WaveGeneration>().GenerateLevel(Save.SaveData.CurrentLevel);
 		}
 
 		void OnLevelComplete()
 		{
 				// Save the data we want to propagate to the next end screen and the level
 				PlayerScript player = FindObjectOfType<PlayerScript>();
-				SavedData.ActiveSkills = player.activeSkills;
+				Save.SaveData.ActiveSkills = player.activeSkills;
 
+				// Serialize the data to retrieve it later on
+				SaveLoad.Save(Save.SaveData);
+
+				// Proceed to the elements needed for the "end of level" screen
 				SkillBarItem[] skills = FindObjectsOfType<SkillBarItem>();
-				SavedData.NumberOfUses.Clear();
+				Save.NumberOfUses.Clear();
 				foreach (SkillBarItem skill in skills)
 				{
-						SavedData.NumberOfUses.Add(skill.GetSkill(), skill.NumberOfUses);
+						Save.NumberOfUses.Add(skill.GetSkill(), skill.NumberOfUses);
 				}
 
 				// Load the end screen

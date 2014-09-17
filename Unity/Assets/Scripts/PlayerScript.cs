@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour
 		void Start()
 		{
 				_savedData = FindObjectOfType<Save>();
-				activeSkills = _savedData.ActiveSkills;
+				activeSkills = _savedData.SaveData.ActiveSkills;
 
 				// We want to select only the Button component of GameObject that are tagged with HUDSkillUI
 				// To do so, we first get all the tagged objects - this return an array of GameObject

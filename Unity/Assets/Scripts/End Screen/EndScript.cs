@@ -17,14 +17,14 @@ public class EndScript : MonoBehaviour
 				_fittestSkillSelection = new SurvivalOfTheFittest();
 				_geneticAlgorithm = new GeneticAlgorithm();
 
-				DisplayCurrentSkills(_savedData.ActiveSkills);
+				DisplayCurrentSkills(_savedData.SaveData.ActiveSkills);
 
 				// Get the skills that will be used to create a new offspring
 				Tuple<SkillStats, SkillStats> parentSkills = _fittestSkillSelection.GetParentSkills(_savedData.NumberOfUses);
 				DisplayParentSkills(parentSkills.First, parentSkills.Second);
 
 				// Generate the new skills
-				List<SkillStats> newSkills = _geneticAlgorithm.Evolve(parentSkills.First, parentSkills.Second, _savedData.CurrentLevel);
+				List<SkillStats> newSkills = _geneticAlgorithm.Evolve(parentSkills.First, parentSkills.Second, _savedData.SaveData.CurrentLevel);
 				//Debug.Log(newSkills.Count);
 
 				// Offer the player the ability to choose one to replace an existing skill
@@ -116,7 +116,7 @@ public class EndScript : MonoBehaviour
 		public void ProceedToNextLevel()
 		{
 				// But first, build the data we want to propagate (and that we will persist and will use as a save game)
-				_savedData.CurrentLevel = _savedData.CurrentLevel + 1;
+				_savedData.SaveData.CurrentLevel = _savedData.SaveData.CurrentLevel + 1;
 
 				// And finally reload the level, with a new difficulty setting
 				Application.LoadLevel("Stage1");
@@ -125,8 +125,8 @@ public class EndScript : MonoBehaviour
 		public void ValidateSkillChoice()
 		{
 				Debug.Log("Selected script " + _selectedSkill);
-				int newIndex = _savedData.ActiveSkills.IndexOf(_skillToReplace.GetSkill());
-				_savedData.SetSkillAt(_selectedSkill.GetSkill(), newIndex);
+				int newIndex = _savedData.SaveData.ActiveSkills.IndexOf(_skillToReplace.GetSkill());
+				_savedData.SaveData.SetSkillAt(_selectedSkill.GetSkill(), newIndex);
 
 				ProceedToNextLevel();
 		}
