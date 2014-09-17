@@ -13,8 +13,8 @@ public class WaveGeneration : MonoBehaviour
 
 		private int _currentWave = 1;
 
-		public float _minX, _maxX;
-		public float _minY, _maxY;
+		private float _minX, _maxX;
+		private float _minY, _maxY;
 
 		private List<Transform> _waveMonsters = new List<Transform>();
 

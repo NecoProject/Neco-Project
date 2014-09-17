@@ -11,7 +11,7 @@ public class SkillDetails : MonoBehaviour
 		private Text _skillDescription;
 		private Image _skillImage;
 
-		private SkillStats _currentSkill;
+		private SkillBarItem _currentSkill;
 
 		void Start()
 		{
@@ -24,15 +24,19 @@ public class SkillDetails : MonoBehaviour
 		public void ToggleDetails(SkillBarItem stats)
 		{
 				SkillStats skill = stats.GetSkill();
-				bool shouldBeActive = (_currentSkill != skill);
+				bool shouldBeActive = _currentSkill != stats && skill.SkillName.Length > 0;
 
 				if (shouldBeActive)
 				{
-						_currentSkill = skill;
+						_currentSkill = stats;
 
 						_skillName.text = skill.SkillName;
 						_skillImage.sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(skill.SpriteName);
 						_skillDescription.text = BuildDescription(skill);
+				}
+				else
+				{
+						_currentSkill = null;
 				}
 
 				gameObject.SetActive(shouldBeActive);
