@@ -91,6 +91,10 @@ public class PlayerScript : MonoBehaviour
 		{
 				Stats.CurrentHealth -= amount;
 				StartCoroutine(AnimateTakeDamage());
+				if (Stats.CurrentHealth <= 0)
+				{
+						Application.LoadLevel("GameOver");
+				}
 		}
 
 		IEnumerator AnimateTakeDamage()

@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage1.unity
   - enabled: 1
     path: Assets/Scenes/LevelClear.unity
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
