@@ -6,10 +6,13 @@ using System;
 
 public class EndScript : MonoBehaviour
 {
-		private Save _savedData;
+		public GameObject CustomizationPanel;
+
+		private  Save _savedData;
 		private SurvivalOfTheFittest _fittestSkillSelection;
 		private GeneticAlgorithm _geneticAlgorithm;
 		private SkillBarItem _selectedSkill, _skillToReplace;
+		private GameObject _selectedImage;
 
 		void Start()
 		{
@@ -57,21 +60,6 @@ public class EndScript : MonoBehaviour
 				}
 		}
 
-		/*private void OnSkillClicked(SkillBarItem skill)
-		{
-				GameObject.Find("Selected").GetComponent<Text>().text =
-						"Cost: " + skill.GetSkill().Cost.ToString("f1") + "\n" +
-						"Damage: " + skill.GetSkill().Damage.ToString("f1") + "\n" +
-						"Cooldown: " + skill.GetSkill().CoolDown.ToString("f1") + "\n" +
-						"Radius: " + skill.GetSkill().Radius.ToString("f1")
-						;
-				if (_selectedSkill == null)
-				{
-						GameObject.Find("Children Text").GetComponent<Text>().text += "\n(Enter to validate)";
-				}
-				_selectedSkill = skill.GetSkill();
-		}*/
-
 		public void ChooseNewSkill(SkillBarItem skill)
 		{
 				if (_selectedSkill == skill)
@@ -113,6 +101,38 @@ public class EndScript : MonoBehaviour
 				GameObject.Find("Select skill").GetComponent<Button>().interactable = (_selectedSkill != null && _skillToReplace != null);
 		}
 
+		public void DisplaySkillCustomization()
+		{
+				CustomizationPanel.SetActive(true);
+
+				// TODO: Bad! Will need a proper handling of custom skill items, possibly
+				// even generate them procedurally too, and offer 3-4 of them
+				for (int i = 0; i < 4; i++)
+				{
+						GameObject.Find("SkillCusto" + i).GetComponent<Image>().sprite =
+								GameObject.Find("PrefabManager").GetComponent<PrefabManager>().prefabs[i].Sprite;
+				}
+		}
+
+		public void SelectImage(GameObject image)
+		{
+				if (_selectedImage == image)
+				{
+						_selectedImage.GetComponent<Outline>().enabled = false;
+						_selectedImage = null;
+				}
+				else
+				{
+						if (_selectedImage != null)
+						{
+								_selectedImage.GetComponent<Outline>().enabled = false;
+						}
+						_selectedImage = image;
+						_selectedImage.GetComponent<Outline>().enabled = true;
+				}
+				GameObject.Find("CustomizationConfirmationButton").GetComponent<Button>().interactable = _selectedImage != null;
+		}
+
 		public void ProceedToNextLevel()
 		{
 				// But first, build the data we want to propagate (and that we will persist and will use as a save game)
@@ -125,8 +145,13 @@ public class EndScript : MonoBehaviour
 		public void ValidateSkillChoice()
 		{
 				Debug.Log("Selected script " + _selectedSkill);
+				SkillStats skill = _selectedSkill.GetSkill();
+				skill.SkillName = GameObject.Find("SkillNameInput").GetComponent<Text>().text;
+				skill.SpriteName = _selectedImage.GetComponent<Image>().sprite.name;
+
+				Debug.Log("Skill name is " + skill.SkillName);
 				int newIndex = _savedData.SaveData.ActiveSkills.IndexOf(_skillToReplace.GetSkill());
-				_savedData.SaveData.SetSkillAt(_selectedSkill.GetSkill(), newIndex);
+				_savedData.SaveData.SetSkillAt(skill, newIndex);
 
 				ProceedToNextLevel();
 		}
