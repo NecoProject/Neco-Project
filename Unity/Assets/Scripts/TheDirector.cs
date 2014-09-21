@@ -19,6 +19,7 @@ public class TheDirector : MonoBehaviour
 		void Start()
 		{
 				Save = FindObjectOfType<Save>();
+				SaveLoad.Save(Save.SaveData);
 				GetComponentInChildren<WaveGeneration>().GenerateLevel(Save.SaveData.CurrentLevel);
 		}
 

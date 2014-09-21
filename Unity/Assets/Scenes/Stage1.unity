@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: -990768443, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Resolution: {x: 1024, y: 768}
+  m_Resolution: {x: 1024, y: 576}
   m_MatchWidthOrHeight: 0
 --- !u!1 &154373526
 GameObject:
@@ -1921,7 +1921,7 @@ RectTransform:
   m_RootOrder: 9
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -464.589996, y: 263.970001}
+  m_AnchoredPosition: {x: -462.5, y: 222.089996}
   m_SizeDelta: {x: 79.4599991, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1229429073

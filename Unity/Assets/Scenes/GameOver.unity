@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: -990768443, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Resolution: {x: 1024, y: 768}
+  m_Resolution: {x: 1024, y: 576}
   m_MatchWidthOrHeight: 0
 --- !u!1 &157581707
 GameObject:

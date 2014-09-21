@@ -11,22 +11,24 @@ public static class SaveLoad
 		{
 				Debug.Log("Saving data");
 				BinaryFormatter bf = new BinaryFormatter();
-				FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd");
-				bf.Serialize(file, data);
-				file.Close();
+				MemoryStream m = new MemoryStream();
+				bf.Serialize(m, data);
+				PlayerPrefs.SetString("SavedGame", Convert.ToBase64String(m.GetBuffer()));
+				//FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd");
+				//bf.Serialize(file, data);
+				//file.Close();
 		}
 
 		public static SaveData Load()
 		{
-				if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
+				SaveData save = null;
+				String data = PlayerPrefs.GetString("SavedGame");
+				if (!String.IsNullOrEmpty(data))
 				{
-						Debug.Log("Loading data");
 						BinaryFormatter bf = new BinaryFormatter();
-						FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
-						SaveData data = (SaveData)bf.Deserialize(file);
-						file.Close();
-						return data;
+						MemoryStream m = new MemoryStream(Convert.FromBase64String(data));
+						save = bf.Deserialize(m) as SaveData;
 				}
-				return null;
+				return save;
 		}
 }
