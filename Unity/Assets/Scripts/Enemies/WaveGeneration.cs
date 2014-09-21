@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,6 +11,7 @@ public class WaveGeneration : MonoBehaviour
 		public Transform enemySpawnArena;
 		public Transform foreground;
 		public Save Save;
+		public GameObject EnemyWaveDestroyedText;
 
 		private int _currentWave = 1;
 
@@ -119,8 +121,22 @@ public class WaveGeneration : MonoBehaviour
 
 				if (_waveMonsters.Count == 0)
 				{
-						//Debug.Log("Generating new wave");
-						GenerateNewWave();
+						StartCoroutine(EndOfWave());
 				}
+		}
+
+		private IEnumerator EndOfWave()
+		{
+				if (_currentWave > Settings.NumberOfWaves)
+				{
+						EnemyWaveDestroyedText.GetComponent<Text>().text = "Level complete!!";
+				}
+				// Display victory text
+				EnemyWaveDestroyedText.SetActive(true);
+
+				yield return new WaitForSeconds(3f);
+
+				EnemyWaveDestroyedText.SetActive(false);
+				GenerateNewWave();
 		}
 }
