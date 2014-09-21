@@ -573,7 +573,7 @@ MonoBehaviour:
   SaveData:
     CurrentLevel: 1
   InitialSkills:
-  - Damage: .5
+  - Damage: 1
     Cost: 0
     SpriteName: blue
     SkillName: Blue
@@ -1015,7 +1015,7 @@ MonoBehaviour:
     CurrentMana: 100
     ManaRegenerationSpeed: 2
   activeSkills: []
-  timeBetweenAttacks: .300000012
+  timeBetweenAttacks: 1.5
 --- !u!1 &711197661
 GameObject:
   m_ObjectHideFlags: 0
@@ -3300,7 +3300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d62659ae9dbec94ebb022b47b192504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Settings: {fileID: 11400000, guid: d1ca853c97866bd4b87277937bc4b052, type: 2}
+  Settings: {fileID: 11400000, guid: 80fb898f2ecc69e4881f7f0b7e6e8f81, type: 2}
   enemyModel: {fileID: 400000, guid: c5b290737a99eca4081f459a68508be1, type: 2}
   enemySpawnArena: {fileID: 536264575}
   foreground: {fileID: 1639839691}
