@@ -17,7 +17,8 @@ public class PlayerScript : MonoBehaviour
 
 		private Button[] _buttons;
 		private Save _savedData;
-		private float _timeOfLastAttack;
+		// Don't prevent the player from attacking right away
+		private float _timeOfLastAttack = -1000;
 
 
 		void Start()

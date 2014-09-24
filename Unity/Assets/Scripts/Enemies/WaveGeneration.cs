@@ -13,7 +13,7 @@ public class WaveGeneration : MonoBehaviour
 		public Save Save;
 		public GameObject EnemyWaveDestroyedText;
 
-		private int _currentWave = 1;
+		private int _currentWave = 0;
 
 		private float _minX, _maxX;
 		private float _minY, _maxY;

@@ -658,25 +658,29 @@ MonoBehaviour:
   SaveData:
     CurrentLevel: 1
   InitialSkills:
-  - Damage: 1
+  - MinDamage: .5
+    MaxDamage: 1
     Cost: 0
     SpriteName: blue
     SkillName: Blue
     _coolDown: 0
     _radius: .5
-  - Damage: 0
+  - MinDamage: 0
+    MaxDamage: 0
     Cost: 0
     SpriteName: 
     SkillName: 
     _coolDown: 0
     _radius: 0
-  - Damage: 0
+  - MinDamage: 0
+    MaxDamage: 0
     Cost: 0
     SpriteName: 
     SkillName: 
     _coolDown: 0
     _radius: 0
-  - Damage: 0
+  - MinDamage: 0
+    MaxDamage: 0
     Cost: 0
     SpriteName: 
     SkillName: 

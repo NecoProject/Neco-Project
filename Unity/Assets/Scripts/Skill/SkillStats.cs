@@ -4,7 +4,7 @@ using System.Collections;
 [System.Serializable]
 public class SkillStats
 {
-		public float Damage;
+		public float MinDamage, MaxDamage;
 		public float Cost;
 		public float CoolDown
 		{

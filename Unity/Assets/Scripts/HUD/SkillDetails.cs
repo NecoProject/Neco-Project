@@ -45,7 +45,8 @@ public class SkillDetails : MonoBehaviour
 		String BuildDescription(SkillStats skill)
 		{
 				String result = "Cost: " + skill.Cost.ToString("f1") + "\n" +
-						"Damage: " + skill.Damage.ToString("f1") + "\n" +
+						"Min Damage: " + skill.MinDamage.ToString("f1") + "\n" +
+						"Max Damage: " + skill.MaxDamage.ToString("f1") + "\n" +
 						"Cooldown: " + skill.CoolDown.ToString("f1") + "\n" +
 						"Radius: " + skill.Radius.ToString("f1")
 						;
