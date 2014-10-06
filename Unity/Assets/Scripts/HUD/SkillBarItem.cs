@@ -55,7 +55,7 @@ public class SkillBarItem : MonoBehaviour
 						NumberOfUses++;
 
 						// Show the animation, that will then interact with the enemy to actually damage them
-						Debug.Log("Firing at space target: " + spaceTarget);
+						//Debug.Log("Firing at space target: " + spaceTarget);
 						Sprite sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(_skill.SpriteName);
 						Transform spellObject = (Transform)Instantiate(DefaultSkill, spaceTarget, Quaternion.identity);
 						spellObject.localScale = new Vector3(_skill.Radius, _skill.Radius);

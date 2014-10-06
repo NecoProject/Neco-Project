@@ -31,4 +31,10 @@ public static class SaveLoad
 				}
 				return save;
 		}
+
+		public static bool HasSavedGame()
+		{
+				String data = PlayerPrefs.GetString("SavedGame");
+				return !String.IsNullOrEmpty(data);
+		}
 }

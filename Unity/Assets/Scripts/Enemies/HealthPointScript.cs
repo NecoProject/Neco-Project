@@ -58,12 +58,17 @@ public class HealthPointScript : MonoBehaviour
 				SpellObject spell = otherCollider.gameObject.GetComponent<SpellObject>();
 				if (spell != null)
 				{
-						bool survives = TakeDamage(spell.Skill.Damage);
+						bool survives = TakeDamage(ComputeDamage(spell.Skill.MinDamage, spell.Skill.MaxDamage));
 						if (!survives)
 						{
 								Die();
 						}
 				}
+		}
+
+		float ComputeDamage(float minDmg, float maxDmg)
+		{
+				return Random.Range(minDmg, maxDmg);
 		}
 
 		void Die()

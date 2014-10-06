@@ -39,7 +39,10 @@ public class GeneticAlgorithm
 		{
 				SkillStats child = new SkillStats();
 
-				child.Damage = GenerateValueFromParentsAndLuck(father.Damage, mother.Damage);
+				float minDmg = GenerateValueFromParentsAndLuck(father.MinDamage, mother.MinDamage);
+				float maxDmg = GenerateValueFromParentsAndLuck(father.MaxDamage, mother.MaxDamage);
+				child.MinDamage = Mathf.Min(minDmg, maxDmg);
+				child.MaxDamage = Mathf.Max(minDmg, maxDmg);
 				child.Cost = GenerateValueFromParentsAndLuck(father.Cost, mother.Cost);
 				child.CoolDown = GenerateValueFromParentsAndLuck(father.CoolDown, mother.CoolDown);
 				child.Radius = GenerateValueFromParentsAndLuck(father.Radius, mother.Radius);
@@ -78,7 +81,10 @@ public class GeneticAlgorithm
 		/// TODO: have a kind of "balance" to avoid having right away skills that are too powerful?
 		private void Mutate(SkillStats child, int difficultyLevel)
 		{
-				child.Damage = Mutate(child.Damage, difficultyLevel);
+				float minDmg = Mutate(child.MinDamage, difficultyLevel);
+				float maxDmg = Mutate(child.MaxDamage, difficultyLevel);
+				child.MinDamage = Mathf.Min(minDmg, maxDmg);
+				child.MaxDamage = Mathf.Max(minDmg, maxDmg);
 				child.Cost = Mutate(child.Cost, difficultyLevel);
 				child.CoolDown = Mutate(child.CoolDown, difficultyLevel);
 				child.Radius = Mutate(child.Radius, difficultyLevel);

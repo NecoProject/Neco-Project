@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,8 +11,9 @@ public class WaveGeneration : MonoBehaviour
 		public Transform enemySpawnArena;
 		public Transform foreground;
 		public Save Save;
+		public GameObject EnemyWaveDestroyedText;
 
-		private int _currentWave = 1;
+		private int _currentWave = 0;
 
 		private float _minX, _maxX;
 		private float _minY, _maxY;
@@ -40,7 +42,7 @@ public class WaveGeneration : MonoBehaviour
 		{
 				//Debug.Log("Generating level " + difficulty);
 				this.Settings.LevelDifficulty = difficulty;
-				GenerateWave(_currentWave, difficulty);
+				GenerateNewWave();
 		}
 
 		void GenerateWave(int waveNumber, int difficulty)
@@ -56,15 +58,16 @@ public class WaveGeneration : MonoBehaviour
 
 		void GenerateNewWave()
 		{
+				Debug.Log("Generating new wave: " + _currentWave);
 				if (_currentWave < Settings.NumberOfWaves)
 				{
-						_currentWave++;
 						GenerateWave(_currentWave, this.Settings.LevelDifficulty);
+						_currentWave++;
 				}
 				else if (_currentWave == Settings.NumberOfWaves)
 				{
-						_currentWave++;
 						SpawnBoss(Settings.LevelDifficulty);
+						_currentWave++;
 				}
 				else
 				{
@@ -119,8 +122,22 @@ public class WaveGeneration : MonoBehaviour
 
 				if (_waveMonsters.Count == 0)
 				{
-						//Debug.Log("Generating new wave");
-						GenerateNewWave();
+						StartCoroutine(EndOfWave());
 				}
+		}
+
+		private IEnumerator EndOfWave()
+		{
+				if (_currentWave > Settings.NumberOfWaves)
+				{
+						EnemyWaveDestroyedText.GetComponent<Text>().text = "Level complete!!";
+				}
+				// Display victory text
+				EnemyWaveDestroyedText.SetActive(true);
+
+				yield return new WaitForSeconds(3f);
+
+				EnemyWaveDestroyedText.SetActive(false);
+				GenerateNewWave();
 		}
 }
