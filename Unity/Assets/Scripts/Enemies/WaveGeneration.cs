@@ -42,7 +42,7 @@ public class WaveGeneration : MonoBehaviour
 		{
 				//Debug.Log("Generating level " + difficulty);
 				this.Settings.LevelDifficulty = difficulty;
-				GenerateWave(_currentWave, difficulty);
+				GenerateNewWave();
 		}
 
 		void GenerateWave(int waveNumber, int difficulty)
@@ -58,15 +58,16 @@ public class WaveGeneration : MonoBehaviour
 
 		void GenerateNewWave()
 		{
+				Debug.Log("Generating new wave: " + _currentWave);
 				if (_currentWave < Settings.NumberOfWaves)
 				{
-						_currentWave++;
 						GenerateWave(_currentWave, this.Settings.LevelDifficulty);
+						_currentWave++;
 				}
 				else if (_currentWave == Settings.NumberOfWaves)
 				{
-						_currentWave++;
 						SpawnBoss(Settings.LevelDifficulty);
+						_currentWave++;
 				}
 				else
 				{
