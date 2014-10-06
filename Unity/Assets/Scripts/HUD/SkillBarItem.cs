@@ -44,7 +44,7 @@ public class SkillBarItem : MonoBehaviour
 				if (!_isCoolingDown && canPay)
 				{
 						// Simulate a click on the button to trigger the nice effects
-						EventSystemManager.currentSystem.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject, null);
+						EventSystem.current.SetSelectedGameObject(GetComponentInChildren<Button>().gameObject, null);
 						GetComponentInChildren<Button>().OnSubmit(null);
 						//_button.OnSubmit(null);
 
