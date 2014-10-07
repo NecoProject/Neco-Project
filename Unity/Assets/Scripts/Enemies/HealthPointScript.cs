@@ -8,13 +8,11 @@ public class HealthPointScript : MonoBehaviour
 		public float MaxHp { get; set; }
 		public float CurrentHp { get; private set; }
 		
-		private TextMesh _lifeComponent;
+		public TextMesh LifeComponent;
+		public FloatingDamage FloatingDamage;
 
 		void Start()
 		{
-				// TODO: change this to use the new UI components
-				_lifeComponent = GetComponentInChildren<TextMesh>();
-
 				MaxHp = GetComponent<EnemyStats>().MaxHp;
 				CurrentHp = MaxHp;
 				UpdateDisplayText();
@@ -30,12 +28,13 @@ public class HealthPointScript : MonoBehaviour
 				CurrentHp = Mathf.Min(MaxHp, CurrentHp - value);
 				UpdateDisplayText();
 				StartCoroutine(AnimateTakeDamage());
+				StartCoroutine(FloatingDamage.Spawn(value));
 				return CurrentHp > 0;
 		}
 
 		void UpdateDisplayText()
 		{
-				_lifeComponent.text = CurrentHp.ToString("f0") + " / " + MaxHp.ToString("f0");
+				LifeComponent.text = CurrentHp.ToString("f0") + " / " + MaxHp.ToString("f0");
 		}
 
 

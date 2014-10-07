@@ -39,8 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcdc2c018935ac4599c1d0ed5c69d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MonsterInitialHp: 3
-  MonsterInitialAttackSpeed: 5
+  MonsterInitialHp: 30
+  MonsterInitialAttackSpeed: 50
   MonsterInitialDamage: 1
   BossFactor: 1.5
   NumberOfWaves: 2
