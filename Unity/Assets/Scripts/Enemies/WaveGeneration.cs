@@ -135,9 +135,10 @@ public class WaveGeneration : MonoBehaviour
 				// Display victory text
 				EnemyWaveDestroyedText.SetActive(true);
 
-				yield return new WaitForSeconds(3f);
+				yield return new WaitForSeconds(2f);
 
 				EnemyWaveDestroyedText.SetActive(false);
+				Messenger<int, int>.Broadcast(EventNames.WAVE_COMPLETE, _currentWave, Settings.NumberOfWaves);
 				GenerateNewWave();
 		}
 }
