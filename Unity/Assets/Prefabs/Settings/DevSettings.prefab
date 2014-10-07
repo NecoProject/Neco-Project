@@ -43,7 +43,7 @@ MonoBehaviour:
   MonsterInitialAttackSpeed: 5
   MonsterInitialDamage: 1
   BossFactor: 1.5
-  NumberOfWaves: 1
+  NumberOfWaves: 0
   LevelDifficulty: 1
   MinimumEnemiesPerWave: 1
   WaveEnemyModifier: 0

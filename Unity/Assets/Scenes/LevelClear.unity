@@ -238,6 +238,7 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
+  m_OverrideSorting: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
 --- !u!114 &135084919
@@ -252,6 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Resolution: {x: 1024, y: 576}
+  m_CanvasScaleMode: 0
   m_MatchWidthOrHeight: 0
 --- !u!1 &144488707
 GameObject:
@@ -340,8 +342,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 144488711}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 144488711}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -356,7 +358,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &144488711
@@ -371,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
@@ -388,6 +390,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 1935040653}
   m_GameObject: {fileID: 144488707}
+  m_HideIfInvisible: 0
 --- !u!1 &157581707
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,8 +461,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 157581710}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 157581710}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -474,7 +477,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &157581710
@@ -488,7 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
@@ -504,6 +507,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 157581707}
+  m_HideIfInvisible: 0
 --- !u!1 &195520246
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,8 +595,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 195520250}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 195520250}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -607,7 +611,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &195520250
@@ -622,7 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
@@ -639,6 +643,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 1753293215}
   m_GameObject: {fileID: 195520246}
+  m_HideIfInvisible: 0
 --- !u!1 &228805560
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
 --- !u!4 &228805564
 Transform:
   m_ObjectHideFlags: 0
@@ -780,8 +786,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 303218110}
   m_Interactable: 0
+  m_TargetGraphic: {fileID: 303218110}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -796,7 +802,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &303218110
@@ -810,7 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
@@ -826,6 +832,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 303218107}
+  m_HideIfInvisible: 0
 --- !u!1 &332819433
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,7 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .39199999}
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
@@ -885,6 +892,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 731927028}
   m_GameObject: {fileID: 332819433}
+  m_HideIfInvisible: 0
 --- !u!224 &332819437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1125,8 +1133,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 393678421}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 393678421}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1141,7 +1149,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &393678421
@@ -1156,7 +1164,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
@@ -1173,6 +1181,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 2142885109}
   m_GameObject: {fileID: 393678417}
+  m_HideIfInvisible: 0
 --- !u!1 &456642141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,7 +1233,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: .573529422, g: .573529422, b: .573529422, a: .941176474}
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
@@ -1240,6 +1249,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 456642141}
+  m_HideIfInvisible: 0
 --- !u!1 &470188287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,7 +1295,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: .195999995, g: .195999995, b: .195999995, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -1308,6 +1318,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 470188287}
+  m_HideIfInvisible: 0
 --- !u!1 &604889504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,7 +1364,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: .195999995, g: .195999995, b: .195999995, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -1374,6 +1385,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 604889504}
+  m_HideIfInvisible: 0
 --- !u!1001 &675789589
 Prefab:
   m_ObjectHideFlags: 0
@@ -2074,7 +2086,7 @@ Prefab:
     - target: {fileID: 11400002, guid: ed33157f9007dfe44ba67b81e18339e5, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1073465810}
+      objectReference: {fileID: 1595764162}
     - target: {fileID: 11400002, guid: ed33157f9007dfe44ba67b81e18339e5, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Enabled
       value: 0
@@ -2179,8 +2191,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 970816591}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 970816591}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2195,7 +2207,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 843342161}
         m_MethodName: ChooseSkillToReplace
         m_Mode: 2
@@ -2207,7 +2219,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 843342161}
         m_MethodName: ShouldEnableConfirmation
         m_Mode: 1
@@ -2219,7 +2231,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &970816591
@@ -2234,7 +2246,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
@@ -2251,6 +2263,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 795405626}
   m_GameObject: {fileID: 970816587}
+  m_HideIfInvisible: 0
 --- !u!114 &970816593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2313,7 +2326,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
@@ -2330,6 +2343,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 731927028}
   m_GameObject: {fileID: 976995966}
+  m_HideIfInvisible: 0
 --- !u!1 &1054026212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2421,8 +2435,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 1054026216}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 1054026216}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2437,7 +2451,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 843342161}
         m_MethodName: ChooseNewSkill
         m_Mode: 2
@@ -2449,7 +2463,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 843342161}
         m_MethodName: ShouldEnableConfirmation
         m_Mode: 1
@@ -2461,7 +2475,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1054026216
@@ -2476,7 +2490,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
@@ -2493,6 +2507,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 360340988}
   m_GameObject: {fileID: 1054026212}
+  m_HideIfInvisible: 0
 --- !u!114 &1054026218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2581,8 +2596,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 1073465812}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 1073465812}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2597,7 +2612,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 0}
         m_MethodName: ChooseNewSkill
         m_Mode: 2
@@ -2609,7 +2624,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 0
+        m_CallState: 1
       - m_Target: {fileID: 0}
         m_MethodName: ShouldEnableConfirmation
         m_Mode: 1
@@ -2621,7 +2636,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1073465812
@@ -2636,7 +2651,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
@@ -2653,6 +2668,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 1425829770}
   m_GameObject: {fileID: 1073465809}
+  m_HideIfInvisible: 0
 --- !u!224 &1073465814
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2873,7 +2889,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: .852941155, g: .688235283, b: 0, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -2895,6 +2911,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 731927028}
   m_GameObject: {fileID: 1218140206}
+  m_HideIfInvisible: 0
 --- !u!1 &1350319226
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,7 +2958,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: .1953125, g: .1953125, b: .1953125, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -2962,6 +2979,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1350319226}
+  m_HideIfInvisible: 0
 --- !u!114 &1350319230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2996,8 +3014,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 1350319228}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 1350319228}
   m_TextComponent: {fileID: 1350319228}
   inputType: 0
   keyboardType: 0
@@ -3103,8 +3121,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 1370769275}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 1370769275}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -3119,7 +3137,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 843342161}
         m_MethodName: ChooseSkillToReplace
         m_Mode: 2
@@ -3131,7 +3149,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 843342161}
         m_MethodName: ShouldEnableConfirmation
         m_Mode: 1
@@ -3143,7 +3161,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1370769275
@@ -3158,7 +3176,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
@@ -3175,6 +3193,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 1156384851}
   m_GameObject: {fileID: 1370769271}
+  m_HideIfInvisible: 0
 --- !u!114 &1370769277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3377,8 +3396,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 1466259006}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 1466259006}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -3393,7 +3412,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1466259006
@@ -3408,7 +3427,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Sprite: {fileID: 0}
   m_Type: 0
@@ -3425,6 +3444,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 750678806}
   m_GameObject: {fileID: 1466259002}
+  m_HideIfInvisible: 0
 --- !u!1 &1500363340
 GameObject:
   m_ObjectHideFlags: 0
@@ -3470,7 +3490,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -3491,6 +3511,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1500363340}
+  m_HideIfInvisible: 0
 --- !u!1 &1590643114
 GameObject:
   m_ObjectHideFlags: 0
@@ -3536,7 +3557,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -3557,6 +3578,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1590643114}
+  m_HideIfInvisible: 0
 --- !u!1 &1595764160
 GameObject:
   m_ObjectHideFlags: 0
@@ -3648,8 +3670,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 1595764164}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 1595764164}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -3657,14 +3679,14 @@ MonoBehaviour:
         m_MethodName: ToggleDetails
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1073465810}
+          m_ObjectArgument: {fileID: 1595764162}
           m_ObjectArgumentAssemblyTypeName: SkillBarItem, Assembly-CSharp, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 0}
         m_MethodName: ChooseNewSkill
         m_Mode: 2
@@ -3676,7 +3698,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 0
+        m_CallState: 1
       - m_Target: {fileID: 0}
         m_MethodName: ShouldEnableConfirmation
         m_Mode: 1
@@ -3688,7 +3710,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1595764164
@@ -3703,7 +3725,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
@@ -3720,6 +3742,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 947529229}
   m_GameObject: {fileID: 1595764160}
+  m_HideIfInvisible: 0
 --- !u!114 &1595764166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3826,8 +3849,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 1748001851}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 1748001851}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -3842,7 +3865,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 843342161}
         m_MethodName: ChooseNewSkill
         m_Mode: 2
@@ -3854,7 +3877,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 843342161}
         m_MethodName: ShouldEnableConfirmation
         m_Mode: 1
@@ -3866,7 +3889,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1748001851
@@ -3881,7 +3904,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
@@ -3898,6 +3921,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 745074836}
   m_GameObject: {fileID: 1748001847}
+  m_HideIfInvisible: 0
 --- !u!114 &1748001853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4340,8 +4364,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 1901570452}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 1901570452}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -4356,7 +4380,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 843342161}
         m_MethodName: ChooseNewSkill
         m_Mode: 2
@@ -4368,7 +4392,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 843342161}
         m_MethodName: ShouldEnableConfirmation
         m_Mode: 1
@@ -4380,7 +4404,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1901570452
@@ -4395,7 +4419,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
@@ -4412,6 +4436,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 675789589}
   m_GameObject: {fileID: 1901570448}
+  m_HideIfInvisible: 0
 --- !u!114 &1901570454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4593,8 +4618,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 1980638529}
   m_Interactable: 0
+  m_TargetGraphic: {fileID: 1980638529}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -4609,7 +4634,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1980638529
@@ -4623,7 +4648,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
@@ -4639,6 +4664,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1980638526}
+  m_HideIfInvisible: 0
 --- !u!1 &1984145886
 GameObject:
   m_ObjectHideFlags: 0
@@ -4734,7 +4760,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: .195999995, g: .195999995, b: .195999995, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -4757,6 +4783,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2024400495}
+  m_HideIfInvisible: 0
 --- !u!1 &2066919031
 GameObject:
   m_ObjectHideFlags: 0
@@ -4848,8 +4875,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 2066919035}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 2066919035}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -4864,7 +4891,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 843342161}
         m_MethodName: ChooseSkillToReplace
         m_Mode: 2
@@ -4876,7 +4903,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 843342161}
         m_MethodName: ShouldEnableConfirmation
         m_Mode: 1
@@ -4888,7 +4915,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2066919035
@@ -4903,7 +4930,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
@@ -4920,6 +4947,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 1817400423}
   m_GameObject: {fileID: 2066919031}
+  m_HideIfInvisible: 0
 --- !u!114 &2066919037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4982,7 +5010,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: .1953125, g: .1953125, b: .1953125, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -5004,6 +5032,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 731927028}
   m_GameObject: {fileID: 2071062072}
+  m_HideIfInvisible: 0
 --- !u!1 &2100785794
 GameObject:
   m_ObjectHideFlags: 0
@@ -5095,8 +5124,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 2100785798}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 2100785798}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -5111,7 +5140,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 843342161}
         m_MethodName: ChooseSkillToReplace
         m_Mode: 2
@@ -5123,7 +5152,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
       - m_Target: {fileID: 843342161}
         m_MethodName: ShouldEnableConfirmation
         m_Mode: 1
@@ -5135,7 +5164,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2100785798
@@ -5150,7 +5179,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
@@ -5167,6 +5196,7 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 1784282188}
   m_GameObject: {fileID: 2100785794}
+  m_HideIfInvisible: 0
 --- !u!114 &2100785800
 MonoBehaviour:
   m_ObjectHideFlags: 0
