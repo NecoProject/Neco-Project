@@ -2529,10 +2529,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 0}
   NumberOfUses: 0
-  _coolDownImage: {fileID: 0}
-  _timeOfLastUse: 0
-  _timeOfNextPossibleUse: 0
-  _isCoolingDown: 0
 --- !u!114 &970816590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2762,10 +2758,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 0}
   NumberOfUses: 0
-  _coolDownImage: {fileID: 0}
-  _timeOfLastUse: 0
-  _timeOfNextPossibleUse: 0
-  _isCoolingDown: 0
 --- !u!114 &1054026215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2911,10 +2903,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 0}
   NumberOfUses: 0
-  _coolDownImage: {fileID: 0}
-  _timeOfLastUse: 0
-  _timeOfNextPossibleUse: 0
-  _isCoolingDown: 0
 --- !u!114 &1073465811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3413,10 +3401,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 0}
   NumberOfUses: 0
-  _coolDownImage: {fileID: 0}
-  _timeOfLastUse: 0
-  _timeOfNextPossibleUse: 0
-  _isCoolingDown: 0
 --- !u!114 &1370769274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3954,10 +3938,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 0}
   NumberOfUses: 0
-  _coolDownImage: {fileID: 0}
-  _timeOfLastUse: 0
-  _timeOfNextPossibleUse: 0
-  _isCoolingDown: 0
 --- !u!114 &1595764163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4154,10 +4134,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 0}
   NumberOfUses: 0
-  _coolDownImage: {fileID: 0}
-  _timeOfLastUse: 0
-  _timeOfNextPossibleUse: 0
-  _isCoolingDown: 0
 --- !u!114 &1748001850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4662,10 +4638,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 0}
   NumberOfUses: 0
-  _coolDownImage: {fileID: 0}
-  _timeOfLastUse: 0
-  _timeOfNextPossibleUse: 0
-  _isCoolingDown: 0
 --- !u!114 &1901570451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5229,10 +5201,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 0}
   NumberOfUses: 0
-  _coolDownImage: {fileID: 0}
-  _timeOfLastUse: 0
-  _timeOfNextPossibleUse: 0
-  _isCoolingDown: 0
 --- !u!114 &2066919034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5467,10 +5435,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 0}
   NumberOfUses: 0
-  _coolDownImage: {fileID: 0}
-  _timeOfLastUse: 0
-  _timeOfNextPossibleUse: 0
-  _isCoolingDown: 0
 --- !u!114 &2100785797
 MonoBehaviour:
   m_ObjectHideFlags: 0

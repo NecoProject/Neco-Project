@@ -746,7 +746,7 @@ MonoBehaviour:
     Cost: 0
     SpriteName: blue
     SkillName: Blue
-    _coolDown: 0
+    _coolDown: .400000006
     _radius: .5
   - MinDamage: 0
     MaxDamage: 0
@@ -1482,10 +1482,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 400000, guid: 71d963829eb9dae46811e0a21f72bf41, type: 2}
   NumberOfUses: 0
-  _coolDownImage: {fileID: 0}
-  _timeOfLastUse: 0
-  _timeOfNextPossibleUse: 0
-  _isCoolingDown: 0
 --- !u!114 &821489207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1818,10 +1814,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 400000, guid: 71d963829eb9dae46811e0a21f72bf41, type: 2}
   NumberOfUses: 0
-  _coolDownImage: {fileID: 0}
-  _timeOfLastUse: 0
-  _timeOfNextPossibleUse: 0
-  _isCoolingDown: 0
 --- !u!114 &901663232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2594,10 +2586,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 400000, guid: 71d963829eb9dae46811e0a21f72bf41, type: 2}
   NumberOfUses: 0
-  _coolDownImage: {fileID: 0}
-  _timeOfLastUse: 0
-  _timeOfNextPossibleUse: 0
-  _isCoolingDown: 0
 --- !u!1 &1486514324
 GameObject:
   m_ObjectHideFlags: 0
@@ -4129,10 +4117,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 400000, guid: 71d963829eb9dae46811e0a21f72bf41, type: 2}
   NumberOfUses: 0
-  _coolDownImage: {fileID: 0}
-  _timeOfLastUse: 0
-  _timeOfNextPossibleUse: 0
-  _isCoolingDown: 0
 --- !u!114 &2115756763
 MonoBehaviour:
   m_ObjectHideFlags: 0

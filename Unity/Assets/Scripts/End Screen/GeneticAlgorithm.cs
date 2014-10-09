@@ -8,6 +8,7 @@ public class GeneticAlgorithm
 		// TODO: pass the script as a MonoBehaviour, so that it can be tweaked in the editor directly? 
 		// Not sure we can easily experiment, since it requires an "end level" screen anyway
 		private const float BASE_BONUS_MAX = 1f;
+		private const float MINIMUM_COOLDOWN = 0.4f;
 
 		private const int MAX_CHILDREN_NUMBER = 3;
 
@@ -86,7 +87,7 @@ public class GeneticAlgorithm
 				child.MinDamage = Mathf.Min(minDmg, maxDmg);
 				child.MaxDamage = Mathf.Max(minDmg, maxDmg);
 				child.Cost = Mutate(child.Cost, difficultyLevel);
-				child.CoolDown = Mutate(child.CoolDown, difficultyLevel);
+				child.CoolDown = Math.Max(MINIMUM_COOLDOWN, Mutate(child.CoolDown, difficultyLevel));
 				child.Radius = Mutate(child.Radius, difficultyLevel);
 		}
 
