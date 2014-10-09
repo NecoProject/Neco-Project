@@ -47,7 +47,7 @@ public class GeneticAlgorithm
 				child.CoolDown = GenerateValueFromParentsAndLuck(father.CoolDown, mother.CoolDown);
 				child.Radius = GenerateValueFromParentsAndLuck(father.Radius, mother.Radius);
 				child.SpriteName = PickOne(father.SpriteName, mother.SpriteName);
-				/*child.Name = */
+				child.SkillName = "New Skill";
 
 				return child;
 		}

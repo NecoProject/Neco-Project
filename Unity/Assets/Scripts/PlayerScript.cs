@@ -21,53 +21,60 @@ public class PlayerScript : MonoBehaviour
 		private float _timeOfLastAttack = -1000;
 
 
-		void Start ()
+		void Start()
 		{
-				_savedData = FindObjectOfType<Save> ();
+				_savedData = FindObjectOfType<Save>();
 				activeSkills = _savedData.SaveData.ActiveSkills;
 
 				// We want to select only the Button component of GameObject that are tagged with HUDSkillUI
 				// To do so, we first get all the tagged objects - this return an array of GameObject
 				// Then we want to build a new Array containing only the Button component of these GameObjects, 
 				// and we do so using System.Linq.Select, that returns a list that we finally convert to an Array
-				_buttons = GameObject.FindGameObjectsWithTag ("HUDSkillUI").Select (x => x.GetComponent<Button> ()).ToArray<Button> ();
-				Array.Sort (_buttons, delegate(Button first, Button second) {
-						return first.name.CompareTo (second.name);
+				_buttons = GameObject.FindGameObjectsWithTag("HUDSkillUI").Select(x => x.GetComponent<Button>()).ToArray<Button>();
+				Array.Sort(_buttons, delegate(Button first, Button second)
+				{
+						return first.name.CompareTo(second.name);
 				});
-				for (int i = 0; i < _buttons.Length; i++) {
-						_buttons [i].GetComponent<SkillBarItem> ().SetSkill (activeSkills [i]);
+				for (int i = 0; i < _buttons.Length; i++)
+				{
+						Debug.Log(activeSkills[i]);
+						_buttons[i].GetComponent<SkillBarItem>().SetSkill(activeSkills[i]);
 				}
 		}
 
-		void Update ()
+		void Update()
 		{
-				ShootAtMousePosition ();
-				RegenerateMana ();
+				ShootAtMousePosition();
+				RegenerateMana();
 		}
 
-		void ShootAtMousePosition ()
+		void ShootAtMousePosition()
 		{
-				foreach (ShootingButton button in ShootingButton.GetEnumeration()) {
-						if (Input.GetButtonDown (button.GetButtonName ()) && !EventSystem.current.IsPointerOverGameObject ()) {
+				foreach (ShootingButton button in ShootingButton.GetEnumeration())
+				{
+						if (Input.GetButtonDown(button.GetButtonName()) && !EventSystem.current.IsPointerOverGameObject())
+						{
 								Vector3 screenTarget = Input.mousePosition;
 								// Get the correct Z, because the current one is the Camera, circa -10
 								var correctZ = transform.position.z;
 								screenTarget.z = correctZ;
-								Vector3 spaceTarget = Camera.main.ScreenToWorldPoint (screenTarget);
+								Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(screenTarget);
 								// KABOOM
-								SkillStats spell = activeSkills [button.GetSkillReference ()];
-								if (spell != null) {
+								SkillStats spell = activeSkills[button.GetSkillReference()];
+								if (spell != null)
+								{
 										// Simulate a click on the button to trigger the nice effects
-										Button skillButton = _buttons [button.GetSkillReference ()];
+										Button skillButton = _buttons[button.GetSkillReference()];
 
 										// Can't fire too quickly
 										bool canFire = (Time.time > _timeOfLastAttack + timeBetweenAttacks);
 
-										if (canFire) {
+										if (canFire)
+										{
 												// Don't really like that I need to pass the stats. I think we should be able to 
 												// say to the skill script "try to fire this" and it handles everything, but 
 												// it isn't done really elegantly here
-												skillButton.GetComponent<SkillBarItem> ().Fire (spaceTarget, Stats);
+												skillButton.GetComponent<SkillBarItem>().Fire(spaceTarget, Stats);
 
 												// Update time of last attack
 												_timeOfLastAttack = Time.time;
@@ -77,31 +84,32 @@ public class PlayerScript : MonoBehaviour
 				}
 		}
 
-		void RegenerateMana ()
+		void RegenerateMana()
 		{
-				Stats.CurrentMana = Mathf.Min (Stats.MaxMana, Stats.CurrentMana + Stats.ManaRegenerationSpeed * Time.deltaTime);
+				Stats.CurrentMana = Mathf.Min(Stats.MaxMana, Stats.CurrentMana + Stats.ManaRegenerationSpeed * Time.deltaTime);
 		}
 
-		public void TakeDamage (float amount)
+		public void TakeDamage(float amount)
 		{
 				Stats.CurrentHealth -= amount;
-				StartCoroutine (AnimateTakeDamage ());
-				if (Stats.CurrentHealth <= 0) {
-						Application.LoadLevel ("GameOver");
+				StartCoroutine(AnimateTakeDamage());
+				if (Stats.CurrentHealth <= 0)
+				{
+						Application.LoadLevel("GameOver");
 				}
 		}
 
-		IEnumerator AnimateTakeDamage ()
+		IEnumerator AnimateTakeDamage()
 		{
-				var previousColor = GetComponent<SpriteRenderer> ().material.GetColor ("_FlashColor");
+				var previousColor = GetComponent<SpriteRenderer>().material.GetColor("_FlashColor");
 
-				GetComponent<SpriteRenderer> ().material.SetColor ("_FlashColor", DamageColour);
-				GetComponent<SpriteRenderer> ().material.SetFloat ("_FlashAmount", 1);
+				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", DamageColour);
+				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 1);
 
-				yield return new WaitForSeconds (0.5f);
+				yield return new WaitForSeconds(0.5f);
 
 				// Set everything back to normal
-				GetComponent<SpriteRenderer> ().material.SetFloat ("_FlashAmount", 0);
-				GetComponent<SpriteRenderer> ().material.SetColor ("_FlashColor", previousColor);
+				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 0);
+				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", previousColor);
 		}
 }
