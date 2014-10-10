@@ -37,7 +37,6 @@ public class PlayerScript : MonoBehaviour
 				});
 				for (int i = 0; i < _buttons.Length; i++)
 				{
-						Debug.Log(activeSkills[i]);
 						_buttons[i].GetComponent<SkillBarItem>().SetSkill(activeSkills[i]);
 				}
 		}

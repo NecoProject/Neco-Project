@@ -23,7 +23,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -50}
+  m_LocalPosition: {x: -265.152985, y: -93.6507492, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -39,19 +39,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d630bfa7002644418644b4639aabb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
+  Skills:
   - Name: blue
     Sprite: {fileID: 21300000, guid: bbc4b091b0100cb418035a7f20298b96, type: 3}
     Prefab: {fileID: 400000, guid: e2b6c4b49ccd7074bb15f32296a1d58e, type: 2}
+  - Name: green
+    Sprite: {fileID: 21300000, guid: c8fda9f217175ff49b83146cb4ffce14, type: 3}
+    Prefab: {fileID: 400000, guid: b9e1f1f757ca0954bbd8e166b38d581c, type: 2}
   - Name: red
     Sprite: {fileID: 21300000, guid: d528d63440bb36447993ec0796abaed0, type: 3}
     Prefab: {fileID: 400000, guid: 4e26fb2fd25737649bbe869da9b43c01, type: 2}
   - Name: white
     Sprite: {fileID: 21300000, guid: 066dcee50196e7d47876eb95f6648b93, type: 3}
     Prefab: {fileID: 400000, guid: aa0739ad449042f4da464938b4af0b37, type: 2}
-  - Name: green
-    Sprite: {fileID: 21300000, guid: c8fda9f217175ff49b83146cb4ffce14, type: 3}
-    Prefab: {fileID: 400000, guid: b9e1f1f757ca0954bbd8e166b38d581c, type: 2}
+  Images:
+  - Name: level-background
+    Sprite: {fileID: 21300000, guid: 59620782105786048b4e0a05ae1e4371, type: 3}
+    Prefab: {fileID: 0}
+  - Name: boss-background
+    Sprite: {fileID: 21300000, guid: b238d3720c838f548acd1ded938ea890, type: 3}
+    Prefab: {fileID: 0}
+  - Name: level-arena
+    Sprite: {fileID: 21300000, guid: 30dbe9059864dc84d9b7253b1a60e8f0, type: 3}
+    Prefab: {fileID: 0}
+  - Name: boss-arena
+    Sprite: {fileID: 21300000, guid: 20a370a62080a914ca8f93526190e1bf, type: 3}
+    Prefab: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

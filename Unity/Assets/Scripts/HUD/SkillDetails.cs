@@ -31,7 +31,7 @@ public class SkillDetails : MonoBehaviour
 						_currentSkill = stats;
 
 						_skillName.text = skill.SkillName;
-						_skillImage.sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(skill.SpriteName);
+						_skillImage.sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSkillSprite(skill.SpriteName);
 						_skillDescription.text = BuildDescription(skill);
 				}
 				else

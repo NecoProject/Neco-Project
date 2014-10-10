@@ -39,7 +39,7 @@ public class SkillCustomization : MonoBehaviour
 				// even generate them procedurally too, and offer 3-4 of them
 				for (int i = 0; i < PossibleImages.Count; i++)
 				{
-						PossibleImages[i].sprite = _prefabManager.prefabs[i].Sprite;
+						PossibleImages[i].sprite = _prefabManager.Skills[i].Sprite;
 				}
 		}
 

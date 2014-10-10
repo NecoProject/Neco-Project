@@ -37,7 +37,7 @@ public class DebugEndScreen : MonoBehaviour
 				skill.MinDamage = UnityEngine.Random.Range(0f, 2f);
 				skill.MaxDamage = UnityEngine.Random.Range(skill.MinDamage, 2f);
 				skill.SkillName = "Random";
-				skill.SpriteName = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().prefabs[UnityEngine.Random.Range(0, 3)].Sprite.name;
+				skill.SpriteName = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().Skills[UnityEngine.Random.Range(0, 3)].Sprite.name;
 				return skill;
 		}
 

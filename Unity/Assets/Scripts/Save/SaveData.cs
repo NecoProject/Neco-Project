@@ -7,6 +7,7 @@ using System;
 public class SaveData
 {
 		public int CurrentLevel;
+		public bool IsCurrentLevelBossLevel;
 
 		public List<SkillStats> ActiveSkills
 		{

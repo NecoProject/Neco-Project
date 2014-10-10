@@ -9,14 +9,10 @@ public static class SaveLoad
 {
 		public static void Save(SaveData data)
 		{
-				Debug.Log("Saving data");
 				BinaryFormatter bf = new BinaryFormatter();
 				MemoryStream m = new MemoryStream();
 				bf.Serialize(m, data);
 				PlayerPrefs.SetString("SavedGame", Convert.ToBase64String(m.GetBuffer()));
-				//FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd");
-				//bf.Serialize(file, data);
-				//file.Close();
 		}
 
 		public static SaveData Load()

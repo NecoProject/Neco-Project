@@ -58,7 +58,6 @@ public class WaveGeneration : MonoBehaviour
 
 		void GenerateNewWave()
 		{
-				Debug.Log("Generating new wave: " + _currentWave);
 				if (_currentWave < Settings.NumberOfWaves)
 				{
 						GenerateWave(_currentWave, this.Settings.LevelDifficulty);

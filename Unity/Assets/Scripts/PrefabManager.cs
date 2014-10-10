@@ -10,7 +10,8 @@ public class PrefabManager : MonoBehaviour
 {
 		private static bool __created = false;
 
-		public List<PrefabDico> prefabs;
+		public List<PrefabDico> Skills;
+		public List<PrefabDico> Images;
 
 		void Awake()
 		{
@@ -29,18 +30,27 @@ public class PrefabManager : MonoBehaviour
 				}
 		}
 
-		public Sprite GetSprite(string name)
+		public Sprite GetSkillSprite(string name)
 		{
-				foreach (PrefabDico dico in prefabs)
+				foreach (PrefabDico dico in Skills)
 				{
 						if (dico.Name == name) return dico.Sprite;
 				}
 				return null;
 		}
 
-		public Transform GetTransform(string name)
+		public Sprite GetImageSprite(string name)
 		{
-				foreach (PrefabDico dico in prefabs)
+				foreach (PrefabDico dico in Images)
+				{
+						if (dico.Name == name) return dico.Sprite;
+				}
+				return null;
+		}
+
+		public Transform GetSkillTransform(string name)
+		{
+				foreach (PrefabDico dico in Skills)
 				{
 						if (dico.Name == name) return dico.Prefab;
 				}

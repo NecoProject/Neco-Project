@@ -22,6 +22,7 @@ public class SkillValidation : MonoBehaviour
 		public void ProceedToNextLevel()
 		{
 				// But first, build the data we want to propagate (and that we will persist and will use as a save game)
+				_savedData.SaveData.IsCurrentLevelBossLevel = false;
 				_savedData.SaveData.CurrentLevel = _savedData.SaveData.CurrentLevel + 1;
 
 				ValidateSkillChoice();
@@ -32,7 +33,12 @@ public class SkillValidation : MonoBehaviour
 
 		public void FightBoss()
 		{
+				_savedData.SaveData.IsCurrentLevelBossLevel = true;
 
+				ValidateSkillChoice();
+
+				// And finally reload the level, with a new difficulty setting
+				Application.LoadLevel("Stage1");
 		}
 		
 		void ValidateSkillChoice()
