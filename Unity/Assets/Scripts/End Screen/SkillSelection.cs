@@ -30,7 +30,7 @@ public class SkillSelection : MonoBehaviour
 		{
 				if (!SkillCustomization.HasCustomized)
 				{
-						DraggedIcon.transform.position = new Vector2(position.x + 30, position.y - 30);
+						DraggedIcon.transform.position = new Vector2(position.x + 1, position.y - 1);
 				}
 		}
 
