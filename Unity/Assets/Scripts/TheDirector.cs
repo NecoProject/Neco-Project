@@ -20,7 +20,14 @@ public class TheDirector : MonoBehaviour
 		{
 				Save = FindObjectOfType<Save>();
 				SaveLoad.Save(Save.SaveData);
-				GetComponentInChildren<WaveGeneration>().GenerateLevel(Save.SaveData.CurrentLevel);
+				if (Save.SaveData.IsCurrentLevelBossLevel)
+				{
+						GetComponentInChildren<WaveGeneration>().GenerateFinalBoss();
+				}
+				else
+				{
+						GetComponentInChildren<WaveGeneration>().GenerateLevel(Save.SaveData.CurrentLevel);
+				}
 		}
 
 		void OnLevelComplete()

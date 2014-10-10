@@ -7,6 +7,7 @@ public class WaveGeneration : MonoBehaviour
 {
 		public WaveGenerationSettings Settings;
 
+		public Transform BossModel;
 		public Transform enemyModel;
 		public Transform enemySpawnArena;
 		public Transform foreground;
@@ -83,9 +84,7 @@ public class WaveGeneration : MonoBehaviour
 
 		Transform GenerateEnemy(int difficulty)
 		{
-				float enemyX = Random.Range(_minX, _maxX);
-				float enemyY = Random.Range(_minY, _maxY);
-				Vector3 position = new Vector3(enemyX, enemyY);
+				Vector3 position = GeneratePosition();
 				Transform monster = (Transform)Instantiate(enemyModel, position, Quaternion.identity);
 				monster.parent = foreground;
 
@@ -99,9 +98,7 @@ public class WaveGeneration : MonoBehaviour
 
 		Transform GenerateBoss(int difficulty)
 		{
-				float enemyX = Random.Range(_minX, _maxX);
-				float enemyY = Random.Range(_minY, _maxY);
-				Vector3 position = new Vector3(enemyX, enemyY);
+				Vector3 position = GeneratePosition();
 
 				Transform monster = (Transform)Instantiate(enemyModel, position, Quaternion.identity);
 				monster.localScale = new Vector3(2 * monster.localScale.x, 2 * monster.localScale.y);
@@ -113,6 +110,14 @@ public class WaveGeneration : MonoBehaviour
 				stats.Damage = Settings.MonsterInitialDamage * Settings.BossFactor * (1 + difficulty * 0.2f);
 
 				return monster;
+		}
+
+		Vector3 GeneratePosition()
+		{
+				float enemyX = Random.Range(_minX, _maxX);
+				float enemyY = Random.Range(_minY, _maxY);
+				Vector3 position = new Vector3(enemyX, enemyY);
+				return position;
 		}
 
 		void OnMonsterKilled(HealthPointScript monster)
@@ -139,5 +144,16 @@ public class WaveGeneration : MonoBehaviour
 				EnemyWaveDestroyedText.SetActive(false);
 				Messenger<int, int>.Broadcast(EventNames.WAVE_COMPLETE, _currentWave, Settings.NumberOfWaves);
 				GenerateNewWave();
+		}
+
+		public void GenerateFinalBoss()
+		{
+				// Center vertically, and on the right
+				Vector3 position = new Vector3(_maxX, (_minY + _maxY) / 2);
+
+				Transform boss = (Transform)Instantiate(BossModel, position, Quaternion.identity);
+				boss.parent = foreground;
+
+				_waveMonsters.Add(boss);
 		}
 }

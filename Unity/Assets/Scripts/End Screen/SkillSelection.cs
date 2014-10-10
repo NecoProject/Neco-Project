@@ -16,23 +16,33 @@ public class SkillSelection : MonoBehaviour
 
 		private SkillBarItem _dragged;
 
-		public void Drag(Image draggedImage, SkillBarItem draggedSkill, Vector2 position)
+		public void BeginDrag(Image draggedImage, SkillBarItem draggedSkill)
 		{
 				if (!SkillCustomization.HasCustomized)
 				{
 						DraggedIcon.gameObject.SetActive(true);
 						DraggedIcon.sprite = draggedImage.sprite;
-						DraggedIcon.transform.position = new Vector2(position.x + 25, position.y - 25);
 						_dragged = draggedSkill;
 				}
+		}
+
+		public void Drag(Vector2 position)
+		{
+				if (!SkillCustomization.HasCustomized)
+				{
+						DraggedIcon.transform.position = new Vector2(position.x + 25, position.y - 25);
+				}
+		}
+
+		public void EndDrag()
+		{
+				DraggedIcon.gameObject.SetActive(false);
 		}
 
 		public void Drop(SkillBarItem dropped)
 		{
 				if (!SkillCustomization.HasCustomized)
 				{
-						DraggedIcon.gameObject.SetActive(false);
-
 						// Exchange place for the skills
 						SkillStats draggedSkill = _dragged.GetSkill();
 						SkillStats droppedSkill = dropped.GetSkill();
