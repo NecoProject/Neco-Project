@@ -15,5 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
   - enabled: 1
     path: Assets/Scenes/VictoryScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/Level Introduction.unity
   - enabled: 0
     path: Assets/Scenes/LevelClear.unity

@@ -12,8 +12,7 @@ public class DebugEndScreen : MonoBehaviour
 		void Awake()
 		{
 				// Create a Save object with the current skills of the player
-				GameObject go = new GameObject("Save");
-				Save save = go.AddComponent<Save>();
+				Save save = GameObject.Find("Save").GetComponent<Save>();
 				save.SaveData.CurrentLevel = 1;
 
 				List<SkillStats> activeSkills = new List<SkillStats>();

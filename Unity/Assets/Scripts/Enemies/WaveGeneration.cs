@@ -7,12 +7,12 @@ public class WaveGeneration : MonoBehaviour
 {
 		public WaveGenerationSettings Settings;
 
-		public Transform BossModel;
-		public Transform enemyModel;
 		public Transform enemySpawnArena;
 		public Transform foreground;
-		public Save Save;
 		public GameObject EnemyWaveDestroyedText;
+
+		public Transform Boss;
+		public List<Transform> Enemies;
 
 		private int _currentWave = 0;
 
@@ -20,6 +20,8 @@ public class WaveGeneration : MonoBehaviour
 		private float _minY, _maxY;
 
 		private List<Transform> _waveMonsters = new List<Transform>();
+		private PrefabManager _prefabManager;
+		private Save _save;
 
 		void Awake()
 		{
@@ -27,6 +29,12 @@ public class WaveGeneration : MonoBehaviour
 				_maxX = enemySpawnArena.renderer.bounds.max.x;
 				_minY = enemySpawnArena.renderer.bounds.min.y;
 				_maxY = enemySpawnArena.renderer.bounds.max.y;
+
+				_save = GameObject.Find("Save").GetComponent<Save>();
+
+				_prefabManager = GameObject.Find("PrefabManager").GetComponent<PrefabManager>();
+				Boss = _prefabManager.GetBossPrefab(_save.SaveData.Boss);
+				Enemies = _prefabManager.GetEnemiesPrefab(_save.SaveData.Enemies);
 		}
 
 		void OnEnable()
@@ -84,10 +92,17 @@ public class WaveGeneration : MonoBehaviour
 
 		Transform GenerateEnemy(int difficulty)
 		{
+				Debug.Log(Enemies.Count);
+				int index = Random.Range(0, Enemies.Count - 1);
+				Debug.Log(index);
+				Transform enemyModel = Enemies[index];
+
 				Vector3 position = GeneratePosition();
 				Transform monster = (Transform)Instantiate(enemyModel, position, Quaternion.identity);
 				monster.parent = foreground;
 
+				// TODO: don't have general settings for monsters, each enemy should have their own stats.
+				// Use that only to scale
 				EnemyStats stats = monster.GetComponent<EnemyStats>();
 				stats.MaxHp = Settings.MonsterInitialHp * difficulty;
 				stats.AttackSpeed = Settings.MonsterInitialAttackSpeed;
@@ -98,6 +113,8 @@ public class WaveGeneration : MonoBehaviour
 
 		Transform GenerateBoss(int difficulty)
 		{
+				Transform enemyModel = Enemies[Random.Range(0, Enemies.Count - 1)];
+
 				Vector3 position = GeneratePosition();
 
 				Transform monster = (Transform)Instantiate(enemyModel, position, Quaternion.identity);
@@ -155,7 +172,7 @@ public class WaveGeneration : MonoBehaviour
 				// Center vertically, and on the right
 				Vector3 position = new Vector3(_maxX, (_minY + _maxY) / 2);
 
-				Transform boss = (Transform)Instantiate(BossModel, position, Quaternion.identity);
+				Transform boss = (Transform)Instantiate(Boss, position, Quaternion.identity);
 				boss.parent = foreground;
 
 				_waveMonsters.Add(boss);

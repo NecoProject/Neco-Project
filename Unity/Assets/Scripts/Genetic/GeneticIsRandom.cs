@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class GeneticAlgorithm
+public class GeneticIsRandom : IGeneticAlgorithm
 {
 		// TODO: pass the script as a MonoBehaviour, so that it can be tweaked in the editor directly? 
 		// Not sure we can easily experiment, since it requires an "end level" screen anyway

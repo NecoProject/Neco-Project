@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 
 /// <summary>
-/// Singleton save object.
+/// Singleton to retrieve our prefabs and sprites from their name
 /// </summary>
 public class PrefabManager : MonoBehaviour
 {
@@ -12,6 +12,8 @@ public class PrefabManager : MonoBehaviour
 
 		public List<PrefabDico> Skills;
 		public List<PrefabDico> Images;
+		public List<PrefabDico> Boss;
+		public List<PrefabDico> Enemies;
 
 		void Awake()
 		{
@@ -55,5 +57,33 @@ public class PrefabManager : MonoBehaviour
 						if (dico.Name == name) return dico.Prefab;
 				}
 				return null;
+		}
+
+		public Transform GetBossPrefab(string name)
+		{
+				foreach (PrefabDico dico in Boss)
+				{
+						if (dico.Name == name) return dico.Prefab;
+				}
+				return null;
+		}
+
+		public Transform GetEnemyPrefab(string name)
+		{
+				foreach (PrefabDico dico in Enemies)
+				{
+						if (dico.Name == name) return dico.Prefab;
+				}
+				return null;
+		}
+
+		public List<Transform> GetEnemiesPrefab(List<string> names)
+		{
+				List<Transform> prefabs = new List<Transform>();
+				foreach (string name in names)
+				{
+						prefabs.Add(GetEnemyPrefab(name));
+				}
+				return prefabs;
 		}
 }

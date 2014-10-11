@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
   m_Layer: 0
-  m_Name: Boss
+  m_Name: Nephalem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddfc25f9d2798c49aa7007b1dff381b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHp: 15000
+  MaxHp: 1
   AttackSpeed: 5
   Damage: 100
   IsBoss: 1

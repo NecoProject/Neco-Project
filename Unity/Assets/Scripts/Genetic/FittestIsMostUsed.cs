@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class SurvivalOfTheFittest
+public class FittestIsMostUsed : ISurvivalOfTheFittest
 {
 
 		// Pick the two most used skills (arguable, cf IdeasToDiscuss.txt)
