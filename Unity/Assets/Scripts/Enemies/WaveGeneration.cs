@@ -124,7 +124,11 @@ public class WaveGeneration : MonoBehaviour
 		{
 				_waveMonsters.Remove(monster.transform);
 
-				if (_waveMonsters.Count == 0)
+				if (monster.gameObject.GetComponent<EnemyStats>().IsBoss)
+				{
+						Messenger.Broadcast(EventNames.LEVEL_COMPLETE);
+				}
+				else if (_waveMonsters.Count == 0)
 				{
 						StartCoroutine(EndOfWave());
 				}

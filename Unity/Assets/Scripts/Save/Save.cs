@@ -22,9 +22,7 @@ public class Save : MonoBehaviour
 						// this is the first instance - make it persist
 						DontDestroyOnLoad(this.gameObject);
 						__created = true;
-						SaveData = new SaveData();
-						SaveData.ActiveSkills = InitialSkills;
-						NumberOfUses = new Dictionary<SkillStats, int>();
+						Init();
 				}
 				else
 				{
@@ -38,5 +36,12 @@ public class Save : MonoBehaviour
 						Debug.LogWarning("CurrentLevel is 0, probably forgot to set it in the editor");
 						SaveData.CurrentLevel = 1;
 				}
+		}
+
+		public void Init()
+		{
+				SaveData = new SaveData();
+				SaveData.ActiveSkills = InitialSkills;
+				NumberOfUses = new Dictionary<SkillStats, int>();
 		}
 }
