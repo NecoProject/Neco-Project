@@ -28,7 +28,7 @@ public class SkillValidation : MonoBehaviour
 				ValidateSkillChoice();
 
 				// And finally reload the level, with a new difficulty setting
-				Application.LoadLevel("Stage1");
+				Application.LoadLevel(SceneNames.LEVEL);
 		}
 
 		public void FightBoss()
@@ -38,7 +38,7 @@ public class SkillValidation : MonoBehaviour
 				ValidateSkillChoice();
 
 				// And finally reload the level, with a new difficulty setting
-				Application.LoadLevel("Stage1");
+				Application.LoadLevel(SceneNames.LEVEL);
 		}
 		
 		void ValidateSkillChoice()

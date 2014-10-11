@@ -18,7 +18,6 @@ public class DraggableSkill : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
 		public void OnBeginDrag(PointerEventData eventData)
 		{
-				Debug.Log("Begin drag");
 				// TODO add condition to prevent dragging when there is no skill
 				Selection.BeginDrag(_skillImage, _skill);
 		}
@@ -37,7 +36,6 @@ public class DraggableSkill : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
 		public void OnDrop(PointerEventData eventData)
 		{
-				Debug.Log("Drop");
 				Selection.Drop(_skill);
 		}
 }

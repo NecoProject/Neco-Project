@@ -43,7 +43,7 @@ public class TheDirector : MonoBehaviour
 				// end boss, or whether we completed a standard wave
 				if (Save.SaveData.IsCurrentLevelBossLevel)
 				{
-						Application.LoadLevel("VictoryScreen");
+						Application.LoadLevel(SceneNames.VICTORY);
 				}
 				else
 				{
@@ -56,7 +56,7 @@ public class TheDirector : MonoBehaviour
 						}
 
 						// Load the end screen
-						Application.LoadLevel("LevelClear");
+						Application.LoadLevel(SceneNames.LEVEL_CLEAR);
 				}
 		}
 

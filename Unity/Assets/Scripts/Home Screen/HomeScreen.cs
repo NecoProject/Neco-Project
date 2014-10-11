@@ -14,7 +14,7 @@ public class HomeScreen : MonoBehaviour
 		}
 		public void StartNewGame()
 		{
-				Application.LoadLevel("Stage1");
+				Application.LoadLevel(SceneNames.LEVEL);
 		}
 
 		public void LoadLastGame()
@@ -26,7 +26,7 @@ public class HomeScreen : MonoBehaviour
 				save.SaveData = SaveLoad.Load();
 
 				// Load the level
-				Application.LoadLevel("Stage1");
+				Application.LoadLevel(SceneNames.LEVEL);
 		}
 
 }

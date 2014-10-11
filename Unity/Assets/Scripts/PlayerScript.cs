@@ -94,7 +94,7 @@ public class PlayerScript : MonoBehaviour
 				StartCoroutine(AnimateTakeDamage());
 				if (Stats.CurrentHealth <= 0)
 				{
-						Application.LoadLevel("GameOver");
+						Application.LoadLevel(SceneNames.GAME_OVER);
 				}
 		}
 

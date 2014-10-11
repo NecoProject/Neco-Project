@@ -18,6 +18,6 @@ public class Victory : MonoBehaviour
 				_save.Init();
 
 				// And finally reload the level, with a new difficulty setting
-				Application.LoadLevel("Stage1");
+				Application.LoadLevel(SceneNames.LEVEL);
 		}
 }
