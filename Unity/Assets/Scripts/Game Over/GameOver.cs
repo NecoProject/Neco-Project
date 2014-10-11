@@ -6,8 +6,25 @@ using System;
 
 public class GameOver : MonoBehaviour
 {
-		public void Retry()
+		private Save _save;
+
+		void Start()
 		{
+				_save = FindObjectOfType<Save>();
+		}
+
+		public void FightLevel()
+		{
+				_save.SaveData.IsCurrentLevelBossLevel = false;
+
+				// And finally reload the level, with a new difficulty setting
+				Application.LoadLevel("Stage1");
+		}
+
+		public void FightBoss()
+		{
+				_save.SaveData.IsCurrentLevelBossLevel = true;
+
 				// And finally reload the level, with a new difficulty setting
 				Application.LoadLevel("Stage1");
 		}
