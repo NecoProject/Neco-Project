@@ -20,7 +20,14 @@ public class TheDirector : MonoBehaviour
 		{
 				Save = FindObjectOfType<Save>();
 				SaveLoad.Save(Save.SaveData);
-				GetComponentInChildren<WaveGeneration>().GenerateLevel(Save.SaveData.CurrentLevel);
+				if (Save.SaveData.IsCurrentLevelBossLevel)
+				{
+						GetComponentInChildren<WaveGeneration>().GenerateFinalBoss();
+				}
+				else
+				{
+						GetComponentInChildren<WaveGeneration>().GenerateLevel(Save.SaveData.CurrentLevel);
+				}
 		}
 
 		void OnLevelComplete()
@@ -32,16 +39,25 @@ public class TheDirector : MonoBehaviour
 				// Serialize the data to retrieve it later on
 				SaveLoad.Save(Save.SaveData);
 
-				// Proceed to the elements needed for the "end of level" screen
-				SkillBarItem[] skills = FindObjectsOfType<SkillBarItem>();
-				Save.NumberOfUses.Clear();
-				foreach (SkillBarItem skill in skills)
+				// Two different behaviours, depending on whether we've just beaten the 
+				// end boss, or whether we completed a standard wave
+				if (Save.SaveData.IsCurrentLevelBossLevel)
 				{
-						Save.NumberOfUses.Add(skill.GetSkill(), skill.NumberOfUses);
+						Application.LoadLevel(SceneNames.VICTORY);
 				}
+				else
+				{
+						// Proceed to the elements needed for the "end of level" screen
+						SkillBarItem[] skills = FindObjectsOfType<SkillBarItem>();
+						Save.NumberOfUses.Clear();
+						foreach (SkillBarItem skill in skills)
+						{
+								Save.NumberOfUses.Add(skill.GetSkill(), skill.NumberOfUses);
+						}
 
-				// Load the end screen
-				Application.LoadLevel("LevelClear");
+						// Load the end screen
+						Application.LoadLevel(SceneNames.LEVEL_CLEAR);
+				}
 		}
 
 

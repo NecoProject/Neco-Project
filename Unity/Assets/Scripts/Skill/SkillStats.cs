@@ -26,4 +26,9 @@ public class SkillStats
 		// Will have to populate that from a stats sheet sooner or later
 		public float _coolDown;
 		public float _radius;
+
+		public override string ToString()
+		{
+				return SkillName + " " + SpriteName;
+		}
 }

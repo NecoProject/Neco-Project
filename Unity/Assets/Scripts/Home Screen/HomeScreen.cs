@@ -14,7 +14,7 @@ public class HomeScreen : MonoBehaviour
 		}
 		public void StartNewGame()
 		{
-				Application.LoadLevel("Stage1");
+				Application.LoadLevel(SceneNames.LEVEL_INIT);
 		}
 
 		public void LoadLastGame()
@@ -22,11 +22,11 @@ public class HomeScreen : MonoBehaviour
 				// Retrieved saved data
 
 				// Already instanciate a Save object, and feed it the data
-				Save save = new GameObject("Save").AddComponent<Save>();
+				Save save = GameObject.Find("Save").GetComponent<Save>();
 				save.SaveData = SaveLoad.Load();
 
 				// Load the level
-				Application.LoadLevel("Stage1");
+				Application.LoadLevel(SceneNames.LEVEL);
 		}
 
 }

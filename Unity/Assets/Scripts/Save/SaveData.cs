@@ -7,6 +7,12 @@ using System;
 public class SaveData
 {
 		public int CurrentLevel;
+		public bool IsCurrentLevelBossLevel;
+
+		public Algorithm Algorithm;
+		public string Boss;
+		public List<string> Enemies;
+		public List<string> SkillAttributes;
 
 		public List<SkillStats> ActiveSkills
 		{

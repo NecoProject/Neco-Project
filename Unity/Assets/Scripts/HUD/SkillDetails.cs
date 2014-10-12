@@ -31,7 +31,7 @@ public class SkillDetails : MonoBehaviour
 						_currentSkill = stats;
 
 						_skillName.text = skill.SkillName;
-						_skillImage.sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(skill.SpriteName);
+						_skillImage.sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSkillSprite(skill.SpriteName);
 						_skillDescription.text = BuildDescription(skill);
 				}
 				else
@@ -45,8 +45,7 @@ public class SkillDetails : MonoBehaviour
 		String BuildDescription(SkillStats skill)
 		{
 				String result = "Cost: " + skill.Cost.ToString("f1") + "\n" +
-						"Min Damage: " + skill.MinDamage.ToString("f1") + "\n" +
-						"Max Damage: " + skill.MaxDamage.ToString("f1") + "\n" +
+						"Damage: " + skill.MinDamage.ToString("f1") + "-" + skill.MaxDamage.ToString("f1") + "\n" +
 						"Cooldown: " + skill.CoolDown.ToString("f1") + "\n" +
 						"Radius: " + skill.Radius.ToString("f1")
 						;

@@ -9,11 +9,11 @@ public class SkillBarItem : MonoBehaviour
 		public int NumberOfUses;
 
 		private SkillStats _skill;
-		public Image _coolDownImage;
+		private Image _coolDownImage;
 
-		public float _timeOfLastUse;
-		public float _timeOfNextPossibleUse;
-		public bool _isCoolingDown;
+		//private float _timeOfLastUse;
+		private float _timeOfNextPossibleUse;
+		private bool _isCoolingDown;
 
 		void Start()
 		{
@@ -29,7 +29,8 @@ public class SkillBarItem : MonoBehaviour
 				this._skill = skill;
 				if (skill != null)
 				{
-						GetComponent<Image>().sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(skill.SpriteName);
+						Image image = GetComponent<Image>();
+						image.sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSkillSprite(skill.SpriteName);
 				}
 		}
 
@@ -56,18 +57,18 @@ public class SkillBarItem : MonoBehaviour
 
 						// Show the animation, that will then interact with the enemy to actually damage them
 						//Debug.Log("Firing at space target: " + spaceTarget);
-						Sprite sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSprite(_skill.SpriteName);
+						Sprite sprite = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().GetSkillSprite(_skill.SpriteName);
 						Transform spellObject = (Transform)Instantiate(DefaultSkill, spaceTarget, Quaternion.identity);
 						spellObject.localScale = new Vector3(_skill.Radius, _skill.Radius);
 						spellObject.GetComponent<SpriteRenderer>().sprite = sprite;
 						spellObject.GetComponent<SpellObject>().Skill = _skill;
-
+						 
 						// Run the cooldown
 						// TODO: dirty! Use a State Machine instead, as shown in http://unitygems.com/fsm1/
 						_isCoolingDown = true;
 						_timeOfNextPossibleUse = Time.time + _skill.CoolDown;
 
-						_timeOfLastUse = Time.time;
+						//_timeOfLastUse = Time.time;
 
 				}
 		}
