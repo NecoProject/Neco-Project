@@ -21,6 +21,15 @@ public class GameOver : MonoBehaviour
 				Application.LoadLevel(SceneNames.LEVEL);
 		}
 
+		public void FightPreviousLevel()
+		{
+				_save.SaveData.CurrentLevel = _save.SaveData.CurrentLevel - 1;
+				_save.SaveData.IsCurrentLevelBossLevel = false;
+
+				// And finally reload the level, with a new difficulty setting
+				Application.LoadLevel(SceneNames.LEVEL);
+		}
+
 		public void FightBoss()
 		{
 				_save.SaveData.IsCurrentLevelBossLevel = true;

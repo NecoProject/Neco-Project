@@ -45,8 +45,11 @@ MonoBehaviour:
     Algorithm:
       FittestAlgo: 0
       GeneticAlgo: 0
-    Boss: 
-    Enemies: []
+    Boss: nephalem
+    Enemies:
+    - cyclop
+    - nyancat
+    - succubus
     SkillAttributes: []
   InitialSkills:
   - MinDamage: 5

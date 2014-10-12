@@ -34,6 +34,7 @@ public class SkillValidation : MonoBehaviour
 		public void FightBoss()
 		{
 				_savedData.SaveData.IsCurrentLevelBossLevel = true;
+				_savedData.SaveData.CurrentLevel = _savedData.SaveData.CurrentLevel + 1;
 
 				ValidateSkillChoice();
 

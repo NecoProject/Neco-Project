@@ -7,16 +7,16 @@ using System.Collections;
 /// For now, enemy behaviour is really simple: either it is waiting to attack (because it 
 /// has attacked recently) or it is attacking
 /// </summary>
-public class EnemyBehaviour : MonoBehaviour
+public abstract class EnemyBehaviour : MonoBehaviour
 {
 		public Color32 AttackFlashColor; 
 
-		private Transform _target;
+		protected Transform _target;
 
-		private float _attackSpeed;
-		private float _damage;
-		private float _timeOfLastAttack;
-		private float _timeOfNextAttack;
+		protected float _attackSpeed;
+		protected float _damage;
+		protected float _timeOfLastAttack;
+		protected float _timeOfNextAttack;
 
 		void Start()
 		{
@@ -33,8 +33,8 @@ public class EnemyBehaviour : MonoBehaviour
 				// (not that intuitive, but used in many games)
 				if (Time.time < _timeOfNextAttack) return;
 
-				// Perform the attack
-				_target.SendMessage("TakeDamage", _damage);
+				PerformAttack();
+
 				_timeOfLastAttack = Time.time;
 				// Avoid being too uniform. Possibly could be based on distance to player instead
 				_timeOfNextAttack = _timeOfLastAttack + _attackSpeed + Random.Range(-1f, 1f);
@@ -43,7 +43,13 @@ public class EnemyBehaviour : MonoBehaviour
 				StartCoroutine(AnimateAttack()); 
 		}
 
-		IEnumerator AnimateAttack()
+		protected void PerformAttack()
+		{
+				// Perform the attack
+				_target.SendMessage("TakeDamage", _damage);
+		}
+
+		protected IEnumerator AnimateAttack()
 		{
 				var previousColor = GetComponent<SpriteRenderer>().material.GetColor("_FlashColor");
 

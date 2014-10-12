@@ -40,7 +40,7 @@ public class Save : MonoBehaviour
 
 		public void Init()
 		{
-				SaveData = new SaveData();
+				//SaveData = new SaveData();
 				SaveData.ActiveSkills = InitialSkills;
 				NumberOfUses = new Dictionary<SkillStats, int>();
 		}
