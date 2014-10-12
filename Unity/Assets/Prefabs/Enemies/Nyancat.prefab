@@ -240,7 +240,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8270c1eac302e348803fdc94c8d0185, type: 3}
+  m_Script: {fileID: 11500000, guid: 04c15e9b6f58a7645808497d666315be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPoint: {fileID: 400006}

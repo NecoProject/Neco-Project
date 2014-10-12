@@ -5,25 +5,27 @@ public class NephalemBehaviour : EnemyBehaviour
 {
 		// The Nephalem has two different attacks: a standard attack, and 
 		// an attack that drains life
+		public StandardAttack StandardAttack;
+		public NephalemNova NephalemNova;
 
+		private EnemySkill _currentSkill;
 
-		protected void PerformAttack()
+		protected override void PerformAttack()
 		{
-				// Perform the attack
-				_target.SendMessage("TakeDamage", _damage);
+				if (NephalemNova.CanUse())
+				{
+						_currentSkill = NephalemNova;
+				}
+				else
+				{
+						_currentSkill = StandardAttack;
+				}
+
+				_currentSkill.Attack(_target, _damage);
 		}
 
-		protected IEnumerator AnimateAttack()
+		protected override IEnumerator AnimateAttack()
 		{
-				var previousColor = GetComponent<SpriteRenderer>().material.GetColor("_FlashColor");
-
-				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", AttackFlashColor);
-				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 1);
-
-				yield return new WaitForSeconds(0.5f);
-
-				// Set everything back to normal
-				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 0);
-				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", previousColor);
+				return _currentSkill.Animate(_target);
 		}
 }

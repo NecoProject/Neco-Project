@@ -11,7 +11,7 @@ public class SkillBarItem : MonoBehaviour
 		private SkillStats _skill;
 		private Image _coolDownImage;
 
-		private float _timeOfLastUse;
+		//private float _timeOfLastUse;
 		private float _timeOfNextPossibleUse;
 		private bool _isCoolingDown;
 
@@ -68,7 +68,7 @@ public class SkillBarItem : MonoBehaviour
 						_isCoolingDown = true;
 						_timeOfNextPossibleUse = Time.time + _skill.CoolDown;
 
-						_timeOfLastUse = Time.time;
+						//_timeOfLastUse = Time.time;
 
 				}
 		}

@@ -22,7 +22,7 @@ public class HealthPointScript : MonoBehaviour
 		/// Modifies the currentHP value by the input value. Returns true if the resulting currentHP is > 0, false otherwise.
 		/// value should be negative to decrease currentHP, positive otherwise. A value of 0 does nothing.
 		/// </summary>
-		bool TakeDamage(float value)
+		public bool TakeDamage(float value)
 		{
 				// TODO: change this to use the new UI components
 				CurrentHp = Mathf.Min(MaxHp, CurrentHp - value);

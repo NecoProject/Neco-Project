@@ -14,6 +14,8 @@ GameObject:
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11400010}
+  - 114: {fileID: 11400008}
   m_Layer: 0
   m_Name: Nephalem
   m_TagString: Untagged
@@ -76,7 +78,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.90202045, y: 2.38018489, z: 0}
+  m_LocalPosition: {x: 9.51329994, y: -.0976959988, z: 0}
   m_LocalScale: {x: .200000003, y: .200000003, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -217,6 +219,8 @@ MonoBehaviour:
   AttackFlashColor:
     serializedVersion: 2
     rgba: 16777215
+  StandardAttack: {fileID: 11400010}
+  NephalemNova: {fileID: 11400010}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,7 +244,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8270c1eac302e348803fdc94c8d0185, type: 3}
+  m_Script: {fileID: 11500000, guid: 04c15e9b6f58a7645808497d666315be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPoint: {fileID: 400006}
@@ -249,6 +253,37 @@ MonoBehaviour:
   FinalSize: 50
   Duration: .5
   Text: {fileID: 10200000, guid: 62e9722143b426742ac325806451c05e, type: 2}
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1506840b8e0cf494e8f1d7f04faf576a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackFlashColor:
+    serializedVersion: 2
+    rgba: 16777215
+--- !u!114 &11400010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289b0a8a8443f194298beed5ec608c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackFlashColor:
+    serializedVersion: 2
+    rgba: 0
+  Cooldown: 10
+  DamageModifier: .100000001
+  Duration: 10
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

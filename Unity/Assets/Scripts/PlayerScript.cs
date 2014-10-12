@@ -14,6 +14,8 @@ public class PlayerScript : MonoBehaviour
 		public PlayerStats Stats;
 		public List<SkillStats> activeSkills;
 		public float timeBetweenAttacks;
+		public DotCondition dotCondition;
+		public FloatingDamage FloatingDamage;
 
 		private Button[] _buttons;
 		private Save _savedData;
@@ -88,14 +90,25 @@ public class PlayerScript : MonoBehaviour
 				Stats.CurrentMana = Mathf.Min(Stats.MaxMana, Stats.CurrentMana + Stats.ManaRegenerationSpeed * Time.deltaTime);
 		}
 
-		public void TakeDamage(float amount)
+		public bool TakeDamage(float amount)
 		{
 				Stats.CurrentHealth -= amount;
 				StartCoroutine(AnimateTakeDamage());
+				StartCoroutine(FloatingDamage.Spawn(amount));
 				if (Stats.CurrentHealth <= 0)
 				{
 						Application.LoadLevel(SceneNames.GAME_OVER);
 				}
+				return true;
+		}
+
+		public void AddDamageOverTime(DamageOverTime dot)
+		{
+				// TODO:
+				// - Apply damage regularly
+				// - Clean condition when dot expires
+				// - Add visual indicator of dot (player color + status item?)
+				dotCondition.Apply(dot);
 		}
 
 		IEnumerator AnimateTakeDamage()

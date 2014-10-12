@@ -43,13 +43,13 @@ public abstract class EnemyBehaviour : MonoBehaviour
 				StartCoroutine(AnimateAttack()); 
 		}
 
-		protected void PerformAttack()
+		protected virtual void PerformAttack()
 		{
 				// Perform the attack
 				_target.SendMessage("TakeDamage", _damage);
 		}
 
-		protected IEnumerator AnimateAttack()
+		protected virtual IEnumerator AnimateAttack()
 		{
 				var previousColor = GetComponent<SpriteRenderer>().material.GetColor("_FlashColor");
 
