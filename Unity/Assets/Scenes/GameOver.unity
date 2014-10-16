@@ -728,6 +728,50 @@ RectTransform:
   m_AnchoredPosition: {x: -13.4309998, y: -105.040001}
   m_SizeDelta: {x: 130, y: 30}
   m_Pivot: {x: .5, y: .5}
+--- !u!1001 &768093040
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 227.190903
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 226.627045
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 32.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+  m_RootGameObject: {fileID: 1851677506}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &843342158
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +875,92 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1 &1215553528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
+  m_PrefabInternal: {fileID: 1614026193}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1215553530}
+  - 114: {fileID: 1215553529}
+  m_Layer: 0
+  m_Name: PrefabManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1215553529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: bf17ba4c21b4e2745a6426ddab254198,
+    type: 2}
+  m_PrefabInternal: {fileID: 1614026193}
+  m_GameObject: {fileID: 1215553528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d630bfa7002644418644b4639aabb6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Skills:
+  - Name: blue
+    Sprite: {fileID: 21300000, guid: bbc4b091b0100cb418035a7f20298b96, type: 3}
+    Prefab: {fileID: 400000, guid: e2b6c4b49ccd7074bb15f32296a1d58e, type: 2}
+  - Name: green
+    Sprite: {fileID: 21300000, guid: c8fda9f217175ff49b83146cb4ffce14, type: 3}
+    Prefab: {fileID: 400000, guid: b9e1f1f757ca0954bbd8e166b38d581c, type: 2}
+  - Name: red
+    Sprite: {fileID: 21300000, guid: d528d63440bb36447993ec0796abaed0, type: 3}
+    Prefab: {fileID: 400000, guid: 4e26fb2fd25737649bbe869da9b43c01, type: 2}
+  - Name: white
+    Sprite: {fileID: 21300000, guid: 066dcee50196e7d47876eb95f6648b93, type: 3}
+    Prefab: {fileID: 400000, guid: aa0739ad449042f4da464938b4af0b37, type: 2}
+  Images:
+  - Name: level-background
+    Sprite: {fileID: 21300000, guid: 59620782105786048b4e0a05ae1e4371, type: 3}
+    Prefab: {fileID: 0}
+  - Name: boss-background
+    Sprite: {fileID: 21300000, guid: b238d3720c838f548acd1ded938ea890, type: 3}
+    Prefab: {fileID: 0}
+  - Name: level-arena
+    Sprite: {fileID: 21300000, guid: 30dbe9059864dc84d9b7253b1a60e8f0, type: 3}
+    Prefab: {fileID: 0}
+  - Name: boss-arena
+    Sprite: {fileID: 0}
+    Prefab: {fileID: 0}
+  Boss:
+  - Name: Nephalem
+    Sprite: {fileID: 21300000, guid: 184a2b6c00b72a5438b3020f7bd7bc62, type: 3}
+    Prefab: {fileID: 400000, guid: e835c74601f81c74fae80739e29ccc56, type: 2}
+  Enemies:
+  - Name: cyclop
+    Sprite: {fileID: 21300000, guid: c9214e4b2f0283e49aec274bfdbfb41a, type: 3}
+    Prefab: {fileID: 400000, guid: c5b290737a99eca4081f459a68508be1, type: 2}
+  - Name: nyancat
+    Sprite: {fileID: 21300000, guid: ff366a3796077084fba31cbb844cd22c, type: 3}
+    Prefab: {fileID: 400000, guid: bbe8951257cc3e646b3c617aceed5913, type: 2}
+  - Name: skeleton
+    Sprite: {fileID: 21300000, guid: 85a20f3882c2d914696d5ac1b33069f3, type: 3}
+    Prefab: {fileID: 400000, guid: 30916174f9202884ba40d582cdc8387f, type: 2}
+  - Name: snake
+    Sprite: {fileID: 21300000, guid: c84130bac57da0149a9e0336d4ab203c, type: 3}
+    Prefab: {fileID: 400000, guid: 27884c270b0b9c74592352559c3e737c, type: 2}
+  - Name: succubus
+    Sprite: {fileID: 21300000, guid: 69603afd7c9ee1847a8049ffc44151ef, type: 3}
+    Prefab: {fileID: 400000, guid: 23dd303de9df5194c9cc9d1025828be2, type: 2}
+--- !u!4 &1215553530
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
+  m_PrefabInternal: {fileID: 1614026193}
+  m_GameObject: {fileID: 1215553528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -50}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &1500363340
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,6 +1028,50 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1500363340}
   m_HideIfInvisible: 0
+--- !u!1001 &1614026193
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
+  m_RootGameObject: {fileID: 1215553528}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1634394143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,34 +1230,18 @@ MonoBehaviour:
     - succubus
     SkillAttributes: []
   InitialSkills:
-  - MinDamage: 5
-    MaxDamage: 10
-    Cost: 0
-    SpriteName: blue
+  - SpriteName: blue
     SkillName: Blue
-    _coolDown: .400000006
-    _radius: .5
-  - MinDamage: 0
-    MaxDamage: 0
-    Cost: 0
-    SpriteName: 
+    Level: 0
+  - SpriteName: 
     SkillName: 
-    _coolDown: 0
-    _radius: 0
-  - MinDamage: 0
-    MaxDamage: 0
-    Cost: 0
-    SpriteName: 
+    Level: 0
+  - SpriteName: 
     SkillName: 
-    _coolDown: 0
-    _radius: 0
-  - MinDamage: 0
-    MaxDamage: 0
-    Cost: 0
-    SpriteName: 
+    Level: 0
+  - SpriteName: 
     SkillName: 
-    _coolDown: 0
-    _radius: 0
+    Level: 0
 --- !u!4 &1640017288
 Transform:
   m_ObjectHideFlags: 0
@@ -1096,6 +1254,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!1 &1851677506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+  m_PrefabInternal: {fileID: 768093040}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1851677507}
+  - 114: {fileID: 1851677508}
+  m_Layer: 0
+  m_Name: ResourcesLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1851677507
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+  m_PrefabInternal: {fileID: 768093040}
+  m_GameObject: {fileID: 1851677506}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 227.190903, y: 226.627045, z: 32.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+--- !u!114 &1851677508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: cf6db720fb4102d4cb9e32c7e3840948,
+    type: 2}
+  m_PrefabInternal: {fileID: 768093040}
+  m_GameObject: {fileID: 1851677506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c45779c965e44940aab02ab745ab22d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2024400495
 GameObject:
   m_ObjectHideFlags: 0

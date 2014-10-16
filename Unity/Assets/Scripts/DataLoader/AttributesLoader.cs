@@ -1,0 +1,64 @@
+﻿using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+public class AttributesLoader : AbstractLoader
+{
+
+		private const string TYPE = "type";
+		private const string IS_MANDATORY = "is_mandatory";
+		private const string IS_BONUS = "is_bonus";
+		private const string MIN_VALUE = "min_value";
+		private const string MAX_VALUE = "max_value";
+		private const string MIN_SKILL_LEVEL = "min_skill_level";
+		private const string GRAPHICAL_EFFECT = "graphical_effect";
+
+		public List<SkillAttribute> Attributes;
+
+		private List<SkillAttribute.Type> _mandatoryAttributes;
+
+		public void LoadAttributes()
+		{
+				Attributes = new List<SkillAttribute>();
+				Load();
+		}
+
+		public List<SkillAttribute.Type> MandatoryAttributes()
+		{
+				if (_mandatoryAttributes == null)
+				{
+						_mandatoryAttributes = Attributes.Where(x => x.IsMandatory).Select(x => x.AttributeType).ToList();
+				}
+				return _mandatoryAttributes;
+		}
+
+		protected override void LoadItem(string[] data)
+		{
+				SkillAttribute attribute = new SkillAttribute();
+
+				attribute.AttributeType = (SkillAttribute.Type)Enum.Parse(typeof(SkillAttribute.Type), getValue(data, TYPE));
+				attribute.GraphicalEffect = getValue(data, GRAPHICAL_EFFECT);
+				attribute.IsBonus = bool.Parse(getValue(data, IS_BONUS));
+				attribute.IsMandatory = bool.Parse(getValue(data, IS_MANDATORY));
+
+				float ignoreMe;
+				if (float.TryParse(getValue(data, MIN_VALUE), out ignoreMe))
+				{
+						attribute.MinValue = float.Parse(getValue(data, MIN_VALUE));
+				}
+				if (float.TryParse(getValue(data, MAX_VALUE), out ignoreMe))
+				{
+						attribute.MaxValue = float.Parse(getValue(data, MAX_VALUE));
+				}
+				attribute.MinimumSkillLevel = float.Parse(getValue(data, MIN_SKILL_LEVEL));
+
+				Attributes.Add(attribute);
+		}
+
+		protected override string File()
+		{
+				return "skill_attributes";
+		}
+}

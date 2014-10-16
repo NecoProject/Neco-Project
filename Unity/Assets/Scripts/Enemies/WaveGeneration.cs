@@ -143,6 +143,7 @@ public class WaveGeneration : MonoBehaviour
 
 				if (monster.gameObject.GetComponent<EnemyStats>().IsBoss)
 				{
+						//_save.UnlockedSkill = monster.gameObject.GetComponent<EnemyBehaviour>().KillReward();
 						Messenger.Broadcast(EventNames.LEVEL_COMPLETE);
 				}
 				else if (_waveMonsters.Count == 0)

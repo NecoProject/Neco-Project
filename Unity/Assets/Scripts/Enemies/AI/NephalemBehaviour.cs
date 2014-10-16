@@ -27,5 +27,5 @@ public class NephalemBehaviour : EnemyBehaviour
 		protected override IEnumerator AnimateAttack()
 		{
 				return _currentSkill.Animate(_target);
-		}
+		}
 }

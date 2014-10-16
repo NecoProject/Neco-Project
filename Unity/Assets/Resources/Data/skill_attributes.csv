@@ -1,0 +1,5 @@
+type;is_mandatory;is_bonus;min_value;max_value;min_skill_level;graphical_effect;unused
+COOLDOWN;true;false;0.4;;0;;
+RADIUS;false;true;0;;0;;
+COST;false;false;;;0;;
+DAMAGE;false;true;;;0;;

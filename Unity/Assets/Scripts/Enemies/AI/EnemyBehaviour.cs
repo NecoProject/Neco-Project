@@ -62,5 +62,4 @@ public abstract class EnemyBehaviour : MonoBehaviour
 				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 0);
 				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", previousColor);
 		}
-
 }

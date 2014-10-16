@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class GeneticIsRandom : IGeneticAlgorithm
 {
@@ -15,7 +16,7 @@ public class GeneticIsRandom : IGeneticAlgorithm
 		public List<SkillStats> Evolve(SkillStats father, SkillStats mother, int difficultLevel)
 		{
 				List<SkillStats> children = Breed(father, mother);
-				Mutate(children, difficultLevel);
+				Mutate(children);
 				return children;
 		}
 
@@ -40,17 +41,66 @@ public class GeneticIsRandom : IGeneticAlgorithm
 		{
 				SkillStats child = new SkillStats();
 
-				float minDmg = GenerateValueFromParentsAndLuck(father.MinDamage, mother.MinDamage);
-				float maxDmg = GenerateValueFromParentsAndLuck(father.MaxDamage, mother.MaxDamage);
-				child.MinDamage = Mathf.Min(minDmg, maxDmg);
-				child.MaxDamage = Mathf.Max(minDmg, maxDmg);
-				child.Cost = GenerateValueFromParentsAndLuck(father.Cost, mother.Cost);
-				child.CoolDown = GenerateValueFromParentsAndLuck(father.CoolDown, mother.CoolDown);
-				child.Radius = GenerateValueFromParentsAndLuck(father.Radius, mother.Radius);
+				child.Level = (father.Level + mother.Level) / 2 + 1;
+
+				int numberOfAttributes = 3 + (int)Math.Floor(child.Level / 5);
+
+				// Mandatory elements
 				child.SpriteName = PickOne(father.SpriteName, mother.SpriteName);
 				child.SkillName = "New Skill";
 
+				List<SkillAttribute> childAttributes = new List<SkillAttribute>();
+
+				List<SkillAttribute> mandatoryAttributes = GenerateMandatoryAttributes(father, mother);
+				childAttributes.AddRange(mandatoryAttributes);
+
+				List<SkillAttribute> otherAttributes = GenerateRandomAttributes(father, mother, numberOfAttributes);
+				childAttributes.AddRange(otherAttributes);
+
+				child.Attributes = childAttributes;
+
 				return child;
+		}
+
+		private List<SkillAttribute> GenerateMandatoryAttributes(SkillStats father, SkillStats mother)
+		{
+				List<SkillAttribute> mandatoryAttributes = new List<SkillAttribute>();
+				// That's easy, since we know the full list of mandatory attributes
+				foreach (SkillAttribute.Type mandatoryName in ResourceLoader.Attributes.MandatoryAttributes())
+				{
+						SkillAttribute fatherAtt = father.GetAttribute(mandatoryName);
+						SkillAttribute motherAtt = mother.GetAttribute(mandatoryName);
+						SkillAttribute childAtt = BreedAttribute(fatherAtt, motherAtt);
+						mandatoryAttributes.Add(childAtt);
+				}
+				return mandatoryAttributes;
+		}
+
+		private List<SkillAttribute> GenerateRandomAttributes(SkillStats father, SkillStats mother, int numberOfAttributes)
+		{
+				List<SkillAttribute> attributes = new List<SkillAttribute>();
+				List<SkillAttribute.Type> names = PickNames(father, mother, numberOfAttributes);
+				Debug.Log(String.Join(", ", names.Select(x => x.ToString()).ToArray()));
+
+				// That's easy, since we know the full list of mandatory attributes
+				foreach (SkillAttribute.Type name in names)
+				{
+						SkillAttribute fatherAtt = father.GetAttribute(name);
+						SkillAttribute motherAtt = mother.GetAttribute(name);
+						SkillAttribute childAtt = BreedAttribute(fatherAtt, motherAtt);
+						attributes.Add(childAtt);
+				}
+				return attributes;
+		}
+
+		private SkillAttribute BreedAttribute(SkillAttribute fatherAtt, SkillAttribute motherAtt)
+		{
+				if (fatherAtt == null) return motherAtt.Clone();
+				if (motherAtt == null) return fatherAtt.Clone();
+
+				SkillAttribute attribute = motherAtt.Clone();
+				attribute.Value = GenerateValueFromParentsAndLuck(fatherAtt.Value, motherAtt.Value);
+				return attribute;
 		}
 
 		private string PickOne(string fatherValue, string motherValue)
@@ -68,32 +118,60 @@ public class GeneticIsRandom : IGeneticAlgorithm
 				return UnityEngine.Random.Range(Mathf.Min(fatherValue, motherValue), Mathf.Max(fatherValue, motherValue));
 		}
 
+		private List<SkillAttribute.Type> PickNames(SkillStats father, SkillStats mother, int numberOfAttributes)
+		{
+				List<SkillAttribute.Type> selectedNames = new List<SkillAttribute.Type>();
+				List<SkillAttribute.Type> possibleNames = new List<SkillAttribute.Type>();
+				possibleNames.AddRange(father.GetAttributeNames());
+				possibleNames.AddRange(mother.GetAttributeNames());
+				possibleNames.Shuffle();
+
+				for (int i = 0; i < numberOfAttributes; i++)
+				{
+						foreach (SkillAttribute.Type type in possibleNames)
+						{
+								if (!selectedNames.Contains(type))
+								{
+										selectedNames.Add(type);
+										break;
+								}
+						}
+				}
+
+				return selectedNames;
+		}
+
 		/// Again, very basic implementation
-		private void Mutate(List<SkillStats> children, int difficultyLevel)
+		private void Mutate(List<SkillStats> children)
 		{
 				foreach (SkillStats child in children)
 				{
-						Mutate(child, difficultyLevel);
+						Mutate(child, child.Level);
 				}
 		}
 
 		/// Mutate the provided child's statistics taking into account the difficulty. The higher the difficulty, the higher the mutation effects. 
 		/// TODO: Do we want to center the mutation around 0? Statistically we may result in pure better or pure worse stats afterwards.
 		/// TODO: have a kind of "balance" to avoid having right away skills that are too powerful?
-		private void Mutate(SkillStats child, int difficultyLevel)
+		private void Mutate(SkillStats child, float childLevel)
 		{
-				float minDmg = Mutate(child.MinDamage, difficultyLevel);
-				float maxDmg = Mutate(child.MaxDamage, difficultyLevel);
-				child.MinDamage = Mathf.Min(minDmg, maxDmg);
-				child.MaxDamage = Mathf.Max(minDmg, maxDmg);
-				child.Cost = Mutate(child.Cost, difficultyLevel);
-				child.CoolDown = Math.Max(MINIMUM_COOLDOWN, Mutate(child.CoolDown, difficultyLevel));
-				child.Radius = Mutate(child.Radius, difficultyLevel);
+				foreach (SkillAttribute attribute in child.Attributes)
+				{
+						Mutate(attribute, childLevel);
+				}
+
+				// TODO: Possibility to pop new attributes based on the unlocked attributes 
+				// and the attributes available for the level
+		}
+
+		private void Mutate(SkillAttribute attribute, float childLevel)
+		{
+				attribute.Value = Mutate(attribute.Value, childLevel);
 		}
 
 		// TODO: will need something more evolved than that in the future
-		private float Mutate(float original, int difficultyLevel)
+		private float Mutate(float original, float childLevel)
 		{
-				return original + UnityEngine.Random.Range(-BASE_BONUS_MAX, BASE_BONUS_MAX) * difficultyLevel;
+				return original + UnityEngine.Random.Range(-BASE_BONUS_MAX, BASE_BONUS_MAX) * childLevel;
 		}
 }
