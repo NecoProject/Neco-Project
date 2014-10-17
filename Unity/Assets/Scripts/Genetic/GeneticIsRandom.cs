@@ -67,7 +67,7 @@ public class GeneticIsRandom : IGeneticAlgorithm
 		{
 				List<SkillAttribute> mandatoryAttributes = new List<SkillAttribute>();
 				// That's easy, since we know the full list of mandatory attributes
-				foreach (SkillAttribute.Type mandatoryName in ResourceLoader.Attributes.MandatoryAttributes())
+				foreach (SkillAttribute.Type mandatoryName in ResourceLoader.GetInstance().Attributes.MandatoryAttributes())
 				{
 						SkillAttribute fatherAtt = father.GetAttribute(mandatoryName);
 						SkillAttribute motherAtt = mother.GetAttribute(mandatoryName);

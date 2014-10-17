@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+[Serializable]
 public class AttributesLoader : AbstractLoader
 {
 
@@ -14,6 +15,7 @@ public class AttributesLoader : AbstractLoader
 		private const string MAX_VALUE = "max_value";
 		private const string MIN_SKILL_LEVEL = "min_skill_level";
 		private const string GRAPHICAL_EFFECT = "graphical_effect";
+		private const string ICON = "icon";
 
 		public List<SkillAttribute> Attributes;
 
@@ -23,6 +25,10 @@ public class AttributesLoader : AbstractLoader
 		{
 				Attributes = new List<SkillAttribute>();
 				Load();
+		}
+
+		public SkillAttribute GetAttribute(SkillAttribute.Type type) {
+				return Attributes.Where(x => x.AttributeType == type).FirstOrDefault(); 
 		}
 
 		public List<SkillAttribute.Type> MandatoryAttributes()
@@ -40,6 +46,7 @@ public class AttributesLoader : AbstractLoader
 
 				attribute.AttributeType = (SkillAttribute.Type)Enum.Parse(typeof(SkillAttribute.Type), getValue(data, TYPE));
 				attribute.GraphicalEffect = getValue(data, GRAPHICAL_EFFECT);
+				attribute.Icon = getValue(data, ICON);
 				attribute.IsBonus = bool.Parse(getValue(data, IS_BONUS));
 				attribute.IsMandatory = bool.Parse(getValue(data, IS_MANDATORY));
 

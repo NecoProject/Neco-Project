@@ -72,8 +72,9 @@ public class HealthPointScript : MonoBehaviour
 
 		void Die()
 		{
-				Destroy(gameObject);
 				// Notify listeners
 				Messenger<HealthPointScript>.Broadcast(EventNames.MONSTER_KILLED, this);
+
+				Destroy(gameObject);
 		}
 }

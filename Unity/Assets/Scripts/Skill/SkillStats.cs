@@ -92,7 +92,7 @@ public class SkillStats
 		public static SkillStats CreateRandom()
 		{
 				SkillStats skill = new SkillStats();
-				List<SkillAttribute> debugAtt = ResourceLoader.Attributes.Attributes;
+				List<SkillAttribute> debugAtt = ResourceLoader.GetInstance().Attributes.Attributes;
 				foreach (SkillAttribute att in debugAtt)
 				{
 						att.Value = UnityEngine.Random.Range(0, 10);

@@ -7,7 +7,8 @@ public class SkillAttribute
 {
 		public enum Type
 		{
-				COOLDOWN, RADIUS, COST, DAMAGE
+				COOLDOWN, RADIUS, COST, DAMAGE, 
+				NEPHALEM_NOVA
 		}
 
 		public Type AttributeType;
@@ -22,6 +23,7 @@ public class SkillAttribute
 		public bool IsBonus;
 		public float MinimumSkillLevel;
 		public string GraphicalEffect;
+		public string Icon;
 
 		[SerializeField]
 		private float _value;
@@ -36,6 +38,7 @@ public class SkillAttribute
 				clone.MaxValue = MaxValue;
 				clone.MinValue = MinValue;
 				clone.MinimumSkillLevel = MinimumSkillLevel;
+				clone.Icon = Icon;
 				return clone;
 		}
 

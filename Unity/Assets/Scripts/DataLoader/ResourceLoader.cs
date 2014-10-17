@@ -8,8 +8,9 @@ public class ResourceLoader : MonoBehaviour
 		private const string RESOURCE_FOLDER = "Resources/Data";
 
 		private static bool __created = false;
+		private static ResourceLoader __instance;
 
-		public static AttributesLoader Attributes;
+		public AttributesLoader Attributes;
 
 		void Awake()
 		{
@@ -19,6 +20,7 @@ public class ResourceLoader : MonoBehaviour
 						// this is the first instance - make it persist
 						DontDestroyOnLoad(this.gameObject);
 						__created = true;
+						__instance = this;
 						Init();
 				}
 				else
@@ -34,6 +36,11 @@ public class ResourceLoader : MonoBehaviour
 		{
 				Attributes = new AttributesLoader();
 				Attributes.LoadAttributes();
+		}
+
+		public static ResourceLoader GetInstance()
+		{
+				return __instance;
 		}
 
 }

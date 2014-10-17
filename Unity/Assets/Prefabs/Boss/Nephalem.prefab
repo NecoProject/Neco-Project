@@ -219,7 +219,7 @@ MonoBehaviour:
   AttackFlashColor:
     serializedVersion: 2
     rgba: 16777215
-  StandardAttack: {fileID: 11400010}
+  StandardAttack: {fileID: 0}
   NephalemNova: {fileID: 11400010}
 --- !u!114 &11400004
 MonoBehaviour:

@@ -8,11 +8,16 @@ public class SaveData
 {
 		public int CurrentLevel;
 		public bool IsCurrentLevelBossLevel;
+		public SkillAttribute LastUnlockedAttribute;
 
+		// Level-specific
 		public Algorithm Algorithm;
 		public string Boss;
 		public List<string> Enemies;
 		public List<string> SkillAttributes;
+
+		// Permanent upgrades
+		public List<SkillAttribute.Type> UnlockedAttributes = new List<SkillAttribute.Type>();
 
 		public List<SkillStats> ActiveSkills
 		{

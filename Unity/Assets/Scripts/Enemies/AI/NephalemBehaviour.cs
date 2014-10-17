@@ -27,5 +27,13 @@ public class NephalemBehaviour : EnemyBehaviour
 		protected override IEnumerator AnimateAttack()
 		{
 				return _currentSkill.Animate(_target);
-		}
+		}
+
+		// Don't really like this, should refactor with better design. Need brainstorm!
+		void OnDestroy()
+		{
+				GameObject.Find("Save").GetComponent<Save>().SaveData.LastUnlockedAttribute =
+						ResourceLoader.GetInstance().Attributes.GetAttribute(SkillAttribute.Type.NEPHALEM_NOVA);
+		}
+
 }
