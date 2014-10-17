@@ -95,9 +95,11 @@ public class WaveGeneration : MonoBehaviour
 				int index = Random.Range(0, Enemies.Count - 1);
 				Transform enemyModel = Enemies[index];
 
-				Vector3 position = GeneratePosition();
-				Transform monster = (Transform)Instantiate(enemyModel, position, Quaternion.identity);
+				Transform monster = (Transform)Instantiate(enemyModel);
 				monster.parent = foreground;
+
+				Vector3 position = GeneratePosition(monster);
+				monster.position = position;
 
 				// TODO: don't have general settings for monsters, each enemy should have their own stats.
 				// Use that only to scale
@@ -113,11 +115,13 @@ public class WaveGeneration : MonoBehaviour
 		{
 				Transform enemyModel = Enemies[Random.Range(0, Enemies.Count - 1)];
 
-				Vector3 position = GeneratePosition();
 
-				Transform monster = (Transform)Instantiate(enemyModel, position, Quaternion.identity);
+				Transform monster = (Transform)Instantiate(enemyModel);
 				monster.localScale = new Vector3(2 * monster.localScale.x, 2 * monster.localScale.y);
 				monster.parent = foreground;
+
+				Vector3 position = GeneratePosition(monster);
+				monster.position = position;
 
 				EnemyStats stats = monster.GetComponent<EnemyStats>();
 				stats.MaxHp = Settings.MonsterInitialHp * Settings.BossFactor * difficulty;
@@ -127,10 +131,14 @@ public class WaveGeneration : MonoBehaviour
 				return monster;
 		}
 
-		Vector3 GeneratePosition()
+		// Assumption is that the pivot point is always at the bottom center
+		Vector3 GeneratePosition(Transform monster)
 		{
-				float enemyX = Random.Range(_minX, _maxX);
-				float enemyY = Random.Range(_minY, _maxY);
+				Vector3 size = monster.renderer.bounds.size;
+				float enemyX = Random.Range(_minX + size.x / 2, _maxX - size.x / 2);
+				float enemyY = Random.Range(_minY, _maxY - size.y);
+
+
 				Vector3 position = new Vector3(enemyX, enemyY);
 				return position;
 		}
