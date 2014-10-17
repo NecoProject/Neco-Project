@@ -14,7 +14,7 @@ public class SaveData
 		public Algorithm Algorithm;
 		public string Boss;
 		public List<string> Enemies;
-		public List<string> SkillAttributes;
+		public List<SkillAttribute.Type> SkillAttributes;
 
 		// Permanent upgrades
 		public List<SkillAttribute.Type> UnlockedAttributes = new List<SkillAttribute.Type>();

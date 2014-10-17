@@ -1483,7 +1483,7 @@ MonoBehaviour:
     - cyclop
     - nyancat
     - succubus
-    SkillAttributes: []
+    SkillAttributes: 
     UnlockedAttributes: 
   InitialSkills:
   - SpriteName: blue
