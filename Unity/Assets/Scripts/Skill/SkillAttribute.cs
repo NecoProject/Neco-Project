@@ -23,6 +23,7 @@ public class SkillAttribute
 		public float MinimumSkillLevel;
 		public string GraphicalEffect;
 
+		[SerializeField]
 		private float _value;
 
 		public SkillAttribute Clone()

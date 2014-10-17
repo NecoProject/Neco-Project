@@ -55,15 +55,15 @@ public class SkillStats
 
 		// Keeping that to change them in the editor, not really clean...
 		// Will have to populate that from a stats sheet sooner or later
+		[SerializeField]
 		private List<SkillAttribute> _attributes;
 		private float _minDmg;
 		private float _maxDmg;
 		private float _cost;
 		private float _coolDown;
 		private float _radius;
-
-
-		void RefreshCachedAttributes()
+		
+		public void RefreshCachedAttributes()
 		{
 				SkillAttribute damageAtt = _attributes.Find(x => SkillAttribute.Type.DAMAGE == x.AttributeType);
 				if (damageAtt != null) MinDamage = damageAtt.Value * 0.6f;

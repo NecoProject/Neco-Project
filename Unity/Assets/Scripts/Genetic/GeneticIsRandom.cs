@@ -47,6 +47,7 @@ public class GeneticIsRandom : IGeneticAlgorithm
 
 				// Mandatory elements
 				child.SpriteName = PickOne(father.SpriteName, mother.SpriteName);
+				// Don't change, as for now this name is used to know when a skill needs to be customized
 				child.SkillName = "New Skill";
 
 				List<SkillAttribute> childAttributes = new List<SkillAttribute>();
@@ -162,16 +163,23 @@ public class GeneticIsRandom : IGeneticAlgorithm
 
 				// TODO: Possibility to pop new attributes based on the unlocked attributes 
 				// and the attributes available for the level
+				// TODO: automatically refresh each time an attribute is updated?
+				child.RefreshCachedAttributes();
 		}
 
 		private void Mutate(SkillAttribute attribute, float childLevel)
 		{
+				//Debug.Log("Value before mutation for " + attribute.AttributeType + " is " + attribute.Value);
 				attribute.Value = Mutate(attribute.Value, childLevel);
+				//Debug.Log("Value after mutation for " + attribute.AttributeType + " is " + attribute.Value);
 		}
 
 		// TODO: will need something more evolved than that in the future
 		private float Mutate(float original, float childLevel)
 		{
-				return original + UnityEngine.Random.Range(-BASE_BONUS_MAX, BASE_BONUS_MAX) * childLevel;
+				float random = UnityEngine.Random.Range(-BASE_BONUS_MAX, BASE_BONUS_MAX);
+				//Debug.Log("Random is " + random);
+				//Debug.Log("Child level is " + childLevel);
+				return original +  random * childLevel;
 		}
 }

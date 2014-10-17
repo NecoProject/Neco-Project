@@ -52,34 +52,54 @@ MonoBehaviour:
     - succubus
     SkillAttributes: []
   InitialSkills:
-  - MinDamage: 5
-    MaxDamage: 10
-    Cost: 0
-    SpriteName: blue
+  - SpriteName: blue
     SkillName: Blue
-    _coolDown: .400000006
-    _radius: .5
-  - MinDamage: 0
-    MaxDamage: 0
-    Cost: 0
-    SpriteName: 
+    Level: 0
+    _attributes:
+    - AttributeType: 0
+      IsMandatory: 1
+      MinValue: .400000006
+      MaxValue: .400000006
+      IsBonus: 0
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      _value: .400000006
+    - AttributeType: 1
+      IsMandatory: 0
+      MinValue: .5
+      MaxValue: .5
+      IsBonus: 1
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      _value: .5
+    - AttributeType: 2
+      IsMandatory: 0
+      MinValue: 0
+      MaxValue: 0
+      IsBonus: 0
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      _value: 0
+    - AttributeType: 3
+      IsMandatory: 0
+      MinValue: 4
+      MaxValue: 8
+      IsBonus: 0
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      _value: 6
+  - SpriteName: 
     SkillName: 
-    _coolDown: 0
-    _radius: 0
-  - MinDamage: 0
-    MaxDamage: 0
-    Cost: 0
-    SpriteName: 
+    Level: 0
+    _attributes: []
+  - SpriteName: 
     SkillName: 
-    _coolDown: 0
-    _radius: 0
-  - MinDamage: 0
-    MaxDamage: 0
-    Cost: 0
-    SpriteName: 
+    Level: 0
+    _attributes: []
+  - SpriteName: 
     SkillName: 
-    _coolDown: 0
-    _radius: 0
+    Level: 0
+    _attributes: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

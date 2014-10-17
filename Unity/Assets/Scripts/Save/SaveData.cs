@@ -22,6 +22,10 @@ public class SaveData
 						// affected by whatever is done to the list (e.g. sorting it 
 						// differently)
 						SkillStats[] copy = new SkillStats[4];
+						// TODO: not the cleanest way, but didn't find any other good method to have this 
+						// work with setting the data via the inspector, as the cache is calculated 
+						// when calling the set {} property
+						RefreshSkillsCachedData();
 						_activeSkills.CopyTo(copy);
 						return new List<SkillStats>(copy);
 				}
@@ -38,4 +42,11 @@ public class SaveData
 				_activeSkills[index] = value;
 		}
 
+		void RefreshSkillsCachedData()
+		{
+				foreach (SkillStats skill in _activeSkills)
+				{
+						skill.RefreshCachedAttributes();
+				}
+		}
 }

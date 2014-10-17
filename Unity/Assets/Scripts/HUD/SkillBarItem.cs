@@ -8,6 +8,7 @@ public class SkillBarItem : MonoBehaviour
 		public Transform DefaultSkill;
 		public int NumberOfUses;
 
+		[SerializeField]
 		private SkillStats _skill;
 		private Image _coolDownImage;
 

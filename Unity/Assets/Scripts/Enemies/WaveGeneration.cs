@@ -92,9 +92,7 @@ public class WaveGeneration : MonoBehaviour
 
 		Transform GenerateEnemy(int difficulty)
 		{
-				Debug.Log(Enemies.Count);
 				int index = Random.Range(0, Enemies.Count - 1);
-				Debug.Log(index);
 				Transform enemyModel = Enemies[index];
 
 				Vector3 position = GeneratePosition();
