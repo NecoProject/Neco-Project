@@ -5,5 +5,5 @@ using System;
 
 public interface IGeneticAlgorithm
 {
-		List<SkillStats> Evolve(SkillStats father, SkillStats mother, int difficultLevel);
+		List<SkillStats> Evolve(SkillStats father, SkillStats mother, int difficultLevel, List<SkillAttribute.Type> availableAttributes);
 }

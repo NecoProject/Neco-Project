@@ -1478,7 +1478,7 @@ MonoBehaviour:
     Algorithm:
       FittestAlgo: 0
       GeneticAlgo: 0
-    Boss: Nephalem
+    Boss: nephalem
     Enemies:
     - cyclop
     - nyancat
@@ -4489,10 +4489,6 @@ Prefab:
     - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
-      propertyPath: SaveData.Boss
-      value: Nephalem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}

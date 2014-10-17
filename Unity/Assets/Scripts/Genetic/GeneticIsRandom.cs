@@ -13,10 +13,10 @@ public class GeneticIsRandom : IGeneticAlgorithm
 
 		private const int MAX_CHILDREN_NUMBER = 3;
 
-		public List<SkillStats> Evolve(SkillStats father, SkillStats mother, int difficultLevel)
+		public List<SkillStats> Evolve(SkillStats father, SkillStats mother, int difficultLevel, List<SkillAttribute.Type> availableAttributes)
 		{
 				List<SkillStats> children = Breed(father, mother);
-				Mutate(children);
+				Mutate(children, availableAttributes);
 				return children;
 		}
 
@@ -143,18 +143,18 @@ public class GeneticIsRandom : IGeneticAlgorithm
 		}
 
 		/// Again, very basic implementation
-		private void Mutate(List<SkillStats> children)
+		private void Mutate(List<SkillStats> children, List<SkillAttribute.Type> availableAttributes)
 		{
 				foreach (SkillStats child in children)
 				{
-						Mutate(child, child.Level);
+						Mutate(child, child.Level, availableAttributes);
 				}
 		}
 
 		/// Mutate the provided child's statistics taking into account the difficulty. The higher the difficulty, the higher the mutation effects. 
 		/// TODO: Do we want to center the mutation around 0? Statistically we may result in pure better or pure worse stats afterwards.
 		/// TODO: have a kind of "balance" to avoid having right away skills that are too powerful?
-		private void Mutate(SkillStats child, float childLevel)
+		private void Mutate(SkillStats child, float childLevel, List<SkillAttribute.Type> availableAttributes)
 		{
 				foreach (SkillAttribute attribute in child.Attributes)
 				{
@@ -163,6 +163,10 @@ public class GeneticIsRandom : IGeneticAlgorithm
 
 				// TODO: Possibility to pop new attributes based on the unlocked attributes 
 				// and the attributes available for the level
+				SkillAttribute newAttribute = BuildGeneticMutation(childLevel, availableAttributes);
+
+				if (newAttribute != null) child.Attributes.Add(newAttribute);
+
 				// TODO: automatically refresh each time an attribute is updated?
 				child.RefreshCachedAttributes();
 		}
@@ -181,5 +185,15 @@ public class GeneticIsRandom : IGeneticAlgorithm
 				//Debug.Log("Random is " + random);
 				//Debug.Log("Child level is " + childLevel);
 				return original +  random * childLevel;
+		}
+
+		private SkillAttribute BuildGeneticMutation(float childLevel, List<SkillAttribute.Type> availableAttributes)
+		{
+				if (availableAttributes.Count == 0) return null;
+
+				// TODO take childLevel into account, and add some random. Possibly add a "probability" to the Attribute?
+				availableAttributes.Shuffle();
+				SkillAttribute.Type type = availableAttributes[0];
+				return ResourceLoader.GetInstance().Attributes.GetAttribute(type);
 		}
 }

@@ -34,6 +34,9 @@ public class InitRandomSkillAttributes : MonoBehaviour
 						SkillAttributeIcons[i].sprite = PrefabManager.GetAttributeSprite(SkillAttributes[i].ToString().ToLower());
 				}
 
-
+				// TODO: add the basic attributes
+				SkillAttributes.Add(SkillAttribute.Type.COST);
+				SkillAttributes.Add(SkillAttribute.Type.DAMAGE);
+				SkillAttributes.Add(SkillAttribute.Type.RADIUS);
 		}
 }

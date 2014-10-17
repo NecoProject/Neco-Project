@@ -30,7 +30,7 @@ public class SkillEvolution : MonoBehaviour
 				DisplayParentSkills(parentSkills.First, parentSkills.Second);
 
 				// Generate the new skills
-				List<SkillStats> newSkills = _geneticAlgorithm.Evolve(parentSkills.First, parentSkills.Second, _save.SaveData.CurrentLevel);
+				List<SkillStats> newSkills = _geneticAlgorithm.Evolve(parentSkills.First, parentSkills.Second, _save.SaveData.CurrentLevel, _save.SaveData.SkillAttributes);
 				//,_save.SaveData.SkillAttributes);
 				//Debug.Log(newSkills.Count);
 
