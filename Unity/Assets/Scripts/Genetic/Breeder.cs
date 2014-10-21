@@ -24,7 +24,7 @@ public class Breeder
 				List<SkillAttribute> mandatoryAttributes = GenerateMandatoryAttributes(father, mother);
 				childAttributes.AddRange(mandatoryAttributes);
 
-				List<SkillAttribute> otherAttributes = GenerateRandomAttributes(father, mother, numberOfAttributes);
+				List<SkillAttribute> otherAttributes = GenerateRandomAttributes(father, mother, numberOfAttributes, childAttributes.Select(x => x.AttributeType).ToList());
 				childAttributes.AddRange(otherAttributes);
 
 				child.Attributes = childAttributes;
@@ -46,10 +46,10 @@ public class Breeder
 				return mandatoryAttributes;
 		}
 
-		private List<SkillAttribute> GenerateRandomAttributes(SkillStats father, SkillStats mother, int numberOfAttributes)
+		private List<SkillAttribute> GenerateRandomAttributes(SkillStats father, SkillStats mother, int numberOfAttributes, List<SkillAttribute.Type> existingAttributes)
 		{
 				List<SkillAttribute> attributes = new List<SkillAttribute>();
-				List<SkillAttribute.Type> names = PickNames(father, mother, numberOfAttributes);
+				List<SkillAttribute.Type> names = PickNames(father, mother, numberOfAttributes, existingAttributes);
 				Debug.Log(String.Join(", ", names.Select(x => x.ToString()).ToArray()));
 
 				// That's easy, since we know the full list of mandatory attributes
@@ -88,7 +88,7 @@ public class Breeder
 				return UnityEngine.Random.Range(Mathf.Min(fatherValue, motherValue), Mathf.Max(fatherValue, motherValue));
 		}
 
-		private List<SkillAttribute.Type> PickNames(SkillStats father, SkillStats mother, int numberOfAttributes)
+		private List<SkillAttribute.Type> PickNames(SkillStats father, SkillStats mother, int numberOfAttributes, List<SkillAttribute.Type> existingAttributes)
 		{
 				List<SkillAttribute.Type> selectedNames = new List<SkillAttribute.Type>();
 				List<SkillAttribute.Type> possibleNames = new List<SkillAttribute.Type>();
@@ -100,7 +100,7 @@ public class Breeder
 				{
 						foreach (SkillAttribute.Type type in possibleNames)
 						{
-								if (!selectedNames.Contains(type))
+								if (!selectedNames.Contains(type) && !existingAttributes.Contains(type))
 								{
 										selectedNames.Add(type);
 										break;

@@ -8,11 +8,16 @@ public class SkillAttribute
 		public enum Type
 		{
 				COOLDOWN, RADIUS, COST, DAMAGE, 
+				ARMOR,
 				NEPHALEM_NOVA
 		}
 
 		public Type AttributeType;
 		public bool IsMandatory;
+		public bool IsBase;
+		public bool NeedUnlock;
+		public bool ActOnSelf;
+		public float SpawnProbability;
 		public float MinValue = -100000;
 		public float MaxValue = 100000;
 		public float Value
@@ -32,11 +37,15 @@ public class SkillAttribute
 		{
 				SkillAttribute clone = new SkillAttribute();
 				clone.AttributeType = AttributeType;
+				clone.IsBase = IsBase;
+				clone.NeedUnlock = NeedUnlock;
 				clone.GraphicalEffect = GraphicalEffect;
 				clone.IsBonus = IsBonus;
+				clone.ActOnSelf = ActOnSelf;
 				clone.IsMandatory = IsMandatory;
 				clone.MaxValue = MaxValue;
 				clone.MinValue = MinValue;
+				clone.SpawnProbability = SpawnProbability;
 				clone.MinimumSkillLevel = MinimumSkillLevel;
 				clone.Icon = Icon;
 				return clone;

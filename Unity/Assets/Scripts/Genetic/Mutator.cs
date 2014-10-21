@@ -11,16 +11,16 @@ public class Mutator
 		/// TODO: have a kind of "balance" to avoid having right away skills that are too powerful?
 		public void Mutate(SkillStats child, float childLevel, List<SkillAttribute.Type> availableAttributes)
 		{
+				// TODO: Possibility to pop new attributes based on the unlocked attributes 
+				// and the attributes available for the level
+				//Debug.Log("New attribute generation");
+				SkillAttribute newAttribute = BuildGeneticMutation(child.GetAttributeNames(), childLevel, availableAttributes);
+				if (newAttribute != null) child.Attributes.Add(newAttribute);
+				
 				foreach (SkillAttribute attribute in child.Attributes)
 				{
 						Mutate(attribute, childLevel);
 				}
-
-				// TODO: Possibility to pop new attributes based on the unlocked attributes 
-				// and the attributes available for the level
-				SkillAttribute newAttribute = BuildGeneticMutation(childLevel, availableAttributes);
-
-				if (newAttribute != null) child.Attributes.Add(newAttribute);
 
 				// TODO: automatically refresh each time an attribute is updated?
 				child.RefreshCachedAttributes();
@@ -42,13 +42,49 @@ public class Mutator
 				return original +  random * childLevel;
 		}
 
-		private SkillAttribute BuildGeneticMutation(float childLevel, List<SkillAttribute.Type> availableAttributes)
+		private SkillAttribute BuildGeneticMutation(List<SkillAttribute.Type> existingAttributes, float childLevel, List<SkillAttribute.Type> attributesForLevel)
 		{
-				if (availableAttributes.Count == 0) return null;
+				if (attributesForLevel.Count == 0) return null;
 
-				// TODO take childLevel into account, and add some random. Possibly add a "probability" to the Attribute?
-				availableAttributes.Shuffle();
-				SkillAttribute.Type type = availableAttributes[0];
-				return ResourceLoader.GetInstance().Attributes.GetAttribute(type);
+				// Keep only the attributes whose level us below the skill level
+				List<SkillAttribute.Type> availableAttributes = FilterByChildLevel(childLevel, attributesForLevel);
+
+				// Choose the candidate
+				// TODO: all attributes have an equal chance of being chosen here. Spice this a little
+				attributesForLevel.Shuffle();
+				SkillAttribute.Type type = attributesForLevel[0];
+				int i = 1;
+				while (existingAttributes.Contains(type) && i < attributesForLevel.Count)
+				{
+						type = attributesForLevel[i++];
+				}
+				SkillAttribute candidateAttribute = ResourceLoader.GetInstance().Attributes.GetAttribute(type);
+				//Debug.Log("Candidate attribute is " + type + " giving " + candidateAttribute);
+
+				// Now, it's random generation time!
+				float random = UnityEngine.Random.Range(0f, 1f);
+				//Debug.Log("Comparing " + random + " to " + candidateAttribute.SpawnProbability);
+				if (random > candidateAttribute.SpawnProbability) return null;
+
+				return candidateAttribute;
+		}
+
+		private List<SkillAttribute.Type> FilterByChildLevel(float childLevel, List<SkillAttribute.Type> attributesForLevel)
+		{
+				//Debug.Log("Child level is " + childLevel);
+				List<SkillAttribute.Type> availableAttributes = new List<SkillAttribute.Type>();
+
+				foreach (SkillAttribute.Type type in attributesForLevel)
+				{
+						SkillAttribute attribute = ResourceLoader.GetInstance().Attributes.GetAttribute(type);
+						//Debug.Log("Minimum skill level for " + attribute.AttributeType + " is " + attribute.MinimumSkillLevel);
+						if (attribute.MinimumSkillLevel <= childLevel)
+						{
+								availableAttributes.Add(type);
+								//Debug.Log("Adding attribute");
+						}
+				}
+
+				return availableAttributes;
 		}
 }

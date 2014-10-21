@@ -16,10 +16,12 @@ public class InitRandomSkillAttributes : MonoBehaviour
 				List<SkillAttribute.Type> unlockedAttributes = FindObjectOfType<Save>().SaveData.UnlockedAttributes;
 
 				// Get the non-always-present attributes
+				List<SkillAttribute.Type> possibleAttributes = ResourceLoader.GetInstance().Attributes.NonBaseAttributes();
 
 				// Merge the list
 				List<SkillAttribute.Type> allEligibleAttributes = new List<SkillAttribute.Type>();
 				allEligibleAttributes.AddRange(unlockedAttributes);
+				allEligibleAttributes.AddRange(possibleAttributes);
 
 				// Pick up to six different attributes
 				allEligibleAttributes.Shuffle();
@@ -34,7 +36,7 @@ public class InitRandomSkillAttributes : MonoBehaviour
 						SkillAttributeIcons[i].sprite = PrefabManager.GetAttributeSprite(SkillAttributes[i].ToString().ToLower());
 				}
 
-				// TODO: add the basic attributes
+				// Add the basic attributes
 				SkillAttributes.Add(SkillAttribute.Type.COST);
 				SkillAttributes.Add(SkillAttribute.Type.DAMAGE);
 				SkillAttributes.Add(SkillAttribute.Type.RADIUS);

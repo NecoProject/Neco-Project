@@ -44,11 +44,16 @@ public class SkillDetails : MonoBehaviour
 
 		String BuildDescription(SkillStats skill)
 		{
-				String result = "Cost: " + skill.Cost.ToString("f1") + "\n" +
-						"Damage: " + skill.MinDamage.ToString("f1") + "-" + skill.MaxDamage.ToString("f1") + "\n" +
-						"Cooldown: " + skill.CoolDown.ToString("f1") + "\n" +
-						"Radius: " + skill.Radius.ToString("f1")
-						;
+				String result = "Cooldown: " + skill.CoolDown.ToString("f1") + "\n";
+
+				if (skill.Cost != 0) result += "Cost: " + skill.Cost.ToString("f1") + "\n";
+
+				if (skill.MinDamage != 0 && skill.MaxDamage != 0) result += "Damage: " + skill.MinDamage.ToString("f1") + "-" + skill.MaxDamage.ToString("f1") + "\n";
+
+				if (skill.Radius != 0) result += "Radius: " + skill.Radius.ToString("f1") + "\n";
+
+				if (skill.Armor != 0) result += "Armor: " + skill.Armor.ToString("f1") + "\n";
+
 				return result;
 		}
 }

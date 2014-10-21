@@ -9,6 +9,8 @@ using System;
 /// </summary>
 public class DebugEndScreen : MonoBehaviour
 {
+		public float SkillLevel;
+
 		void Start()
 		{
 				// Create a Save object with the current skills of the player
@@ -32,6 +34,7 @@ public class DebugEndScreen : MonoBehaviour
 				SkillStats skill = SkillStats.CreateRandom();
 				skill.SkillName = "Random";
 				skill.SpriteName = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().Skills[UnityEngine.Random.Range(0, 3)].Sprite.name;
+				skill.Level = SkillLevel;
 				return skill;
 		}
 

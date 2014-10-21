@@ -9,17 +9,21 @@ public class AttributesLoader : AbstractLoader
 {
 
 		private const string TYPE = "type";
+		private const string IS_BASE = "is_base";
+		private const string NEED_UNLOCK = "need_unlock";
 		private const string IS_MANDATORY = "is_mandatory";
 		private const string IS_BONUS = "is_bonus";
+		private const string ACT_ON_SELF = "act_on_self";
 		private const string MIN_VALUE = "min_value";
 		private const string MAX_VALUE = "max_value";
 		private const string MIN_SKILL_LEVEL = "min_skill_level";
+		private const string SPAWN_PROBABILITY = "spawn_probability";
 		private const string GRAPHICAL_EFFECT = "graphical_effect";
 		private const string ICON = "icon";
 
 		public List<SkillAttribute> Attributes;
 
-		private List<SkillAttribute.Type> _mandatoryAttributes;
+		private List<SkillAttribute.Type> _mandatoryAttributes, _nonBaseAttributes;
 
 		public void LoadAttributes()
 		{
@@ -40,6 +44,15 @@ public class AttributesLoader : AbstractLoader
 				return _mandatoryAttributes;
 		}
 
+		public List<SkillAttribute.Type> NonBaseAttributes()
+		{
+				if (_nonBaseAttributes == null)
+				{
+						_nonBaseAttributes = Attributes.Where(x => !x.IsBase && !x.NeedUnlock).Select(x => x.AttributeType).ToList();
+				}
+				return _nonBaseAttributes;
+		}
+
 		protected override void LoadItem(string[] data)
 		{
 				SkillAttribute attribute = new SkillAttribute();
@@ -49,8 +62,15 @@ public class AttributesLoader : AbstractLoader
 				attribute.Icon = getValue(data, ICON);
 				attribute.IsBonus = bool.Parse(getValue(data, IS_BONUS));
 				attribute.IsMandatory = bool.Parse(getValue(data, IS_MANDATORY));
+				attribute.IsBase = bool.Parse(getValue(data, IS_BASE));
+				attribute.NeedUnlock = bool.Parse(getValue(data, NEED_UNLOCK));
+				attribute.ActOnSelf = bool.Parse(getValue(data, ACT_ON_SELF));
 
 				float ignoreMe;
+				if (float.TryParse(getValue(data, SPAWN_PROBABILITY), out ignoreMe))
+				{
+						attribute.SpawnProbability = float.Parse(getValue(data, SPAWN_PROBABILITY));
+				}
 				if (float.TryParse(getValue(data, MIN_VALUE), out ignoreMe))
 				{
 						attribute.MinValue = float.Parse(getValue(data, MIN_VALUE));

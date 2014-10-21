@@ -1,6 +1,7 @@
-type;is_mandatory;is_bonus;min_value;max_value;min_skill_level;graphical_effect;icon;unused
-COOLDOWN;true;false;0.4;;0;;;
-RADIUS;false;true;0;;0;;;
-COST;false;false;;;0;;;
-DAMAGE;false;true;;;0;;;
-NEPHALEM_NOVA;false;true;;;0;;nephalem_nova;
+type;is_base;need_unlock;is_mandatory;is_bonus;act_on_self;min_value;max_value;min_skill_level;spawn_probability;graphical_effect;icon;unused
+COOLDOWN;true;false;true;false;false;0.4;;0;1;;;
+RADIUS;true;false;false;true;false;0;;0;1;;;
+COST;true;false;false;false;false;;;0;1;;;
+DAMAGE;true;false;false;true;false;;;0;1;;;
+NEPHALEM_NOVA;false;true;false;true;false;;;0;1;;nephalem_nova;
+ARMOR;false;false;false;true;true;;;3;0.2;;armor;

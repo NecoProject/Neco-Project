@@ -47,6 +47,12 @@ public class SkillStats
 				private set { _radius = Mathf.Max(0.1f, value); }
 		}
 
+		public float Armor
+		{
+				get { return _armor; }
+				set { _armor = value; }
+		}
+
 		public string SpriteName;
 		public string SkillName;
 		public float Level;
@@ -62,7 +68,8 @@ public class SkillStats
 		private float _cost;
 		private float _coolDown;
 		private float _radius;
-		
+		private float _armor;
+
 		public void RefreshCachedAttributes()
 		{
 				SkillAttribute damageAtt = _attributes.Find(x => SkillAttribute.Type.DAMAGE == x.AttributeType);
@@ -77,6 +84,9 @@ public class SkillStats
 
 				SkillAttribute radiusAtt = _attributes.Find(x => SkillAttribute.Type.RADIUS == x.AttributeType);
 				if (radiusAtt != null) Radius = radiusAtt.Value;
+
+				SkillAttribute armorAtt = _attributes.Find(x => SkillAttribute.Type.ARMOR == x.AttributeType);
+				if (armorAtt != null) Armor = armorAtt.Value;
 		}
 
 		public SkillAttribute GetAttribute(SkillAttribute.Type type)
@@ -96,6 +106,8 @@ public class SkillStats
 				List<SkillAttribute> rndAtts = new List<SkillAttribute>();
 				foreach (SkillAttribute att in debugAtt)
 				{
+						if (!att.IsBase) continue;
+
 						SkillAttribute rndAtt = att.Clone();
 						rndAtt.Value = UnityEngine.Random.Range(0, 10);
 						rndAtts.Add(rndAtt);

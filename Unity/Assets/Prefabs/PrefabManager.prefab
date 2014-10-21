@@ -52,9 +52,15 @@ MonoBehaviour:
   - Name: white
     Sprite: {fileID: 21300000, guid: 066dcee50196e7d47876eb95f6648b93, type: 3}
     Prefab: {fileID: 400000, guid: aa0739ad449042f4da464938b4af0b37, type: 2}
+  - Name: armor
+    Sprite: {fileID: 21300000, guid: c9c7d605252acf24bba7b6b5a8e33773, type: 3}
+    Prefab: {fileID: 400000, guid: 06d7ad784d6a37342bd0d6d468bbbb9e, type: 2}
   Attributes:
   - Name: nephalem_nova
     Sprite: {fileID: 21300000, guid: 7678955d8f6f65245b963529ebd63fb6, type: 3}
+    Prefab: {fileID: 0}
+  - Name: armor
+    Sprite: {fileID: 21300000, guid: fc2db42149c62ab4697a17d0e126aa90, type: 3}
     Prefab: {fileID: 0}
   Images:
   - Name: level-background

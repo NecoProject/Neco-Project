@@ -8,7 +8,7 @@ using System.Linq;
 
 public class PlayerScript : MonoBehaviour
 {
-		public Color32 DamageColour;
+		public Color32 DamageColour, ArmorColour;
 
 		// Storing the state of the player in a serializable script will make it easier to save / load data, and pass data between levels
 		public PlayerStats Stats;
@@ -16,6 +16,9 @@ public class PlayerScript : MonoBehaviour
 		public float timeBetweenAttacks;
 		public DotCondition dotCondition;
 		public FloatingDamage FloatingDamage;
+
+		[SerializeField]
+		private float _armor;
 
 		private Button[] _buttons;
 		private Save _savedData;
@@ -92,9 +95,11 @@ public class PlayerScript : MonoBehaviour
 
 		public bool TakeDamage(float amount)
 		{
-				Stats.CurrentHealth -= amount;
+				float amountDamage = (1 - _armor / (30 + _armor)) * amount;
+
+				Stats.CurrentHealth -= amountDamage;
 				StartCoroutine(AnimateTakeDamage());
-				StartCoroutine(FloatingDamage.Spawn(amount));
+				StartCoroutine(FloatingDamage.Spawn(amountDamage));
 				if (Stats.CurrentHealth <= 0)
 				{
 						Application.LoadLevel(SceneNames.GAME_OVER);
@@ -111,6 +116,12 @@ public class PlayerScript : MonoBehaviour
 				dotCondition.Apply(dot);
 		}
 
+		public void SetArmor(float armor)
+		{
+				this._armor = armor;
+				StartCoroutine(AnimateArmor());
+		}
+
 		IEnumerator AnimateTakeDamage()
 		{
 				var previousColor = GetComponent<SpriteRenderer>().material.GetColor("_FlashColor");
@@ -123,5 +134,28 @@ public class PlayerScript : MonoBehaviour
 				// Set everything back to normal
 				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 0);
 				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", previousColor);
+		}
+
+		IEnumerator AnimateArmor()
+		{
+				var previousColor = GetComponent<SpriteRenderer>().material.GetColor("_FlashColor");
+
+				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", ArmorColour);
+				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 1);
+
+				yield return new WaitForSeconds(0.8f);
+
+				// Set everything back to normal
+				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 0);
+				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", previousColor);
+		}
+
+		void OnTriggerEnter2D(Collider2D otherCollider)
+		{
+				SpellObject spell = otherCollider.gameObject.GetComponent<SpellObject>();
+				if (spell != null)
+				{
+						spell.ActOnPlayer(gameObject);
+				}
 		}
 }
