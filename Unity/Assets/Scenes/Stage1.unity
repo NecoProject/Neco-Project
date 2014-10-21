@@ -697,6 +697,16 @@ MonoBehaviour:
   SaveData:
     CurrentLevel: 1
     IsCurrentLevelBossLevel: 0
+    LastUnlockedAttribute:
+      AttributeType: 4
+      IsMandatory: 0
+      MinValue: 0
+      MaxValue: 100000
+      IsBonus: 0
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      Icon: nephalem_nova
+      _value: 0
     Algorithm:
       FittestAlgo: 0
       GeneticAlgo: 0
@@ -705,7 +715,8 @@ MonoBehaviour:
     - cyclop
     - nyancat
     - succubus
-    SkillAttributes: []
+    SkillAttributes: 
+    UnlockedAttributes: 
   InitialSkills:
   - SpriteName: blue
     SkillName: Blue
@@ -714,34 +725,38 @@ MonoBehaviour:
     - AttributeType: 0
       IsMandatory: 1
       MinValue: .400000006
-      MaxValue: .400000006
+      MaxValue: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
+      Icon: 
       _value: .400000006
     - AttributeType: 1
       IsMandatory: 0
-      MinValue: .5
-      MaxValue: .5
+      MinValue: 0
+      MaxValue: 100000
       IsBonus: 1
       MinimumSkillLevel: 0
       GraphicalEffect: 
+      Icon: 
       _value: .5
     - AttributeType: 2
       IsMandatory: 0
-      MinValue: 0
-      MaxValue: 0
+      MinValue: -100000
+      MaxValue: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
+      Icon: 
       _value: 0
     - AttributeType: 3
       IsMandatory: 0
-      MinValue: 4
-      MaxValue: 8
+      MinValue: -100000
+      MaxValue: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
+      Icon: 
       _value: 6
   - SpriteName: 
     SkillName: 
@@ -808,6 +823,10 @@ MonoBehaviour:
   - Name: white
     Sprite: {fileID: 21300000, guid: 066dcee50196e7d47876eb95f6648b93, type: 3}
     Prefab: {fileID: 400000, guid: aa0739ad449042f4da464938b4af0b37, type: 2}
+  Attributes:
+  - Name: nephalem_nova
+    Sprite: {fileID: 21300000, guid: 7678955d8f6f65245b963529ebd63fb6, type: 3}
+    Prefab: {fileID: 0}
   Images:
   - Name: level-background
     Sprite: {fileID: 21300000, guid: 59620782105786048b4e0a05ae1e4371, type: 3}
@@ -1624,6 +1643,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 400000, guid: 71d963829eb9dae46811e0a21f72bf41, type: 2}
   NumberOfUses: 0
+  _skill:
+    SpriteName: 
+    SkillName: 
+    Level: 0
+    _attributes: []
 --- !u!114 &821489207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1970,6 +1994,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 400000, guid: 71d963829eb9dae46811e0a21f72bf41, type: 2}
   NumberOfUses: 0
+  _skill:
+    SpriteName: 
+    SkillName: 
+    Level: 0
+    _attributes: []
 --- !u!114 &901663232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2209,6 +2238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c45779c965e44940aab02ab745ab22d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Attributes:
+    Attributes: []
 --- !u!4 &1022760331
 Transform:
   m_ObjectHideFlags: 0
@@ -2809,6 +2840,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 400000, guid: 71d963829eb9dae46811e0a21f72bf41, type: 2}
   NumberOfUses: 0
+  _skill:
+    SpriteName: 
+    SkillName: 
+    Level: 0
+    _attributes: []
 --- !u!1 &1486514324
 GameObject:
   m_ObjectHideFlags: 0
@@ -4367,6 +4403,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSkill: {fileID: 400000, guid: 71d963829eb9dae46811e0a21f72bf41, type: 2}
   NumberOfUses: 0
+  _skill:
+    SpriteName: 
+    SkillName: 
+    Level: 0
+    _attributes: []
 --- !u!114 &2115756763
 MonoBehaviour:
   m_ObjectHideFlags: 0

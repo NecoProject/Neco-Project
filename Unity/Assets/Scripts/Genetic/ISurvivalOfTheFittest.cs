@@ -5,5 +5,5 @@ using System;
 
 public interface ISurvivalOfTheFittest
 {
-		Tuple<SkillStats, SkillStats> GetParentSkills(Dictionary<SkillStats, int> numberOfUses);
+		List<SkillStats> GetParentSkills(Dictionary<SkillStats, int> numberOfUses);
 }

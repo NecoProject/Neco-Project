@@ -53,14 +53,14 @@ MonoBehaviour:
       Icon: nephalem_nova
       _value: 0
     Algorithm:
-      FittestAlgo: 0
-      GeneticAlgo: 0
+      FittestAlgo: 1
+      GeneticAlgo: 1
     Boss: nephalem
     Enemies:
     - cyclop
     - nyancat
     - succubus
-    SkillAttributes: []
+    SkillAttributes: 
     UnlockedAttributes: 
   InitialSkills:
   - SpriteName: blue

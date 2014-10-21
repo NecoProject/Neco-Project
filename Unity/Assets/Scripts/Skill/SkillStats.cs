@@ -93,11 +93,14 @@ public class SkillStats
 		{
 				SkillStats skill = new SkillStats();
 				List<SkillAttribute> debugAtt = ResourceLoader.GetInstance().Attributes.Attributes;
+				List<SkillAttribute> rndAtts = new List<SkillAttribute>();
 				foreach (SkillAttribute att in debugAtt)
 				{
-						att.Value = UnityEngine.Random.Range(0, 10);
+						SkillAttribute rndAtt = att.Clone();
+						rndAtt.Value = UnityEngine.Random.Range(0, 10);
+						rndAtts.Add(rndAtt);
 				}
-				skill.Attributes = debugAtt;
+				skill.Attributes = rndAtts;
 				return skill;
 		}
 }
