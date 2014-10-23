@@ -78,7 +78,7 @@ public class PlayerScript : MonoBehaviour
 												// Don't really like that I need to pass the stats. I think we should be able to 
 												// say to the skill script "try to fire this" and it handles everything, but 
 												// it isn't done really elegantly here
-												skillButton.GetComponent<SkillBarItem>().Fire(spaceTarget, Stats);
+												skillButton.GetComponent<SkillBarItem>().Fire(gameObject, spaceTarget, Stats);
 
 												// Update time of last attack
 												_timeOfLastAttack = Time.time;
@@ -155,7 +155,8 @@ public class PlayerScript : MonoBehaviour
 				SpellObject spell = otherCollider.gameObject.GetComponent<SpellObject>();
 				if (spell != null)
 				{
-						spell.ActOnPlayer(gameObject);
+						spell.ApplyEffects(gameObject);
+						//spell.ActOnPlayer(gameObject);
 				}
 		}
 }

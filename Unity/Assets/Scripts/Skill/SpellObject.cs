@@ -1,22 +1,80 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class SpellObject : MonoBehaviour
 {
-		public SkillStats Skill;
+		public SkillStats Skill
+		{
+				get { return _skill; }
+				set
+				{
+						_skill = value;
+						InitSkillComponents();
+				}
+		}
+
+		public GameObject Origin;
+
+		[SerializeField]
+		private SkillStats _skill;
+		[SerializeField]
+		private List<SkillComponent> _allComponents;
 
 		public void Start()
 		{
 				Destroy(gameObject, 1);
 		}
 
-		// TODO: not elegant design. Each attribute should be able to act (or not act) on its target, and basically 
-		// this would only delegate teh responsibility to each attribute.
-		public void ActOnPlayer(GameObject player)
+		public void ApplyEffects(GameObject target)
 		{
-				if (Skill.Armor > 0)
+				if (target == Origin)
 				{
-						player.SendMessage("SetArmor", Skill.Armor);
+						ApplySelfEffects(target);
+				}
+				else
+				{
+						ApplyEnemyEffects(target);
+				}
+		}
+
+		void ApplySelfEffects(GameObject target)
+		{
+				List<SkillComponent> applicableSkillEffects = GetSelfSkillEffects();
+				ApplyEffects(target, applicableSkillEffects);
+		}
+
+		void ApplyEnemyEffects(GameObject target)
+		{
+				List<SkillComponent> applicableSkillEffects = GetEnemySkillEffects();
+				ApplyEffects(target, applicableSkillEffects);
+		}
+
+		void ApplyEffects(GameObject target, List<SkillComponent> effects)
+		{
+				foreach (SkillComponent component in effects)
+				{
+						component.ApplyEffect(target);
+				}
+		}
+
+		List<SkillComponent> GetSelfSkillEffects()
+		{
+				return _allComponents.FindAll(x => x.AppliesToSelf());
+		}
+
+		List<SkillComponent> GetEnemySkillEffects()
+		{
+				return _allComponents.FindAll(x => !x.AppliesToSelf());
+		}
+
+		void InitSkillComponents()
+		{
+				_allComponents = new List<SkillComponent>(GetComponentsInChildren<SkillComponent>());
+				foreach (SkillComponent component in _allComponents)
+				{
+						component.Init(_skill);
 				}
 		}
 }

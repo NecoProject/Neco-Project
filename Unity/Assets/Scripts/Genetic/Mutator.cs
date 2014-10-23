@@ -51,12 +51,12 @@ public class Mutator
 
 				// Choose the candidate
 				// TODO: all attributes have an equal chance of being chosen here. Spice this a little
-				attributesForLevel.Shuffle();
-				SkillAttribute.Type type = attributesForLevel[0];
+				availableAttributes.Shuffle();
+				SkillAttribute.Type type = availableAttributes[0];
 				int i = 1;
-				while (existingAttributes.Contains(type) && i < attributesForLevel.Count)
+				while (existingAttributes.Contains(type) && i < availableAttributes.Count)
 				{
-						type = attributesForLevel[i++];
+						type = availableAttributes[i++];
 				}
 				SkillAttribute candidateAttribute = ResourceLoader.GetInstance().Attributes.GetAttribute(type);
 				//Debug.Log("Candidate attribute is " + type + " giving " + candidateAttribute);

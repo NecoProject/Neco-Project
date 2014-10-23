@@ -22,14 +22,17 @@ public class HealthPointScript : MonoBehaviour
 		/// Modifies the currentHP value by the input value. Returns true if the resulting currentHP is > 0, false otherwise.
 		/// value should be negative to decrease currentHP, positive otherwise. A value of 0 does nothing.
 		/// </summary>
-		public bool TakeDamage(float value)
+		public void TakeDamage(float value)
 		{
 				// TODO: change this to use the new UI components
 				CurrentHp = Mathf.Min(MaxHp, CurrentHp - value);
 				UpdateDisplayText();
 				StartCoroutine(AnimateTakeDamage());
 				StartCoroutine(FloatingDamage.Spawn(value));
-				return CurrentHp > 0;
+				if (CurrentHp <= 0)
+				{
+						Die();
+				}
 		}
 
 		void UpdateDisplayText()
@@ -57,11 +60,7 @@ public class HealthPointScript : MonoBehaviour
 				SpellObject spell = otherCollider.gameObject.GetComponent<SpellObject>();
 				if (spell != null)
 				{
-						bool survives = TakeDamage(ComputeDamage(spell.Skill.MinDamage, spell.Skill.MaxDamage));
-						if (!survives)
-						{
-								Die();
-						}
+						spell.ApplyEffects(gameObject);
 				}
 		}
 

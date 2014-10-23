@@ -37,7 +37,7 @@ public class SkillBarItem : MonoBehaviour
 
 		public SkillStats GetSkill() { return _skill; }
 
-		public void Fire(Vector3 spaceTarget, PlayerStats playerStats)
+		public void Fire(GameObject origin, Vector3 spaceTarget, PlayerStats playerStats)
 		{
 				if (_skill.SkillName == null || _skill.SpriteName.Length == 0) return;
 						
@@ -63,6 +63,7 @@ public class SkillBarItem : MonoBehaviour
 						spellObject.localScale = new Vector3(_skill.Radius, _skill.Radius);
 						spellObject.GetComponent<SpriteRenderer>().sprite = sprite;
 						spellObject.GetComponent<SpellObject>().Skill = _skill;
+						spellObject.GetComponent<SpellObject>().Origin = origin;
 						 
 						// Run the cooldown
 						// TODO: dirty! Use a State Machine instead, as shown in http://unitygems.com/fsm1/
