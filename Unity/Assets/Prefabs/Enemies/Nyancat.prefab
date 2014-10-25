@@ -290,6 +290,7 @@ MonoBehaviour:
   AttackFlashColor:
     serializedVersion: 2
     rgba: 16777215
+  Stats: {fileID: 0}
   _skills: []
 --- !u!114 &11400004
 MonoBehaviour:
@@ -303,8 +304,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHp: 30
-  AttackSpeed: 5
-  Damage: 50
+  CoolDownModifier: 1
+  DamageModifier: 1
   IsBoss: 0
 --- !u!114 &11400006
 MonoBehaviour:

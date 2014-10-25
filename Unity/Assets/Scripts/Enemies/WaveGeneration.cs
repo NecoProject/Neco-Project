@@ -105,8 +105,8 @@ public class WaveGeneration : MonoBehaviour
 				// Use that only to scale
 				EnemyStats stats = monster.GetComponent<EnemyStats>();
 				stats.MaxHp = Settings.MonsterInitialHp * (1 + difficulty * 0.3f);
-				stats.AttackSpeed = Settings.MonsterInitialAttackSpeed;
-				stats.Damage = Settings.MonsterInitialDamage * (1 + difficulty * 0.15f);
+				stats.CoolDownModifier = Settings.MonsterInitialAttackSpeed;
+				stats.DamageModifier = Settings.MonsterInitialDamage * (1 + difficulty * 0.15f);
 
 				return monster;
 		}
@@ -125,8 +125,8 @@ public class WaveGeneration : MonoBehaviour
 
 				EnemyStats stats = monster.GetComponent<EnemyStats>();
 				stats.MaxHp = Settings.MonsterInitialHp * Settings.BossFactor * (1 + difficulty * 0.3f);
-				stats.AttackSpeed = Settings.MonsterInitialAttackSpeed * Settings.BossFactor;
-				stats.Damage = Settings.MonsterInitialDamage * Settings.BossFactor * (1 + difficulty * 0.15f);
+				stats.CoolDownModifier = Settings.MonsterInitialAttackSpeed * Settings.BossFactor;
+				stats.DamageModifier = Settings.MonsterInitialDamage * Settings.BossFactor * (1 + difficulty * 0.15f);
 
 				return monster;
 		}

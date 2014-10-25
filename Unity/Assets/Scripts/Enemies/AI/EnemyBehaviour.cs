@@ -11,16 +11,20 @@ using System.Collections.Generic;
 public abstract class EnemyBehaviour : MonoBehaviour
 {
 		public Color32 AttackFlashColor;
+		public EnemyStats Stats;
 
 		[SerializeField]
 		protected List<EnemySkill> _skills = new List<EnemySkill>();
 		protected Transform _target;
 
-
 		void Start()
 		{
 				_target = GameObject.Find("Player").transform;
 				_skills = new List<EnemySkill>(GetComponentsInChildren<EnemySkill>());
+				foreach (EnemySkill skill in _skills)
+				{
+						skill.ApplyStats(Stats);
+				}
 		}
 
 		void Update()

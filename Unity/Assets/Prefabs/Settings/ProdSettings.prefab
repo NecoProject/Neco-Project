@@ -40,11 +40,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MonsterInitialHp: 30
-  MonsterInitialAttackSpeed: 4
-  MonsterInitialDamage: 10
+  MonsterInitialAttackSpeed: 1
+  MonsterInitialDamage: 1
   BossFactor: 1.5
   NumberOfWaves: 2
-  LevelDifficulty: 2
+  LevelDifficulty: 1
   MinimumEnemiesPerWave: 1
   WaveEnemyModifier: 1
 --- !u!1001 &100100000

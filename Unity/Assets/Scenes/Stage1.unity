@@ -622,7 +622,7 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 1574700236}
   m_GameObject: {fileID: 350060115}
   m_HideIfInvisible: 0
---- !u!1001 &392773165
+--- !u!1001 &404785105
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -706,11 +706,14 @@ MonoBehaviour:
       SpawnProbability: 0
       MinValue: 0
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: nephalem_nova
       _value: 0
+      _value2: 0
     Algorithm:
       FittestAlgo: 1
       GeneticAlgo: 1
@@ -734,11 +737,14 @@ MonoBehaviour:
       SpawnProbability: 0
       MinValue: .400000006
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
       _value: .400000006
+      _value2: 0
     - AttributeType: 1
       IsMandatory: 0
       IsBase: 0
@@ -747,11 +753,14 @@ MonoBehaviour:
       SpawnProbability: 0
       MinValue: 0
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 1
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
       _value: .5
+      _value2: 0
     - AttributeType: 2
       IsMandatory: 0
       IsBase: 0
@@ -760,11 +769,14 @@ MonoBehaviour:
       SpawnProbability: 0
       MinValue: -100000
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
       _value: 0
+      _value2: 0
     - AttributeType: 3
       IsMandatory: 0
       IsBase: 0
@@ -773,11 +785,14 @@ MonoBehaviour:
       SpawnProbability: 0
       MinValue: -100000
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
       _value: 6
+      _value2: 0
   - SpriteName: 
     SkillName: 
     Level: 0
@@ -801,12 +816,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &455599582
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
-  m_PrefabInternal: {fileID: 392773165}
+  m_PrefabInternal: {fileID: 404785105}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 455599584}
@@ -823,7 +838,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: bf17ba4c21b4e2745a6426ddab254198,
     type: 2}
-  m_PrefabInternal: {fileID: 392773165}
+  m_PrefabInternal: {fileID: 404785105}
   m_GameObject: {fileID: 455599582}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -846,6 +861,9 @@ MonoBehaviour:
   - Name: armor
     Sprite: {fileID: 21300000, guid: c9c7d605252acf24bba7b6b5a8e33773, type: 3}
     Prefab: {fileID: 400000, guid: 06d7ad784d6a37342bd0d6d468bbbb9e, type: 2}
+  - Name: nephalem_nova
+    Sprite: {fileID: 21300000, guid: 7678955d8f6f65245b963529ebd63fb6, type: 3}
+    Prefab: {fileID: 400000, guid: 253a24c52313fd74d98f890c6ea6292c, type: 2}
   Attributes:
   - Name: nephalem_nova
     Sprite: {fileID: 21300000, guid: 7678955d8f6f65245b963529ebd63fb6, type: 3}
@@ -890,14 +908,14 @@ MonoBehaviour:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
-  m_PrefabInternal: {fileID: 392773165}
+  m_PrefabInternal: {fileID: 404785105}
   m_GameObject: {fileID: 455599582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &462527239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,7 +1090,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
@@ -1615,7 +1633,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}

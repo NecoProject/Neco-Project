@@ -29,6 +29,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
+  - 114: {fileID: 11400008}
   m_Layer: 0
   m_Name: SkillComponents
   m_TagString: Untagged
@@ -96,11 +97,14 @@ MonoBehaviour:
       SpawnProbability: 0
       MinValue: 0
       MaxValue: 0
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
       _value: 4
+      _value2: 0
     - AttributeType: 1
       IsMandatory: 0
       IsBase: 0
@@ -109,11 +113,14 @@ MonoBehaviour:
       SpawnProbability: 0
       MinValue: 0
       MaxValue: 0
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
       _value: .200000003
+      _value2: 0
     - AttributeType: 3
       IsMandatory: 0
       IsBase: 0
@@ -122,11 +129,14 @@ MonoBehaviour:
       SpawnProbability: 0
       MinValue: 0
       MaxValue: 0
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
       _value: 5
+      _value2: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,11 +170,14 @@ MonoBehaviour:
     SpawnProbability: 0
     MinValue: -100000
     MaxValue: 100000
+    MinValue2: -100000
+    MaxValue2: 100000
     IsBonus: 0
     MinimumSkillLevel: 0
     GraphicalEffect: 
     Icon: 
     _value: 0
+    _value2: 0
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,11 +198,42 @@ MonoBehaviour:
     SpawnProbability: 0
     MinValue: -100000
     MaxValue: 100000
+    MinValue2: -100000
+    MaxValue2: 100000
     IsBonus: 0
     MinimumSkillLevel: 0
     GraphicalEffect: 
     Icon: 
     _value: 0
+    _value2: 0
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539fd1ed6da7c8b4aa4b2d95a2059e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Attribute:
+    AttributeType: 0
+    IsMandatory: 0
+    IsBase: 0
+    NeedUnlock: 0
+    ActOnSelf: 0
+    SpawnProbability: 0
+    MinValue: -100000
+    MaxValue: 100000
+    MinValue2: -100000
+    MaxValue2: 100000
+    IsBonus: 0
+    MinimumSkillLevel: 0
+    GraphicalEffect: 
+    Icon: 
+    _value: 0
+    _value2: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

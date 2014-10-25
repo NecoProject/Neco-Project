@@ -30,6 +30,7 @@ public class Mutator
 		{
 				//Debug.Log("Value before mutation for " + attribute.AttributeType + " is " + attribute.Value);
 				attribute.Value = Mutate(attribute.Value, childLevel);
+				attribute.Value2 = Mutate(attribute.Value2, childLevel);
 				//Debug.Log("Value after mutation for " + attribute.AttributeType + " is " + attribute.Value);
 		}
 

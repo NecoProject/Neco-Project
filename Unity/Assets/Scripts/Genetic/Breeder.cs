@@ -70,6 +70,7 @@ public class Breeder
 
 				SkillAttribute attribute = motherAtt.Clone();
 				attribute.Value = GenerateValueFromParentsAndLuck(fatherAtt.Value, motherAtt.Value);
+				attribute.Value2 = GenerateValueFromParentsAndLuck(fatherAtt.Value2, motherAtt.Value2);
 				return attribute;
 		}
 

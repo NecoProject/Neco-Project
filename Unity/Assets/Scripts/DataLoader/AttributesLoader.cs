@@ -16,6 +16,8 @@ public class AttributesLoader : AbstractLoader
 		private const string ACT_ON_SELF = "act_on_self";
 		private const string MIN_VALUE = "min_value";
 		private const string MAX_VALUE = "max_value";
+		private const string MIN_VALUE_2 = "min_value_2";
+		private const string MAX_VALUE_2 = "max_value_2";
 		private const string MIN_SKILL_LEVEL = "min_skill_level";
 		private const string SPAWN_PROBABILITY = "spawn_probability";
 		private const string GRAPHICAL_EFFECT = "graphical_effect";
@@ -78,6 +80,14 @@ public class AttributesLoader : AbstractLoader
 				if (float.TryParse(getValue(data, MAX_VALUE), out ignoreMe))
 				{
 						attribute.MaxValue = float.Parse(getValue(data, MAX_VALUE));
+				}
+				if (float.TryParse(getValue(data, MIN_VALUE_2), out ignoreMe))
+				{
+						attribute.MinValue2 = float.Parse(getValue(data, MIN_VALUE_2));
+				}
+				if (float.TryParse(getValue(data, MAX_VALUE_2), out ignoreMe))
+				{
+						attribute.MaxValue2 = float.Parse(getValue(data, MAX_VALUE_2));
 				}
 				attribute.MinimumSkillLevel = float.Parse(getValue(data, MIN_SKILL_LEVEL));
 

@@ -54,6 +54,10 @@ public class SkillDetails : MonoBehaviour
 
 				if (skill.Armor != 0) result += "Armor: " + skill.Armor.ToString("f1") + "\n";
 
+				if (skill.DamageOverTime != 0 && skill.DotDuration != 0) {
+						result += "Inflicts " + skill.DamageOverTime + " over " + skill.DotDuration.ToString("f1") + "s";
+				}
+
 				return result;
 		}
 }

@@ -53,6 +53,18 @@ public class SkillStats
 				set { _armor = value; }
 		}
 
+		public float DamageOverTime
+		{
+				get { return _dot; }
+				set { _dot = value; }
+		}
+
+		public float DotDuration
+		{
+				get { return _dotDuration; }
+				set { _dotDuration = value; }
+		}
+
 		public string SpriteName;
 		public string SkillName;
 		public float Level;
@@ -69,6 +81,7 @@ public class SkillStats
 		private float _coolDown;
 		private float _radius;
 		private float _armor;
+		private float _dot, _dotDuration;
 
 		public void RefreshCachedAttributes()
 		{
@@ -87,6 +100,28 @@ public class SkillStats
 
 				SkillAttribute armorAtt = _attributes.Find(x => SkillAttribute.Type.ARMOR == x.AttributeType);
 				if (armorAtt != null) Armor = armorAtt.Value;
+
+				SkillAttribute dotAtt = _attributes.Find(x => SkillAttribute.Type.DAMAGE_OVER_TIME == x.AttributeType);
+				if (dotAtt != null) DamageOverTime = dotAtt.Value;
+				if (dotAtt != null) DotDuration = dotAtt.Value2;
+		}
+
+		// TODO: use an interface here when we want to apply it to the player too
+		public void ApplyModifiers(EnemyStats stats)
+		{
+				if (stats != null)
+				{
+						SkillAttribute damageAtt = _attributes.Find(x => SkillAttribute.Type.DAMAGE == x.AttributeType);
+						if (damageAtt != null) damageAtt.Value = damageAtt.Value * stats.DamageModifier;
+
+						SkillAttribute cooldownAtt = _attributes.Find(x => SkillAttribute.Type.COOLDOWN == x.AttributeType);
+						if (cooldownAtt != null) cooldownAtt.Value = cooldownAtt.Value * stats.CoolDownModifier;
+						
+						SkillAttribute dotAtt = _attributes.Find(x => SkillAttribute.Type.DAMAGE_OVER_TIME == x.AttributeType);
+						if (dotAtt != null) dotAtt.Value = dotAtt.Value * stats.DamageModifier;
+
+						RefreshCachedAttributes();
+				}
 		}
 
 		public SkillAttribute GetAttribute(SkillAttribute.Type type)

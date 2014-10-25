@@ -26,6 +26,7 @@ public class EnemySkill : MonoBehaviour
 		void Awake()
 		{
 				Skill.RefreshCachedAttributes();
+				IsCoolingDown = true;
 		}
 
 		void Update()
@@ -38,5 +39,10 @@ public class EnemySkill : MonoBehaviour
 						IsCoolingDown = false;
 						_coolDownLeft = 0;
 				}
+		}
+
+		public void ApplyStats(EnemyStats stats)
+		{
+				Skill.ApplyModifiers(stats);
 		}
 }
