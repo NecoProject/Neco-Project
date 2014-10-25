@@ -16,15 +16,17 @@ public class SpellObject : MonoBehaviour
 		}
 
 		public GameObject Origin;
+		public bool ShouldSkipDestroyOnCreate;
 
-		[SerializeField]
 		private SkillStats _skill;
-		[SerializeField]
 		private List<SkillComponent> _allComponents;
 
 		public void Start()
 		{
-				Destroy(gameObject, 1);
+				if (!ShouldSkipDestroyOnCreate)
+				{
+						Destroy(gameObject, 1);
+				}
 		}
 
 		public void ApplyEffects(GameObject target)

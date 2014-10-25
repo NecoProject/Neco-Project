@@ -6,7 +6,7 @@ using System.Collections;
 /// </summary>
 public class NephalemNova : EnemySkill
 {
-		public Color32 AttackFlashColor;
+		/*public Color32 AttackFlashColor;
 
 		public float Cooldown;
 		public float DamageModifier;
@@ -43,5 +43,5 @@ public class NephalemNova : EnemySkill
 				// Set everything back to normal
 				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 0);
 				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", previousColor);
-		}
+		}*/
 }

@@ -156,7 +156,6 @@ public class PlayerScript : MonoBehaviour
 				if (spell != null)
 				{
 						spell.ApplyEffects(gameObject);
-						//spell.ActOnPlayer(gameObject);
 				}
 		}
 }

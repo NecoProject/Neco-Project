@@ -64,11 +64,6 @@ public class HealthPointScript : MonoBehaviour
 				}
 		}
 
-		float ComputeDamage(float minDmg, float maxDmg)
-		{
-				return Random.Range(minDmg, maxDmg);
-		}
-
 		void Die()
 		{
 				// Notify listeners
