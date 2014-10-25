@@ -359,7 +359,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8175e7b220fa804994128d71ae905b4, type: 3}
+  m_Script: {fileID: 11500000, guid: c0d6504e7096852449049d65f76a5774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AttackFlashColor:
