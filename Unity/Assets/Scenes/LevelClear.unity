@@ -369,9 +369,9 @@ MonoBehaviour:
   m_Script: {fileID: -990768443, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Resolution: {x: 1024, y: 576}
+  m_Resolution: {x: 1024, y: 640}
   m_CanvasScaleMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
 --- !u!1 &144488707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,11 +1475,14 @@ MonoBehaviour:
       SpawnProbability: 0
       MinValue: 0
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: nephalem_nova
       _value: 0
+      _value2: 0
     Algorithm:
       FittestAlgo: 1
       GeneticAlgo: 1
@@ -1503,11 +1506,14 @@ MonoBehaviour:
       SpawnProbability: 0
       MinValue: .400000006
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
       _value: .400000006
+      _value2: 0
     - AttributeType: 1
       IsMandatory: 0
       IsBase: 0
@@ -1516,11 +1522,14 @@ MonoBehaviour:
       SpawnProbability: 0
       MinValue: 0
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 1
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
       _value: .5
+      _value2: 0
     - AttributeType: 2
       IsMandatory: 0
       IsBase: 0
@@ -1529,11 +1538,14 @@ MonoBehaviour:
       SpawnProbability: 0
       MinValue: -100000
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
       _value: 0
+      _value2: 0
     - AttributeType: 3
       IsMandatory: 0
       IsBase: 0
@@ -1542,11 +1554,14 @@ MonoBehaviour:
       SpawnProbability: 0
       MinValue: -100000
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
       _value: 6
+      _value2: 0
   - SpriteName: 
     SkillName: 
     Level: 0
@@ -2553,6 +2568,9 @@ MonoBehaviour:
   - Name: armor
     Sprite: {fileID: 21300000, guid: c9c7d605252acf24bba7b6b5a8e33773, type: 3}
     Prefab: {fileID: 400000, guid: 06d7ad784d6a37342bd0d6d468bbbb9e, type: 2}
+  - Name: nephalem_nova
+    Sprite: {fileID: 21300000, guid: 7678955d8f6f65245b963529ebd63fb6, type: 3}
+    Prefab: {fileID: 400000, guid: 253a24c52313fd74d98f890c6ea6292c, type: 2}
   Attributes:
   - Name: nephalem_nova
     Sprite: {fileID: 21300000, guid: 7678955d8f6f65245b963529ebd63fb6, type: 3}
