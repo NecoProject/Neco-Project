@@ -9,6 +9,7 @@ using System.Linq;
 public class PlayerScript : MonoBehaviour
 {
 		public Color32 DamageColour, ArmorColour;
+		public InputDetection InputDetection;
 
 		// Storing the state of the player in a serializable script will make it easier to save / load data, and pass data between levels
 		public PlayerStats Stats;
@@ -24,7 +25,6 @@ public class PlayerScript : MonoBehaviour
 		private Save _savedData;
 		// Don't prevent the player from attacking right away
 		private float _timeOfLastAttack = -1000;
-
 
 		void Start()
 		{
@@ -48,43 +48,37 @@ public class PlayerScript : MonoBehaviour
 
 		void Update()
 		{
-				ShootAtMousePosition();
 				RegenerateMana();
 		}
 
-		void ShootAtMousePosition()
+		public void ShootAtMousePosition(int buttonIndex)
 		{
-				foreach (ShootingButton button in ShootingButton.GetEnumeration())
+				if (buttonIndex == -1) return;
+
+				SkillStats spell = activeSkills[buttonIndex];
+				if (spell == null) return;
+
+				// Simulate a click on the button to trigger the nice effects
+				Button skillButton = _buttons[buttonIndex];
+
+				Vector3 screenTarget = Input.mousePosition;
+				// Get the correct Z, because the current one is the Camera, circa -10
+				var correctZ = transform.position.z;
+				screenTarget.z = correctZ;
+				Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(screenTarget);
+
+				// Can't fire too quickly
+				bool canFire = (Time.time > _timeOfLastAttack + timeBetweenAttacks);
+
+				if (canFire)
 				{
-						if (Input.GetButtonDown(button.GetButtonName()) && !EventSystem.current.IsPointerOverGameObject())
-						{
-								Vector3 screenTarget = Input.mousePosition;
-								// Get the correct Z, because the current one is the Camera, circa -10
-								var correctZ = transform.position.z;
-								screenTarget.z = correctZ;
-								Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(screenTarget);
-								// KABOOM
-								SkillStats spell = activeSkills[button.GetSkillReference()];
-								if (spell != null)
-								{
-										// Simulate a click on the button to trigger the nice effects
-										Button skillButton = _buttons[button.GetSkillReference()];
+						// Don't really like that I need to pass the stats. I think we should be able to 
+						// say to the skill script "try to fire this" and it handles everything, but 
+						// it isn't done really elegantly here
+						skillButton.GetComponent<SkillBarItem>().Fire(gameObject, spaceTarget, Stats);
 
-										// Can't fire too quickly
-										bool canFire = (Time.time > _timeOfLastAttack + timeBetweenAttacks);
-
-										if (canFire)
-										{
-												// Don't really like that I need to pass the stats. I think we should be able to 
-												// say to the skill script "try to fire this" and it handles everything, but 
-												// it isn't done really elegantly here
-												skillButton.GetComponent<SkillBarItem>().Fire(gameObject, spaceTarget, Stats);
-
-												// Update time of last attack
-												_timeOfLastAttack = Time.time;
-										}
-								}
-						}
+						// Update time of last attack
+						_timeOfLastAttack = Time.time;
 				}
 		}
 
