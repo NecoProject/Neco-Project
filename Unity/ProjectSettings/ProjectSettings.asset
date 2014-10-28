@@ -5,13 +5,13 @@ PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 3
   AndroidProfiler: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 2
   targetDevice: 2
   targetGlesGraphics: 1
   targetResolution: 0
   accelerometerFrequency: 60
-  companyName: Unity Technologies
-  productName: Unity Remote 4
+  companyName: Rubberfruits
+  productName: Dungeon of Greed
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   defaultScreenWidth: 1024
@@ -53,7 +53,9 @@ PlayerSettings:
   xboxEnableKinect: 0
   xboxEnableKinectAutoTracking: 0
   xboxEnableFitness: 0
+  visibleInBackground: 0
   macFullscreenMode: 2
+  d3d9FullscreenMode: 1
   xboxSpeechDB: 0
   xboxEnableHeadOrientation: 0
   xboxEnableGuest: 0
@@ -64,7 +66,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  iPhoneBundleIdentifier: com.unity3d.remote
+  iPhoneBundleIdentifier: com.rubberfruits
   metroEnableIndependentInputSource: 1
   metroEnableLowLatencyPresentationAPI: 0
   productGUID: 5c596556decb141888be121e4494e18f
@@ -107,15 +109,15 @@ PlayerSettings:
       m_Size: 128
   - m_BuildTarget: Android
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: c94506069dd2c484780fb8bbe4a4eb17, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 85a20f3882c2d914696d5ac1b33069f3, type: 3}
       m_Size: 144
-    - m_Icon: {fileID: 2800000, guid: c815034ffc16f4a0e98e42b9304188bf, type: 3}
+    - m_Icon: {fileID: 0}
       m_Size: 96
-    - m_Icon: {fileID: 2800000, guid: fdd4612c583e9480dac1f3782facd476, type: 3}
+    - m_Icon: {fileID: 0}
       m_Size: 72
-    - m_Icon: {fileID: 2800000, guid: e6d951d4c4e37458f970b728b0e40808, type: 3}
+    - m_Icon: {fileID: 0}
       m_Size: 48
-    - m_Icon: {fileID: 2800000, guid: 56c95f39c06654eae9f6f8c3c03943db, type: 3}
+    - m_Icon: {fileID: 0}
       m_Size: 36
   - m_BuildTarget: iPhone
     m_Icons:
@@ -187,6 +189,7 @@ PlayerSettings:
   metroPackageLogo: 
   metroPackageLogo140: 
   metroPackageLogo180: 
+  metroPackageLogo240: 
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
@@ -194,26 +197,44 @@ PlayerSettings:
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: 
-  metroTileLogo80: 
-  metroTileLogo: 
-  metroTileLogo140: 
-  metroTileLogo180: 
-  metroTileWideLogo80: 
-  metroTileWideLogo: 
-  metroTileWideLogo140: 
-  metroTileWideLogo180: 
-  metroTileSmallLogo80: 
-  metroTileSmallLogo: 
-  metroTileSmallLogo140: 
-  metroTileSmallLogo180: 
-  metroSmallTile80: 
-  metroSmallTile: 
-  metroSmallTile140: 
-  metroSmallTile180: 
-  metroLargeTile80: 
-  metroLargeTile: 
-  metroLargeTile140: 
-  metroLargeTile180: 
+  metroStoreTileLogo80: 
+  metroStoreTileLogo: 
+  metroStoreTileLogo140: 
+  metroStoreTileLogo180: 
+  metroStoreTileWideLogo80: 
+  metroStoreTileWideLogo: 
+  metroStoreTileWideLogo140: 
+  metroStoreTileWideLogo180: 
+  metroStoreTileSmallLogo80: 
+  metroStoreTileSmallLogo: 
+  metroStoreTileSmallLogo140: 
+  metroStoreTileSmallLogo180: 
+  metroStoreSmallTile80: 
+  metroStoreSmallTile: 
+  metroStoreSmallTile140: 
+  metroStoreSmallTile180: 
+  metroStoreLargeTile80: 
+  metroStoreLargeTile: 
+  metroStoreLargeTile140: 
+  metroStoreLargeTile180: 
+  metroStoreSplashScreenImage: 
+  metroStoreSplashScreenImage140: 
+  metroStoreSplashScreenImage180: 
+  metroPhoneAppIcon: 
+  metroPhoneAppIcon140: 
+  metroPhoneAppIcon240: 
+  metroPhoneSmallTile: 
+  metroPhoneSmallTile140: 
+  metroPhoneSmallTile240: 
+  metroPhoneMediumTile: 
+  metroPhoneMediumTile140: 
+  metroPhoneMediumTile240: 
+  metroPhoneWideTile: 
+  metroPhoneWideTile140: 
+  metroPhoneWideTile240: 
+  metroPhoneSplashScreenImage: 
+  metroPhoneSplashScreenImage140: 
+  metroPhoneSplashScreenImage240: 
   metroTileShortName: 
   metroCommandLineArgsFile: 
   metroTileShowName: 0
@@ -223,9 +244,6 @@ PlayerSettings:
   metroDefaultTileSize: 1
   metroTileForegroundText: 1
   metroTileBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-  metroSplashScreenImage: 
-  metroSplashScreenImage140: 
-  metroSplashScreenImage180: 
   metroSplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   metroSplashScreenUseBackgroundColor: 0
   metroCapabilities: {}
