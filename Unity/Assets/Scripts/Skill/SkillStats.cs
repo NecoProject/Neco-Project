@@ -37,13 +37,13 @@ public class SkillStats
 
 		public float CoolDown
 		{
-				get { return _coolDown; }
+				get { return _coolDown / 5f; }
 				private set { _coolDown = value; }
 		}
 
 		public float Radius
 		{
-				get { return _radius; }
+				get { return _radius / 5f; }
 				private set { _radius = Mathf.Max(0.1f, value); }
 		}
 

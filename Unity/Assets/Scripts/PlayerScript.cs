@@ -9,12 +9,12 @@ using System.Linq;
 public class PlayerScript : MonoBehaviour
 {
 		public Color32 DamageColour, ArmorColour;
-		public InputDetection InputDetection;
 
 		// Storing the state of the player in a serializable script will make it easier to save / load data, and pass data between levels
 		public PlayerStats Stats;
+		public InputDetection InputDetection;
 		public List<SkillStats> activeSkills;
-		public float timeBetweenAttacks;
+		//public float timeBetweenAttacks;
 		public DotCondition dotCondition;
 		public FloatingDamage FloatingDamage;
 
@@ -24,7 +24,7 @@ public class PlayerScript : MonoBehaviour
 		private Button[] _buttons;
 		private Save _savedData;
 		// Don't prevent the player from attacking right away
-		private float _timeOfLastAttack = -1000;
+		//private float _timeOfLastAttack = -1000;
 
 		void Start()
 		{
@@ -68,18 +68,18 @@ public class PlayerScript : MonoBehaviour
 				Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(screenTarget);
 
 				// Can't fire too quickly
-				bool canFire = (Time.time > _timeOfLastAttack + timeBetweenAttacks);
+				//bool canFire = (Time.time > _timeOfLastAttack + timeBetweenAttacks);
 
-				if (canFire)
-				{
+				/*if (canFire)
+				{*/
 						// Don't really like that I need to pass the stats. I think we should be able to 
 						// say to the skill script "try to fire this" and it handles everything, but 
 						// it isn't done really elegantly here
 						skillButton.GetComponent<SkillBarItem>().Fire(gameObject, spaceTarget, Stats);
 
 						// Update time of last attack
-						_timeOfLastAttack = Time.time;
-				}
+						//_timeOfLastAttack = Time.time;
+				//}
 		}
 
 		void RegenerateMana()

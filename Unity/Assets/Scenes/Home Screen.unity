@@ -553,7 +553,7 @@ Transform:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
-  m_PrefabInternal: {fileID: 1499464091}
+  m_PrefabInternal: {fileID: 880348174}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 374050450}
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: 856bbae56de1014429c63ef444c6433d,
     type: 2}
-  m_PrefabInternal: {fileID: 1499464091}
+  m_PrefabInternal: {fileID: 880348174}
   m_GameObject: {fileID: 374050448}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -580,15 +580,33 @@ MonoBehaviour:
   SaveData:
     CurrentLevel: 1
     IsCurrentLevelBossLevel: 0
+    LastUnlockedAttribute:
+      AttributeType: 4
+      IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
+      MinValue: 0
+      MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
+      IsBonus: 0
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      Icon: nephalem_nova
+      _value: 0
+      _value2: 0
     Algorithm:
-      FittestAlgo: 0
-      GeneticAlgo: 0
+      FittestAlgo: 1
+      GeneticAlgo: 1
     Boss: nephalem
     Enemies:
     - cyclop
     - nyancat
     - succubus
-    SkillAttributes: []
+    SkillAttributes: 
+    UnlockedAttributes: 
   InitialSkills:
   - SpriteName: blue
     SkillName: Blue
@@ -596,36 +614,68 @@ MonoBehaviour:
     _attributes:
     - AttributeType: 0
       IsMandatory: 1
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
       MinValue: .400000006
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
-      _value: .400000006
+      Icon: 
+      _value: 2
+      _value2: 0
     - AttributeType: 1
       IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
       MinValue: 0
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 1
       MinimumSkillLevel: 0
       GraphicalEffect: 
-      _value: .5
+      Icon: 
+      _value: 2
+      _value2: 0
     - AttributeType: 2
       IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
       MinValue: -100000
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
+      Icon: 
       _value: 0
+      _value2: 0
     - AttributeType: 3
       IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
       MinValue: -100000
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
+      Icon: 
       _value: 6
+      _value2: 0
   - SpriteName: 
     SkillName: 
     Level: 0
@@ -642,7 +692,7 @@ MonoBehaviour:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
-  m_PrefabInternal: {fileID: 1499464091}
+  m_PrefabInternal: {fileID: 880348174}
   m_GameObject: {fileID: 374050448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .316548109, y: .860482216, z: 0}
@@ -691,6 +741,19 @@ MonoBehaviour:
   - Name: white
     Sprite: {fileID: 21300000, guid: 066dcee50196e7d47876eb95f6648b93, type: 3}
     Prefab: {fileID: 400000, guid: aa0739ad449042f4da464938b4af0b37, type: 2}
+  - Name: armor
+    Sprite: {fileID: 21300000, guid: c9c7d605252acf24bba7b6b5a8e33773, type: 3}
+    Prefab: {fileID: 400000, guid: 06d7ad784d6a37342bd0d6d468bbbb9e, type: 2}
+  - Name: nephalem_nova
+    Sprite: {fileID: 21300000, guid: 7678955d8f6f65245b963529ebd63fb6, type: 3}
+    Prefab: {fileID: 400000, guid: 253a24c52313fd74d98f890c6ea6292c, type: 2}
+  Attributes:
+  - Name: nephalem_nova
+    Sprite: {fileID: 21300000, guid: 7678955d8f6f65245b963529ebd63fb6, type: 3}
+    Prefab: {fileID: 0}
+  - Name: armor
+    Sprite: {fileID: 21300000, guid: fc2db42149c62ab4697a17d0e126aa90, type: 3}
+    Prefab: {fileID: 0}
   Images:
   - Name: level-background
     Sprite: {fileID: 21300000, guid: 59620782105786048b4e0a05ae1e4371, type: 3}
@@ -864,6 +927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c45779c965e44940aab02ab745ab22d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Attributes:
+    Attributes: []
 --- !u!1 &843342158
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,6 +970,50 @@ Transform:
   - {fileID: 135084916}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!1001 &880348174
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: .316548109
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .860482216
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
+  m_RootGameObject: {fileID: 374050448}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &998522520
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,50 +1131,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1469383754}
   m_HideIfInvisible: 0
---- !u!1001 &1499464091
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: .316548109
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: .860482216
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
-  m_RootGameObject: {fileID: 374050448}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1 &1500363340
 GameObject:
   m_ObjectHideFlags: 0

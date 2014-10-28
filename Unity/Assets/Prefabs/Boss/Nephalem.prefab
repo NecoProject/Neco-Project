@@ -365,8 +365,7 @@ MonoBehaviour:
   AttackFlashColor:
     serializedVersion: 2
     rgba: 16777215
-  Stats: {fileID: 0}
-  _skills: []
+  Stats: {fileID: 11400004}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -490,15 +489,15 @@ MonoBehaviour:
       NeedUnlock: 0
       ActOnSelf: 0
       SpawnProbability: 0
-      MinValue: 0
-      MaxValue: 0
+      MinValue: -100000
+      MaxValue: 100000
       MinValue2: -100000
       MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
-      _value: 4
+      _value: 20
       _value2: 0
     - AttributeType: 1
       IsMandatory: 0
@@ -506,15 +505,15 @@ MonoBehaviour:
       NeedUnlock: 0
       ActOnSelf: 0
       SpawnProbability: 0
-      MinValue: 0
-      MaxValue: 0
+      MinValue: -100000
+      MaxValue: 100000
       MinValue2: -100000
       MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
-      _value: .200000003
+      _value: 1
       _value2: 0
     - AttributeType: 5
       IsMandatory: 0
@@ -522,8 +521,8 @@ MonoBehaviour:
       NeedUnlock: 0
       ActOnSelf: 0
       SpawnProbability: 0
-      MinValue: 0
-      MaxValue: 0
+      MinValue: -100000
+      MaxValue: 100000
       MinValue2: -100000
       MaxValue2: 100000
       IsBonus: 0
@@ -555,7 +554,7 @@ MonoBehaviour:
       ActOnSelf: 0
       SpawnProbability: 0
       MinValue: 0
-      MaxValue: 0
+      MaxValue: 100000
       MinValue2: -100000
       MaxValue2: 100000
       IsBonus: 0
@@ -570,8 +569,8 @@ MonoBehaviour:
       NeedUnlock: 0
       ActOnSelf: 0
       SpawnProbability: 0
-      MinValue: 0
-      MaxValue: 0
+      MinValue: -100000
+      MaxValue: 100000
       MinValue2: -100000
       MaxValue2: 100000
       IsBonus: 0
@@ -586,8 +585,8 @@ MonoBehaviour:
       NeedUnlock: 0
       ActOnSelf: 0
       SpawnProbability: 0
-      MinValue: 0
-      MaxValue: 0
+      MinValue: -100000
+      MaxValue: 100000
       MinValue2: -100000
       MaxValue2: 100000
       IsBonus: 0

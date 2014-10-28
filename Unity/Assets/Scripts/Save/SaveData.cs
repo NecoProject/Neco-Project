@@ -40,6 +40,7 @@ public class SaveData
 				}
 		}
 
+		[SerializeField]
 		private List<SkillStats> _activeSkills;
 
 		public void SetSkillAt(SkillStats value, int index)

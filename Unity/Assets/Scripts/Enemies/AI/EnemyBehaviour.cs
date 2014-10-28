@@ -12,8 +12,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
 {
 		public Color32 AttackFlashColor;
 		public EnemyStats Stats;
-
-		[SerializeField]
+		
 		protected List<EnemySkill> _skills = new List<EnemySkill>();
 		protected Transform _target;
 

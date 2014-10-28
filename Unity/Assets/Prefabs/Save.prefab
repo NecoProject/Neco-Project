@@ -45,13 +45,20 @@ MonoBehaviour:
     LastUnlockedAttribute:
       AttributeType: 4
       IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
       MinValue: 0
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: nephalem_nova
       _value: 0
+      _value2: 0
     Algorithm:
       FittestAlgo: 1
       GeneticAlgo: 1
@@ -62,6 +69,7 @@ MonoBehaviour:
     - succubus
     SkillAttributes: 
     UnlockedAttributes: 
+    _activeSkills: []
   InitialSkills:
   - SpriteName: blue
     SkillName: Blue
@@ -69,40 +77,68 @@ MonoBehaviour:
     _attributes:
     - AttributeType: 0
       IsMandatory: 1
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
       MinValue: .400000006
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
-      _value: .400000006
+      _value: 2
+      _value2: 0
     - AttributeType: 1
       IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
       MinValue: 0
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 1
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
-      _value: .5
+      _value: 2
+      _value2: 0
     - AttributeType: 2
       IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
       MinValue: -100000
       MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
       IsBonus: 0
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
       _value: 0
+      _value2: 0
     - AttributeType: 3
       IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
       MinValue: -100000
       MaxValue: 100000
-      IsBonus: 0
+      MinValue2: -100000
+      MaxValue2: 100000
+      IsBonus: 1
       MinimumSkillLevel: 0
       GraphicalEffect: 
       Icon: 
       _value: 6
+      _value2: 0
   - SpriteName: 
     SkillName: 
     Level: 0

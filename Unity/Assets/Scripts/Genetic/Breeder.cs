@@ -28,6 +28,7 @@ public class Breeder
 				childAttributes.AddRange(otherAttributes);
 
 				child.Attributes = childAttributes;
+				//Debug.Log(childAttributes.Select(x => x.AttributeType.ToString()).Aggregate("", (a, b) => a + ", " + b));
 
 				return child;
 		}
@@ -43,6 +44,7 @@ public class Breeder
 						SkillAttribute childAtt = BreedAttribute(fatherAtt, motherAtt);
 						mandatoryAttributes.Add(childAtt);
 				}
+				//Debug.Log(mandatoryAttributes.Select(x => x.AttributeType.ToString()).Aggregate("", (a, b) => a + ", " + b));
 				return mandatoryAttributes;
 		}
 
@@ -50,7 +52,7 @@ public class Breeder
 		{
 				List<SkillAttribute> attributes = new List<SkillAttribute>();
 				List<SkillAttribute.Type> names = PickNames(father, mother, numberOfAttributes, existingAttributes);
-				Debug.Log(String.Join(", ", names.Select(x => x.ToString()).ToArray()));
+				//Debug.Log(String.Join(", ", names.Select(x => x.ToString()).ToArray()));
 
 				// That's easy, since we know the full list of mandatory attributes
 				foreach (SkillAttribute.Type name in names)
@@ -60,6 +62,7 @@ public class Breeder
 						SkillAttribute childAtt = BreedAttribute(fatherAtt, motherAtt);
 						attributes.Add(childAtt);
 				}
+				//Debug.Log(attributes.Select(x => x.AttributeType.ToString()).Aggregate("", (a, b) => a + ", " + b));
 				return attributes;
 		}
 
