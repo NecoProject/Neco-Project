@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Consumer: {fileID: 691309150}
-  DoubleTapTolerance: .300000012
+  DoubleTapTolerance: .0500000007
 --- !u!1 &711197661
 GameObject:
   m_ObjectHideFlags: 0
