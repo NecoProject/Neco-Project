@@ -8,20 +8,23 @@ using System.Linq;
 
 public class PlayerScript : MonoBehaviour
 {
-		public Color32 DamageColour;
+		public Color32 DamageColour, ArmorColour;
 
 		// Storing the state of the player in a serializable script will make it easier to save / load data, and pass data between levels
 		public PlayerStats Stats;
+		public InputDetection InputDetection;
 		public List<SkillStats> activeSkills;
-		public float timeBetweenAttacks;
+		//public float timeBetweenAttacks;
 		public DotCondition dotCondition;
 		public FloatingDamage FloatingDamage;
+
+		[SerializeField]
+		private float _armor;
 
 		private Button[] _buttons;
 		private Save _savedData;
 		// Don't prevent the player from attacking right away
-		private float _timeOfLastAttack = -1000;
-
+		//private float _timeOfLastAttack = -1000;
 
 		void Start()
 		{
@@ -45,44 +48,38 @@ public class PlayerScript : MonoBehaviour
 
 		void Update()
 		{
-				ShootAtMousePosition();
 				RegenerateMana();
 		}
 
-		void ShootAtMousePosition()
+		public void ShootAtMousePosition(int buttonIndex)
 		{
-				foreach (ShootingButton button in ShootingButton.GetEnumeration())
-				{
-						if (Input.GetButtonDown(button.GetButtonName()) && !EventSystem.current.IsPointerOverGameObject())
-						{
-								Vector3 screenTarget = Input.mousePosition;
-								// Get the correct Z, because the current one is the Camera, circa -10
-								var correctZ = transform.position.z;
-								screenTarget.z = correctZ;
-								Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(screenTarget);
-								// KABOOM
-								SkillStats spell = activeSkills[button.GetSkillReference()];
-								if (spell != null)
-								{
-										// Simulate a click on the button to trigger the nice effects
-										Button skillButton = _buttons[button.GetSkillReference()];
+				if (buttonIndex == -1) return;
 
-										// Can't fire too quickly
-										bool canFire = (Time.time > _timeOfLastAttack + timeBetweenAttacks);
+				SkillStats spell = activeSkills[buttonIndex];
+				if (spell == null) return;
 
-										if (canFire)
-										{
-												// Don't really like that I need to pass the stats. I think we should be able to 
-												// say to the skill script "try to fire this" and it handles everything, but 
-												// it isn't done really elegantly here
-												skillButton.GetComponent<SkillBarItem>().Fire(spaceTarget, Stats);
+				// Simulate a click on the button to trigger the nice effects
+				Button skillButton = _buttons[buttonIndex];
 
-												// Update time of last attack
-												_timeOfLastAttack = Time.time;
-										}
-								}
-						}
-				}
+				Vector3 screenTarget = Input.mousePosition;
+				// Get the correct Z, because the current one is the Camera, circa -10
+				var correctZ = transform.position.z;
+				screenTarget.z = correctZ;
+				Vector3 spaceTarget = Camera.main.ScreenToWorldPoint(screenTarget);
+
+				// Can't fire too quickly
+				//bool canFire = (Time.time > _timeOfLastAttack + timeBetweenAttacks);
+
+				/*if (canFire)
+				{*/
+						// Don't really like that I need to pass the stats. I think we should be able to 
+						// say to the skill script "try to fire this" and it handles everything, but 
+						// it isn't done really elegantly here
+						skillButton.GetComponent<SkillBarItem>().Fire(gameObject, spaceTarget, Stats);
+
+						// Update time of last attack
+						//_timeOfLastAttack = Time.time;
+				//}
 		}
 
 		void RegenerateMana()
@@ -92,9 +89,11 @@ public class PlayerScript : MonoBehaviour
 
 		public bool TakeDamage(float amount)
 		{
-				Stats.CurrentHealth -= amount;
+				float amountDamage = (1 - _armor / (30 + _armor)) * amount;
+
+				Stats.CurrentHealth -= amountDamage;
 				StartCoroutine(AnimateTakeDamage());
-				StartCoroutine(FloatingDamage.Spawn(amount));
+				StartCoroutine(FloatingDamage.Spawn(amountDamage));
 				if (Stats.CurrentHealth <= 0)
 				{
 						Application.LoadLevel(SceneNames.GAME_OVER);
@@ -111,6 +110,12 @@ public class PlayerScript : MonoBehaviour
 				dotCondition.Apply(dot);
 		}
 
+		public void SetArmor(float armor)
+		{
+				this._armor = armor;
+				StartCoroutine(AnimateArmor());
+		}
+
 		IEnumerator AnimateTakeDamage()
 		{
 				var previousColor = GetComponent<SpriteRenderer>().material.GetColor("_FlashColor");
@@ -123,5 +128,28 @@ public class PlayerScript : MonoBehaviour
 				// Set everything back to normal
 				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 0);
 				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", previousColor);
+		}
+
+		IEnumerator AnimateArmor()
+		{
+				var previousColor = GetComponent<SpriteRenderer>().material.GetColor("_FlashColor");
+
+				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", ArmorColour);
+				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 1);
+
+				yield return new WaitForSeconds(0.8f);
+
+				// Set everything back to normal
+				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 0);
+				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", previousColor);
+		}
+
+		void OnTriggerEnter2D(Collider2D otherCollider)
+		{
+				SpellObject spell = otherCollider.gameObject.GetComponent<SpellObject>();
+				if (spell != null)
+				{
+						spell.ApplyEffects(gameObject);
+				}
 		}
 }

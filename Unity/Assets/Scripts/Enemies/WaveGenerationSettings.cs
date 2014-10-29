@@ -6,7 +6,7 @@ public class WaveGenerationSettings : MonoBehaviour
 		// TODO: this should either come from a template / monster 
 		// sheet, or be generated
 		public float MonsterInitialHp = 6;
-		public float MonsterInitialAttackSpeed = 5;
+		public float MonsterInitialAttackSpeed = 1;
 		public float MonsterInitialDamage = 1;
 		public float BossFactor = 1.5f;
 

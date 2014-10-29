@@ -26,11 +26,11 @@ public class SkillEvolution : MonoBehaviour
 				DisplayCurrentSkills(_save.SaveData.ActiveSkills);
 
 				// Get the skills that will be used to create a new offspring
-				Tuple<SkillStats, SkillStats> parentSkills = _fittestSkillSelection.GetParentSkills(_save.NumberOfUses);
-				DisplayParentSkills(parentSkills.First, parentSkills.Second);
+				List<SkillStats> parentSkills = _fittestSkillSelection.GetParentSkills(_save.NumberOfUses);
+				//DisplayParentSkills(parentSkills.First, parentSkills.Second);
 
 				// Generate the new skills
-				List<SkillStats> newSkills = _geneticAlgorithm.Evolve(parentSkills.First, parentSkills.Second, _save.SaveData.CurrentLevel);
+				List<SkillStats> newSkills = _geneticAlgorithm.Evolve(parentSkills, _save.SaveData.CurrentLevel, _save.SaveData.SkillAttributes);
 				//,_save.SaveData.SkillAttributes);
 				//Debug.Log(newSkills.Count);
 
@@ -67,9 +67,11 @@ public class SkillEvolution : MonoBehaviour
 		{
 				switch (algo.FittestAlgo)
 				{
+						case Algorithm.Fittest.MOST_THREE_USED:
+								return new FittestIsMostUsed(3);
 						case Algorithm.Fittest.MOST_USED:
 						default:
-								return new FittestIsMostUsed();
+								return new FittestIsMostUsed(2);
 				}
 		}
 
@@ -77,6 +79,8 @@ public class SkillEvolution : MonoBehaviour
 		{
 				switch (algo.GeneticAlgo)
 				{
+						case Algorithm.Genetic.UNICELLULAR:
+								return new UnicellularGenetics();
 						case Algorithm.Genetic.RANDOM:
 						default:
 								return new GeneticIsRandom();

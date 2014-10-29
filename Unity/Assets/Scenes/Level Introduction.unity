@@ -305,9 +305,9 @@ MonoBehaviour:
   m_Script: {fileID: -990768443, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Resolution: {x: 1024, y: 576}
+  m_Resolution: {x: 1024, y: 640}
   m_CanvasScaleMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
 --- !u!1 &228805560
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,11 +479,55 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 856bbae56de1014429c63ef444c6433d, type: 2}
   m_RootGameObject: {fileID: 1150345727}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
+--- !u!1001 &463671501
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 227.190903
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 226.627045
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 32.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+  m_RootGameObject: {fileID: 1455221361}
   m_IsPrefabParent: 0
   m_IsExploded: 1
 --- !u!1001 &636460638
@@ -523,7 +567,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf17ba4c21b4e2745a6426ddab254198, type: 2}
@@ -810,7 +854,8 @@ MonoBehaviour:
   - {fileID: 1304772903}
   - {fileID: 34977649}
   - {fileID: 1897144192}
-  SkillAttributes: []
+  PrefabManager: {fileID: 1280502263}
+  SkillAttributes: 
 --- !u!1 &998522520
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,41 +937,114 @@ MonoBehaviour:
   SaveData:
     CurrentLevel: 1
     IsCurrentLevelBossLevel: 0
+    LastUnlockedAttribute:
+      AttributeType: 4
+      IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
+      MinValue: 0
+      MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
+      IsBonus: 0
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      Icon: nephalem_nova
+      _value: 0
+      _value2: 0
     Algorithm:
-      FittestAlgo: 0
-      GeneticAlgo: 0
-    Boss: 
-    Enemies: []
-    SkillAttributes: []
+      FittestAlgo: 1
+      GeneticAlgo: 1
+    Boss: nephalem
+    Enemies:
+    - cyclop
+    - nyancat
+    - succubus
+    SkillAttributes: 
+    UnlockedAttributes: 
   InitialSkills:
-  - MinDamage: 5
-    MaxDamage: 10
-    Cost: 0
-    SpriteName: blue
+  - SpriteName: blue
     SkillName: Blue
-    _coolDown: .400000006
-    _radius: .5
-  - MinDamage: 0
-    MaxDamage: 0
-    Cost: 0
-    SpriteName: 
+    Level: 0
+    _attributes:
+    - AttributeType: 0
+      IsMandatory: 1
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
+      MinValue: .400000006
+      MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
+      IsBonus: 0
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      Icon: 
+      _value: .400000006
+      _value2: 0
+    - AttributeType: 1
+      IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
+      MinValue: 0
+      MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
+      IsBonus: 1
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      Icon: 
+      _value: .5
+      _value2: 0
+    - AttributeType: 2
+      IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
+      MinValue: -100000
+      MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
+      IsBonus: 0
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      Icon: 
+      _value: 0
+      _value2: 0
+    - AttributeType: 3
+      IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
+      MinValue: -100000
+      MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
+      IsBonus: 0
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      Icon: 
+      _value: 6
+      _value2: 0
+  - SpriteName: 
     SkillName: 
-    _coolDown: 0
-    _radius: 0
-  - MinDamage: 0
-    MaxDamage: 0
-    Cost: 0
-    SpriteName: 
+    Level: 0
+    _attributes: []
+  - SpriteName: 
     SkillName: 
-    _coolDown: 0
-    _radius: 0
-  - MinDamage: 0
-    MaxDamage: 0
-    Cost: 0
-    SpriteName: 
+    Level: 0
+    _attributes: []
+  - SpriteName: 
     SkillName: 
-    _coolDown: 0
-    _radius: 0
+    Level: 0
+    _attributes: []
 --- !u!4 &1150345729
 Transform:
   m_ObjectHideFlags: 0
@@ -938,7 +1056,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &1154028617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,6 +1262,19 @@ MonoBehaviour:
   - Name: white
     Sprite: {fileID: 21300000, guid: 066dcee50196e7d47876eb95f6648b93, type: 3}
     Prefab: {fileID: 400000, guid: aa0739ad449042f4da464938b4af0b37, type: 2}
+  - Name: armor
+    Sprite: {fileID: 21300000, guid: c9c7d605252acf24bba7b6b5a8e33773, type: 3}
+    Prefab: {fileID: 400000, guid: 06d7ad784d6a37342bd0d6d468bbbb9e, type: 2}
+  - Name: nephalem_nova
+    Sprite: {fileID: 21300000, guid: 7678955d8f6f65245b963529ebd63fb6, type: 3}
+    Prefab: {fileID: 400000, guid: 253a24c52313fd74d98f890c6ea6292c, type: 2}
+  Attributes:
+  - Name: nephalem_nova
+    Sprite: {fileID: 21300000, guid: 7678955d8f6f65245b963529ebd63fb6, type: 3}
+    Prefab: {fileID: 0}
+  - Name: armor
+    Sprite: {fileID: 21300000, guid: fc2db42149c62ab4697a17d0e126aa90, type: 3}
+    Prefab: {fileID: 0}
   Images:
   - Name: level-background
     Sprite: {fileID: 21300000, guid: 59620782105786048b4e0a05ae1e4371, type: 3}
@@ -1188,7 +1319,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &1304772901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,6 +1506,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1403760011}
   m_HideIfInvisible: 0
+--- !u!1 &1455221361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+  m_PrefabInternal: {fileID: 463671501}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1455221362}
+  - 114: {fileID: 1455221363}
+  m_Layer: 0
+  m_Name: ResourcesLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1455221362
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: cf6db720fb4102d4cb9e32c7e3840948, type: 2}
+  m_PrefabInternal: {fileID: 463671501}
+  m_GameObject: {fileID: 1455221361}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 227.190903, y: 226.627045, z: 32.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+--- !u!114 &1455221363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: cf6db720fb4102d4cb9e32c7e3840948,
+    type: 2}
+  m_PrefabInternal: {fileID: 463671501}
+  m_GameObject: {fileID: 1455221361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c45779c965e44940aab02ab745ab22d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Attributes:
+    Attributes: []
 --- !u!1 &1500363340
 GameObject:
   m_ObjectHideFlags: 0

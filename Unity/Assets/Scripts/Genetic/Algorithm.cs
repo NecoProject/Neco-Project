@@ -6,8 +6,8 @@ using System;
 [Serializable]
 public class Algorithm
 {
-		public enum Fittest { MOST_USED };
-		public enum Genetic { RANDOM };
+		public enum Fittest { MOST_USED, MOST_THREE_USED };
+		public enum Genetic { RANDOM, UNICELLULAR };
 
 		public Fittest FittestAlgo;
 		public Genetic GeneticAlgo;

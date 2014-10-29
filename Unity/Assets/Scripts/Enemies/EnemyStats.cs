@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyStats : MonoBehaviour
 {
 		public float MaxHp;
-		public float AttackSpeed;
-		public float Damage;
+		public float CoolDownModifier;
+		public float DamageModifier;
 		public bool IsBoss;
 }

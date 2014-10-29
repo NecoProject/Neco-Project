@@ -13,7 +13,7 @@ public class InitRandomAlgorithm : MonoBehaviour
 		{
 				// TODO: more algos!
 				Algorithm = new Algorithm();
-				Algorithm.FittestAlgo = Algorithm.Fittest.MOST_USED;
-				Algorithm.GeneticAlgo = Algorithm.Genetic.RANDOM;
+				Algorithm.FittestAlgo = Algorithm.Fittest.MOST_THREE_USED;
+				Algorithm.GeneticAlgo = Algorithm.Genetic.UNICELLULAR;
 		}
 }

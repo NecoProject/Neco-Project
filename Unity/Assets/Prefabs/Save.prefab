@@ -42,44 +42,115 @@ MonoBehaviour:
   SaveData:
     CurrentLevel: 1
     IsCurrentLevelBossLevel: 0
+    LastUnlockedAttribute:
+      AttributeType: 4
+      IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
+      MinValue: 0
+      MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
+      IsBonus: 0
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      Icon: nephalem_nova
+      _value: 0
+      _value2: 0
     Algorithm:
-      FittestAlgo: 0
-      GeneticAlgo: 0
+      FittestAlgo: 1
+      GeneticAlgo: 1
     Boss: nephalem
     Enemies:
     - cyclop
     - nyancat
     - succubus
-    SkillAttributes: []
+    SkillAttributes: 
+    UnlockedAttributes: 
+    _activeSkills: []
   InitialSkills:
-  - MinDamage: 5
-    MaxDamage: 10
-    Cost: 0
-    SpriteName: blue
+  - SpriteName: blue
     SkillName: Blue
-    _coolDown: .400000006
-    _radius: .5
-  - MinDamage: 0
-    MaxDamage: 0
-    Cost: 0
-    SpriteName: 
+    Level: 0
+    _attributes:
+    - AttributeType: 0
+      IsMandatory: 1
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
+      MinValue: .400000006
+      MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
+      IsBonus: 0
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      Icon: 
+      _value: 2
+      _value2: 0
+    - AttributeType: 1
+      IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
+      MinValue: 0
+      MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
+      IsBonus: 1
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      Icon: 
+      _value: 2
+      _value2: 0
+    - AttributeType: 2
+      IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
+      MinValue: -100000
+      MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
+      IsBonus: 0
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      Icon: 
+      _value: 0
+      _value2: 0
+    - AttributeType: 3
+      IsMandatory: 0
+      IsBase: 0
+      NeedUnlock: 0
+      ActOnSelf: 0
+      SpawnProbability: 0
+      MinValue: -100000
+      MaxValue: 100000
+      MinValue2: -100000
+      MaxValue2: 100000
+      IsBonus: 1
+      MinimumSkillLevel: 0
+      GraphicalEffect: 
+      Icon: 
+      _value: 6
+      _value2: 0
+  - SpriteName: 
     SkillName: 
-    _coolDown: 0
-    _radius: 0
-  - MinDamage: 0
-    MaxDamage: 0
-    Cost: 0
-    SpriteName: 
+    Level: 0
+    _attributes: []
+  - SpriteName: 
     SkillName: 
-    _coolDown: 0
-    _radius: 0
-  - MinDamage: 0
-    MaxDamage: 0
-    Cost: 0
-    SpriteName: 
+    Level: 0
+    _attributes: []
+  - SpriteName: 
     SkillName: 
-    _coolDown: 0
-    _radius: 0
+    Level: 0
+    _attributes: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

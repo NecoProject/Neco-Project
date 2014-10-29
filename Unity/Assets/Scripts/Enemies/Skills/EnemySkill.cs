@@ -3,11 +3,46 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public abstract class EnemySkill : MonoBehaviour
+public class EnemySkill : MonoBehaviour
 {
-		public abstract bool CanUse();
+		[SerializeField]
+		public SkillStats Skill;
+		public bool IsCoolingDown
+		{
+				get { return _coolingDown; }
+				set
+				{
+						_coolingDown = value;
+						if (_coolingDown)
+						{
+								_coolDownLeft = Skill.CoolDown + Random.Range(-1f, 1f);
+						}
+				}
+		}
 
-		public abstract void Attack(Transform target, float baseDamage);
+		private float _coolDownLeft;
+		private bool _coolingDown;
 
-		public abstract IEnumerator Animate(Transform target);
+		void Awake()
+		{
+				Skill.RefreshCachedAttributes();
+				IsCoolingDown = true;
+		}
+
+		void Update()
+		{
+				if (!IsCoolingDown) return;
+
+				_coolDownLeft = _coolDownLeft - Time.deltaTime;
+				if (_coolDownLeft <= 0)
+				{
+						IsCoolingDown = false;
+						_coolDownLeft = 0;
+				}
+		}
+
+		public void ApplyStats(EnemyStats stats)
+		{
+				Skill.ApplyModifiers(stats);
+		}
 }

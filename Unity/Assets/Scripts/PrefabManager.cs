@@ -11,6 +11,7 @@ public class PrefabManager : MonoBehaviour
 		private static bool __created = false;
 
 		public List<PrefabDico> Skills;
+		public List<PrefabDico> Attributes;
 		public List<PrefabDico> Images;
 		public List<PrefabDico> Boss;
 		public List<PrefabDico> Enemies;
@@ -34,47 +35,32 @@ public class PrefabManager : MonoBehaviour
 
 		public Sprite GetSkillSprite(string name)
 		{
-				foreach (PrefabDico dico in Skills)
-				{
-						if (dico.Name == name) return dico.Sprite;
-				}
-				return null;
+				return GetSprite(name, Skills);
+		}
+
+		public Sprite GetAttributeSprite(string name)
+		{
+				return GetSprite(name, Attributes);
 		}
 
 		public Sprite GetImageSprite(string name)
 		{
-				foreach (PrefabDico dico in Images)
-				{
-						if (dico.Name == name) return dico.Sprite;
-				}
-				return null;
+				return GetSprite(name, Images);
 		}
 
 		public Transform GetSkillTransform(string name)
 		{
-				foreach (PrefabDico dico in Skills)
-				{
-						if (dico.Name == name) return dico.Prefab;
-				}
-				return null;
+				return GetTransform(name, Skills);
 		}
 
 		public Transform GetBossPrefab(string name)
 		{
-				foreach (PrefabDico dico in Boss)
-				{
-						if (dico.Name == name) return dico.Prefab;
-				}
-				return null;
+				return GetTransform(name, Boss);
 		}
 
 		public Transform GetEnemyPrefab(string name)
 		{
-				foreach (PrefabDico dico in Enemies)
-				{
-						if (dico.Name == name) return dico.Prefab;
-				}
-				return null;
+				return GetTransform(name, Enemies);
 		}
 
 		public List<Transform> GetEnemiesPrefab(List<string> names)
@@ -85,5 +71,24 @@ public class PrefabManager : MonoBehaviour
 						prefabs.Add(GetEnemyPrefab(name));
 				}
 				return prefabs;
+		}
+
+
+		Sprite GetSprite(string name, List<PrefabDico> list)
+		{
+				foreach (PrefabDico dico in list)
+				{
+						if (dico.Name == name) return dico.Sprite;
+				}
+				return null;
+		}
+
+		Transform GetTransform(string name, List<PrefabDico> list)
+		{
+				foreach (PrefabDico dico in list)
+				{
+						if (dico.Name == name) return dico.Prefab;
+				}
+				return null;
 		}
 }

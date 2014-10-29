@@ -6,19 +6,28 @@ using System;
 public class FittestIsMostUsed : ISurvivalOfTheFittest
 {
 
+		private int _numberOfParents;
+
+		public FittestIsMostUsed(int numberOfParents)
+		{
+				_numberOfParents = numberOfParents;
+		}
+
 		// Pick the two most used skills (arguable, cf IdeasToDiscuss.txt)
-		public Tuple<SkillStats, SkillStats> GetParentSkills(Dictionary<SkillStats, int> numberOfUses)
+		public List<SkillStats> GetParentSkills(Dictionary<SkillStats, int> numberOfUses)
 		{
 				List<SkillStats> activeSkillsOrderedByUses = new List<SkillStats>(numberOfUses.Keys);
 
 				// Filter out the ones that have never been used
 				activeSkillsOrderedByUses.RemoveAll(x => numberOfUses[x] == 0);
 
+				List<SkillStats> parents = new List<SkillStats>();
 				// Always at least one skill used, enemies don't die on their own
-				if (activeSkillsOrderedByUses.Count == 1)
-				{	
-						return Tuple.New<SkillStats, SkillStats>(activeSkillsOrderedByUses[0], activeSkillsOrderedByUses[0]);
-				}
+				/*if (activeSkillsOrderedByUses.Count == 1)
+				{
+						for (int i = 0; i < _numberOfParents; i++) parents.Add(activeSkillsOrderedByUses[0]);
+						return parents;
+				}*/
 								
 				activeSkillsOrderedByUses.Sort(delegate(SkillStats p1, SkillStats p2)
 				{
@@ -26,10 +35,10 @@ public class FittestIsMostUsed : ISurvivalOfTheFittest
 						return numberOfUses[p2].CompareTo(numberOfUses[p1]);
 				});
 
-				SkillStats mostUsedSkill1 = activeSkillsOrderedByUses[0];
-				SkillStats mostUsedSkill2 = activeSkillsOrderedByUses[1];
-
-				Tuple<SkillStats, SkillStats> parents = Tuple.New<SkillStats, SkillStats>(mostUsedSkill1, mostUsedSkill2);
+				for (int i = 0; i < _numberOfParents; i++)
+				{
+						parents.Add(activeSkillsOrderedByUses[i % activeSkillsOrderedByUses.Count]);
+				}
 
 				return parents;
 		}

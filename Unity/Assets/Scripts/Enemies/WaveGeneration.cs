@@ -92,21 +92,21 @@ public class WaveGeneration : MonoBehaviour
 
 		Transform GenerateEnemy(int difficulty)
 		{
-				Debug.Log(Enemies.Count);
 				int index = Random.Range(0, Enemies.Count - 1);
-				Debug.Log(index);
 				Transform enemyModel = Enemies[index];
 
-				Vector3 position = GeneratePosition();
-				Transform monster = (Transform)Instantiate(enemyModel, position, Quaternion.identity);
+				Transform monster = (Transform)Instantiate(enemyModel);
 				monster.parent = foreground;
+
+				Vector3 position = GeneratePosition(monster);
+				monster.position = position;
 
 				// TODO: don't have general settings for monsters, each enemy should have their own stats.
 				// Use that only to scale
 				EnemyStats stats = monster.GetComponent<EnemyStats>();
-				stats.MaxHp = Settings.MonsterInitialHp * difficulty;
-				stats.AttackSpeed = Settings.MonsterInitialAttackSpeed;
-				stats.Damage = Settings.MonsterInitialDamage * (1 + difficulty * 0.2f);
+				stats.MaxHp = Settings.MonsterInitialHp * (1 + difficulty * 0.3f);
+				stats.CoolDownModifier = Settings.MonsterInitialAttackSpeed;
+				stats.DamageModifier = Settings.MonsterInitialDamage * (1 + difficulty * 0.15f);
 
 				return monster;
 		}
@@ -115,24 +115,30 @@ public class WaveGeneration : MonoBehaviour
 		{
 				Transform enemyModel = Enemies[Random.Range(0, Enemies.Count - 1)];
 
-				Vector3 position = GeneratePosition();
 
-				Transform monster = (Transform)Instantiate(enemyModel, position, Quaternion.identity);
+				Transform monster = (Transform)Instantiate(enemyModel);
 				monster.localScale = new Vector3(2 * monster.localScale.x, 2 * monster.localScale.y);
 				monster.parent = foreground;
 
+				Vector3 position = GeneratePosition(monster);
+				monster.position = position;
+
 				EnemyStats stats = monster.GetComponent<EnemyStats>();
-				stats.MaxHp = Settings.MonsterInitialHp * Settings.BossFactor * difficulty;
-				stats.AttackSpeed = Settings.MonsterInitialAttackSpeed * Settings.BossFactor;
-				stats.Damage = Settings.MonsterInitialDamage * Settings.BossFactor * (1 + difficulty * 0.2f);
+				stats.MaxHp = Settings.MonsterInitialHp * Settings.BossFactor * (1 + difficulty * 0.3f);
+				stats.CoolDownModifier = Settings.MonsterInitialAttackSpeed * Settings.BossFactor;
+				stats.DamageModifier = Settings.MonsterInitialDamage * Settings.BossFactor * (1 + difficulty * 0.15f);
 
 				return monster;
 		}
 
-		Vector3 GeneratePosition()
+		// Assumption is that the pivot point is always at the bottom center
+		Vector3 GeneratePosition(Transform monster)
 		{
-				float enemyX = Random.Range(_minX, _maxX);
-				float enemyY = Random.Range(_minY, _maxY);
+				Vector3 size = monster.renderer.bounds.size;
+				float enemyX = Random.Range(_minX + size.x / 2, _maxX - size.x / 2);
+				float enemyY = Random.Range(_minY, _maxY - size.y);
+
+
 				Vector3 position = new Vector3(enemyX, enemyY);
 				return position;
 		}
@@ -143,6 +149,7 @@ public class WaveGeneration : MonoBehaviour
 
 				if (monster.gameObject.GetComponent<EnemyStats>().IsBoss)
 				{
+						//_save.UnlockedSkill = monster.gameObject.GetComponent<EnemyBehaviour>().KillReward();
 						Messenger.Broadcast(EventNames.LEVEL_COMPLETE);
 				}
 				else if (_waveMonsters.Count == 0)

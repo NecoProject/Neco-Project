@@ -9,7 +9,9 @@ using System;
 /// </summary>
 public class DebugEndScreen : MonoBehaviour
 {
-		void Awake()
+		public float SkillLevel;
+
+		void Start()
 		{
 				// Create a Save object with the current skills of the player
 				Save save = GameObject.Find("Save").GetComponent<Save>();
@@ -29,14 +31,10 @@ public class DebugEndScreen : MonoBehaviour
 		}
 
 		SkillStats buildRandomSkill() {
-				SkillStats skill = new SkillStats();
-				skill.CoolDown = UnityEngine.Random.Range(0f, 2f);
-				skill.Radius = UnityEngine.Random.Range(0f, 2f);
-				skill.Cost = UnityEngine.Random.Range(0f, 2f);
-				skill.MinDamage = UnityEngine.Random.Range(0f, 2f);
-				skill.MaxDamage = UnityEngine.Random.Range(skill.MinDamage, 2f);
+				SkillStats skill = SkillStats.CreateRandom();
 				skill.SkillName = "Random";
 				skill.SpriteName = GameObject.Find("PrefabManager").GetComponent<PrefabManager>().Skills[UnityEngine.Random.Range(0, 3)].Sprite.name;
+				skill.Level = SkillLevel;
 				return skill;
 		}
 
