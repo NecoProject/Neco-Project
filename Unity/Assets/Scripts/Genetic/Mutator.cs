@@ -110,7 +110,10 @@ public class Mutator
 				foreach (SkillAttribute attribute in skill.Attributes)
 				{
 						//Debug.Log("Total weight contribution: " + attribute.Value + " for " + attribute.AttributeType);
-						if (attribute.IsBonus) totalWeight += attribute.Value;
+						// TODO: not that easy. The same attribute can sometimes be a bonus, sometimes 
+						// a malus, depending on whether you intend to send the skill on yourself or 
+						// the enemy
+						if (attribute.IsBonus) totalWeight += Mathf.Abs(attribute.Value);
 						else totalWeight -= attribute.Value;
 						//Debug.Log("Debut weight after computation is " + totalWeight);
 				}
