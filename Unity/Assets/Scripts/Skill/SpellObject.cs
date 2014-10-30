@@ -31,46 +31,12 @@ public class SpellObject : MonoBehaviour
 
 		public void ApplyEffects(GameObject target)
 		{
-				if (target == Origin)
-				{
-						ApplySelfEffects(target);
-				}
-				else
-				{
-						ApplyEnemyEffects(target);
-				}
-		}
-
-		void ApplySelfEffects(GameObject target)
-		{
-				List<SkillComponent> applicableSkillEffects = GetSelfSkillEffects();
-				ApplyEffects(target, applicableSkillEffects);
-		}
-
-		void ApplyEnemyEffects(GameObject target)
-		{
-				List<SkillComponent> applicableSkillEffects = GetEnemySkillEffects();
-				ApplyEffects(target, applicableSkillEffects);
-		}
-
-		void ApplyEffects(GameObject target, List<SkillComponent> effects)
-		{
-				foreach (SkillComponent component in effects)
+				foreach (SkillComponent component in _allComponents)
 				{
 						component.ApplyEffect(target);
 				}
 		}
-
-		List<SkillComponent> GetSelfSkillEffects()
-		{
-				return _allComponents.FindAll(x => x.AppliesToSelf());
-		}
-
-		List<SkillComponent> GetEnemySkillEffects()
-		{
-				return _allComponents.FindAll(x => !x.AppliesToSelf());
-		}
-
+		
 		void InitSkillComponents()
 		{
 				_allComponents = new List<SkillComponent>(GetComponentsInChildren<SkillComponent>());

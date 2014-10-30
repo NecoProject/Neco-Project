@@ -13,7 +13,7 @@ public class AttributesLoader : AbstractLoader
 		private const string NEED_UNLOCK = "need_unlock";
 		private const string IS_MANDATORY = "is_mandatory";
 		private const string IS_BONUS = "is_bonus";
-		private const string ACT_ON_SELF = "act_on_self";
+		//private const string ACT_ON_SELF = "act_on_self";
 		private const string MIN_VALUE = "min_value";
 		private const string MAX_VALUE = "max_value";
 		private const string MIN_VALUE_2 = "min_value_2";
@@ -66,7 +66,7 @@ public class AttributesLoader : AbstractLoader
 				attribute.IsMandatory = bool.Parse(getValue(data, IS_MANDATORY));
 				attribute.IsBase = bool.Parse(getValue(data, IS_BASE));
 				attribute.NeedUnlock = bool.Parse(getValue(data, NEED_UNLOCK));
-				attribute.ActOnSelf = bool.Parse(getValue(data, ACT_ON_SELF));
+				//attribute.ActOnSelf = bool.Parse(getValue(data, ACT_ON_SELF));
 
 				float ignoreMe;
 				if (float.TryParse(getValue(data, SPAWN_PROBABILITY), out ignoreMe))

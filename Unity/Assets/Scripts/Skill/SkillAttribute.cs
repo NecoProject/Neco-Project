@@ -16,7 +16,6 @@ public class SkillAttribute
 		public bool IsMandatory;
 		public bool IsBase;
 		public bool NeedUnlock;
-		public bool ActOnSelf;
 		public float SpawnProbability;
 		public float MinValue = -100000;
 		public float MaxValue = 100000;
@@ -48,7 +47,6 @@ public class SkillAttribute
 				clone.NeedUnlock = NeedUnlock;
 				clone.GraphicalEffect = GraphicalEffect;
 				clone.IsBonus = IsBonus;
-				clone.ActOnSelf = ActOnSelf;
 				clone.IsMandatory = IsMandatory;
 				clone.MaxValue = MaxValue;
 				clone.MinValue = MinValue;
