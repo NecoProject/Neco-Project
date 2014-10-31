@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HealthPointScript : MonoBehaviour
 {
-		public Color32 DamageColour; 
+		public Color32 DamageColour, HealColour; 
 		
 		public float MaxHp { get; set; }
 		public float CurrentHp { get; private set; }
@@ -27,7 +27,10 @@ public class HealthPointScript : MonoBehaviour
 				// TODO: change this to use the new UI components
 				CurrentHp = Mathf.Min(MaxHp, CurrentHp - value);
 				UpdateDisplayText();
-				StartCoroutine(AnimateTakeDamage());
+
+				if (value > 0) StartCoroutine(AnimateFlash(DamageColour));
+				else StartCoroutine(AnimateFlash(HealColour));
+
 				StartCoroutine(FloatingDamage.Spawn(value));
 				if (CurrentHp <= 0)
 				{
@@ -40,15 +43,14 @@ public class HealthPointScript : MonoBehaviour
 				LifeComponent.text = CurrentHp.ToString("f0") + " / " + MaxHp.ToString("f0");
 		}
 
-
-		IEnumerator AnimateTakeDamage()
+		IEnumerator AnimateFlash(Color32 flashColor, float duration = 0.5f)
 		{
 				var previousColor = GetComponent<SpriteRenderer>().material.GetColor("_FlashColor");
 
-				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", DamageColour);
+				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", flashColor);
 				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 1);
 
-				yield return new WaitForSeconds(0.5f);
+				yield return new WaitForSeconds(duration);
 
 				// Set everything back to normal
 				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 0);
