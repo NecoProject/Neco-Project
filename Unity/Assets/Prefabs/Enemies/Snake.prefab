@@ -274,6 +274,9 @@ MonoBehaviour:
   DamageColour:
     serializedVersion: 2
     rgba: 255
+  HealColour:
+    serializedVersion: 2
+    rgba: 43520
   LifeComponent: {fileID: 10200000}
   FloatingDamage: {fileID: 11400006}
 --- !u!114 &11400002
@@ -317,6 +320,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c15e9b6f58a7645808497d666315be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageColour:
+    serializedVersion: 2
+    rgba: 4278190335
+  HealColour:
+    serializedVersion: 2
+    rgba: 4278233600
   SpawnPoint: {fileID: 400006}
   DestroyPoint: {fileID: 400004}
   InitialSize: 100
@@ -343,7 +352,6 @@ MonoBehaviour:
       IsMandatory: 0
       IsBase: 0
       NeedUnlock: 0
-      ActOnSelf: 0
       SpawnProbability: 0
       MinValue: 0
       MaxValue: 100000
@@ -359,7 +367,6 @@ MonoBehaviour:
       IsMandatory: 0
       IsBase: 0
       NeedUnlock: 0
-      ActOnSelf: 0
       SpawnProbability: 0
       MinValue: 0
       MaxValue: 100000
@@ -375,7 +382,6 @@ MonoBehaviour:
       IsMandatory: 0
       IsBase: 0
       NeedUnlock: 0
-      ActOnSelf: 0
       SpawnProbability: 0
       MinValue: -100000
       MaxValue: 100000
@@ -416,7 +422,6 @@ MonoBehaviour:
     IsMandatory: 0
     IsBase: 0
     NeedUnlock: 0
-    ActOnSelf: 0
     SpawnProbability: 0
     MinValue: -100000
     MaxValue: 100000
@@ -444,7 +449,6 @@ MonoBehaviour:
     IsMandatory: 0
     IsBase: 0
     NeedUnlock: 0
-    ActOnSelf: 0
     SpawnProbability: 0
     MinValue: -100000
     MaxValue: 100000

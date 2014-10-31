@@ -8,7 +8,7 @@ using System.Linq;
 
 public class PlayerScript : MonoBehaviour
 {
-		public Color32 DamageColour, ArmorColour;
+		public Color32 DamageColour, ArmorColour, HealColour;
 
 		// Storing the state of the player in a serializable script will make it easier to save / load data, and pass data between levels
 		public PlayerStats Stats;
@@ -91,8 +91,11 @@ public class PlayerScript : MonoBehaviour
 		{
 				float amountDamage = (1 - _armor / (30 + _armor)) * amount;
 
-				Stats.CurrentHealth -= amountDamage;
-				StartCoroutine(AnimateTakeDamage());
+				Stats.CurrentHealth = Mathf.Min(Stats.CurrentHealth - amountDamage, Stats.MaxHealth);
+
+				if (amountDamage > 0) StartCoroutine(AnimateFlash(DamageColour));
+				else StartCoroutine(AnimateFlash(HealColour));
+
 				StartCoroutine(FloatingDamage.Spawn(amountDamage));
 				if (Stats.CurrentHealth <= 0)
 				{
@@ -113,31 +116,17 @@ public class PlayerScript : MonoBehaviour
 		public void SetArmor(float armor)
 		{
 				this._armor = armor;
-				StartCoroutine(AnimateArmor());
+				StartCoroutine(AnimateFlash(ArmorColour, 0.8f));
 		}
 
-		IEnumerator AnimateTakeDamage()
+		IEnumerator AnimateFlash(Color32 flashColor, float duration = 0.5f)
 		{
 				var previousColor = GetComponent<SpriteRenderer>().material.GetColor("_FlashColor");
 
-				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", DamageColour);
+				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", flashColor);
 				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 1);
 
-				yield return new WaitForSeconds(0.5f);
-
-				// Set everything back to normal
-				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 0);
-				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", previousColor);
-		}
-
-		IEnumerator AnimateArmor()
-		{
-				var previousColor = GetComponent<SpriteRenderer>().material.GetColor("_FlashColor");
-
-				GetComponent<SpriteRenderer>().material.SetColor("_FlashColor", ArmorColour);
-				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 1);
-
-				yield return new WaitForSeconds(0.8f);
+				yield return new WaitForSeconds(duration);
 
 				// Set everything back to normal
 				GetComponent<SpriteRenderer>().material.SetFloat("_FlashAmount", 0);

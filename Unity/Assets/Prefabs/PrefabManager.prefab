@@ -95,9 +95,6 @@ MonoBehaviour:
   - Name: snake
     Sprite: {fileID: 21300000, guid: c84130bac57da0149a9e0336d4ab203c, type: 3}
     Prefab: {fileID: 400000, guid: 27884c270b0b9c74592352559c3e737c, type: 2}
-  - Name: succubus
-    Sprite: {fileID: 21300000, guid: 69603afd7c9ee1847a8049ffc44151ef, type: 3}
-    Prefab: {fileID: 400000, guid: 23dd303de9df5194c9cc9d1025828be2, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
